@@ -1,5 +1,44 @@
 {
-  "name": "Bed2Go",
+  "name": "Mybnb",
   "private": true,
-  "dependencies": {}
+  "description": "Mybnb, an Airbnb clone, is an online marketplace for users to post and find lodging, primarily homestays for vacation rentals, and tourism activities.",
+  "version": "1.0.0",
+  "main": "./frontend/mybnb.jsx",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "webpack",
+    "webpack": "webpack --mode=development --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xLucyLuo/mybnb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xLucyLuo/mybnb/issues"
+  },
+  "homepage": "https://github.com/xLucyLuo/mybnb#readme",
+  "dependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@babel/preset-react": "^7.18.6",
+    "@types/eslint": "^8.4.5",
+    "babel-loader": "^8.2.5",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^6.3.0",
+    "redux": "^4.2.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.4.1",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  }
 }
