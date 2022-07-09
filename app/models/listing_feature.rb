@@ -1,0 +1,2 @@
+class ListingFeature < ApplicationRecord
+end

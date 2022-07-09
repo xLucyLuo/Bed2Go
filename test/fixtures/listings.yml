@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  location_id: 1
+  currency: MyString
+  price: 9.99
+  price_units: MyString
+  other_fees: MyString
+  other_fees_type: MyString
+  max_guests: 1
+  num_bedrooms: 1
+  num_beds: 1
+  num_baths: 1
+  property_type: MyString
+  type_of_place: MyString
+  host_id: 1
+  start_date: 2022-07-08 14:00:54
+  end_date: 2022-07-08 14:00:54
+
+two:
+  title: MyString
+  description: MyString
+  location_id: 1
+  currency: MyString
+  price: 9.99
+  price_units: MyString
+  other_fees: MyString
+  other_fees_type: MyString
+  max_guests: 1
+  num_bedrooms: 1
+  num_beds: 1
+  num_baths: 1
+  property_type: MyString
+  type_of_place: MyString
+  host_id: 1
+  start_date: 2022-07-08 14:00:54
+  end_date: 2022-07-08 14:00:54

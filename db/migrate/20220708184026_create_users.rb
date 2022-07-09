@@ -7,10 +7,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :password_digest, null: false
       t.string :session_token, null: false, index: {unique: true}
       t.integer :location_id, null: false, index: {unique: true}
-      t.integer :photo_id, null: false, index: {unique: true}
 
       t.timestamps
     end
   end
 end
-
