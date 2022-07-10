@@ -111,11 +111,9 @@ ActiveRecord::Schema.define(version: 2022_07_08_235531) do
     t.string "lname", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
-    t.integer "location_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["location_id"], name: "index_users_on_location_id", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
 

@@ -3,7 +3,31 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
+//FOR TESTING ONLY
+import { signup, login, logout } from './actions/session_actions';
+
 document.addEventListener("DOMContentLoaded", () => {
-  const store = configureStore();
+  let preloadedState = undefined
+  if (window.currentUser) {
+    preloadedState = {
+      entities: {users: { [window.currentUser.id]: window.currentUser }},
+      session: { id: window.currentUser.id }
+    };
+    delete window.currentUser;
+  }
+
+  const store = configureStore(preloadedState);
+
   ReactDOM.render(<Root store={store} />, document.getElementById("root"));
+
+  //FOR TESTING ONLY
+  window.store = store;
+  window.signup = signup;
+  window.login = login;
+  window.logout = logout;
+  window.demoUser = {email: "demo.user@mybnb.com", 
+                      password: "123123", 
+                      fname: "Demo",
+                      lname: "User"
+                    };
 });

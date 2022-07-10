@@ -1,19 +1,18 @@
-export const fetchListings = () => {
+export const getListings = () => {
     return $.ajax({
     method: "GET",
     url: "/api/listings"
     })
   };
   
-  
-  export const fetchListing = (id) => {
+  export const getListing = (id) => {
     return $.ajax({
     method: 'GET',
     url: `/api/listings/${id}`
     })
   };
   
-  export const createListing = (listing) => {
+  export const postListing = (listing) => {
     return $.ajax({
     method: "POST",
     url: "/api/listings",
@@ -21,7 +20,7 @@ export const fetchListings = () => {
     })
   };
 
-  export const updateListing = (listing) => {
+  export const patchListing = (listing) => {
     return $.ajax({
       method: "PATCH",
       url: `/api/listings${listing.id}`,
