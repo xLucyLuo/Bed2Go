@@ -1,4 +1,4 @@
-
+import {  } from './../actions/modal_actions'
 
 const modalReducer = (state = {}, action) => {
     Object.freeze(state);

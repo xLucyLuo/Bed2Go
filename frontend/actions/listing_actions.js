@@ -19,8 +19,8 @@ export const removeListing = (listing) => ({
     listing,
 });
 
-export const fetchListings = () => (dispatch) => (
-    listingAPIUtil.getListings()
+export const fetchListings = (filters) => (dispatch) => (
+    listingAPIUtil.getListings(filters)
         .then((listings) => dispatch(receiveListings(listings)))
 );
 

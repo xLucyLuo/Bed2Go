@@ -4,4 +4,4 @@ const ListingIndexItem = ({listing}) => (
     <li>{listing.title}</li>
 );
 
-export default ListingIndexItem
+export default ListingIndexItem;

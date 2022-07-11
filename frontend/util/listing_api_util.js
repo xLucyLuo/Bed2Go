@@ -1,14 +1,15 @@
-export const getListings = () => {
+export const getListings = (filters) => {
     return $.ajax({
     method: "GET",
     url: "/api/listings",
+    data: filters
     // error: (err) => console.log(err)
     })
   };
   
   export const getListing = (id) => {
     return $.ajax({
-    method: 'GET',
+    method: "GET",
     url: `/api/listings/${id}`
     })
   };
