@@ -68,8 +68,8 @@ Listing.create!(
     num_bedrooms: 1,
     num_beds: 2,
     num_baths: 1,
-    property_type: "Entire Place",
-    type_of_place: "Condo",
+    property_type: "Condo",
+    type_of_place: "Entire Place",
     host_id: 2,
     is_posted: true
 )
@@ -95,8 +95,8 @@ Listing.create!(
     num_bedrooms: 2,
     num_beds: 2,
     num_baths: 1,
-    property_type: "Entire Place",
-    type_of_place: "House",
+    property_type: "House",
+    type_of_place: "Entire Place",
     host_id: 4,
     is_posted: true
 )

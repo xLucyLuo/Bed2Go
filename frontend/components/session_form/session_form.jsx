@@ -17,6 +17,7 @@ class SessionForm extends React.Component {
     };
 
     handleSubmit(e) {
+        console.log(e.target.value)
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
@@ -60,10 +61,10 @@ class SessionForm extends React.Component {
                             <label htmlFor="lname-input">Last Name: </label>
                             <input id="lname-input" type="text" onChange={this.update("lname")} value={this.state.lname}/>
                         </div>    
-                        ): <div></div>
+                        ) : <div></div>
                     }
                     <br/><br/>
-                    <button>{formType}</button>
+                    <button value={formType}>{formType}</button>
                 </form>
                 <br/><br/>
                 {navLink}
