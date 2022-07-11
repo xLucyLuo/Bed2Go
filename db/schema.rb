@@ -17,8 +17,9 @@ ActiveRecord::Schema.define(version: 2022_07_08_235531) do
 
   create_table "features", force: :cascade do |t|
     t.string "name", null: false
-    t.string "type", null: false
-    t.string "subtype", null: false
+    t.string "description"
+    t.string "category", null: false
+    t.string "subcategory", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,7 +36,14 @@ ActiveRecord::Schema.define(version: 2022_07_08_235531) do
   create_table "listings", force: :cascade do |t|
     t.string "title", null: false
     t.string "description", null: false
-    t.integer "location_id", null: false
+    t.string "street_address", null: false
+    t.string "city", null: false
+    t.string "state", null: false
+    t.string "zip_code", null: false
+    t.string "country", null: false
+    t.string "region", null: false
+    t.decimal "lat", null: false
+    t.decimal "lng", null: false
     t.string "currency", default: "USD", null: false
     t.decimal "price", null: false
     t.string "price_units", default: "per night", null: false
@@ -48,31 +56,17 @@ ActiveRecord::Schema.define(version: 2022_07_08_235531) do
     t.string "property_type", null: false
     t.string "type_of_place", null: false
     t.integer "host_id", null: false
-    t.boolean "is_posted", null: false
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.boolean "is_posted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city"], name: "index_listings_on_city"
+    t.index ["country"], name: "index_listings_on_country"
     t.index ["host_id"], name: "index_listings_on_host_id"
-    t.index ["location_id"], name: "index_listings_on_location_id"
+    t.index ["region"], name: "index_listings_on_region"
+    t.index ["state"], name: "index_listings_on_state"
+    t.index ["street_address"], name: "index_listings_on_street_address"
     t.index ["title"], name: "index_listings_on_title", unique: true
-  end
-
-  create_table "locations", force: :cascade do |t|
-    t.string "addresss", null: false
-    t.string "city", null: false
-    t.string "state", null: false
-    t.string "zip_code", null: false
-    t.string "country", null: false
-    t.decimal "lat", null: false
-    t.decimal "lng", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["addresss"], name: "index_locations_on_addresss"
-    t.index ["city"], name: "index_locations_on_city"
-    t.index ["country"], name: "index_locations_on_country"
-    t.index ["state"], name: "index_locations_on_state"
-    t.index ["zip_code"], name: "index_locations_on_zip_code"
+    t.index ["zip_code"], name: "index_listings_on_zip_code"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -85,8 +79,8 @@ ActiveRecord::Schema.define(version: 2022_07_08_235531) do
     t.string "currency", default: "USD", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["listing_id"], name: "index_reservations_on_listing_id", unique: true
-    t.index ["user_id"], name: "index_reservations_on_user_id", unique: true
+    t.index ["listing_id"], name: "index_reservations_on_listing_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -101,8 +95,8 @@ ActiveRecord::Schema.define(version: 2022_07_08_235531) do
     t.string "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["listing_id"], name: "index_reviews_on_listing_id", unique: true
-    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id", unique: true
+    t.index ["listing_id"], name: "index_reviews_on_listing_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 
   create_table "users", force: :cascade do |t|

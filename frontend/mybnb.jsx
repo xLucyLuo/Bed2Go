@@ -5,6 +5,8 @@ import Root from './components/root';
 
 //FOR TESTING ONLY
 import { signup, login, logout } from './actions/session_actions';
+import * as listingAPIUtil from './util/listing_api_util';
+import { fetchListings } from './actions/listing_actions'
 
 document.addEventListener("DOMContentLoaded", () => {
   let preloadedState = undefined
@@ -25,9 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
   window.signup = signup;
   window.login = login;
   window.logout = logout;
-  window.demoUser = {email: "demo.user@mybnb.com", 
-                      password: "123123", 
-                      fname: "Demo",
-                      lname: "User"
-                    };
+  window.listingAPIUtil = listingAPIUtil;
+  window.fetchListings = fetchListings
+  // window.demoUser = {email: "demo.user@mybnb.com", 
+  //                     password: "123123", 
+  //                     fname: "Demo",
+  //                     lname: "User"
+  //                   };
 });

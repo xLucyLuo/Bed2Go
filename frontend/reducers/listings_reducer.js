@@ -1,15 +1,18 @@
-import { RECEIVE_ALL_LISTINGS, RECEIVE_LISTING, REMOVE_LISTING } from './../actions/listing_actions';
+import { RECEIVE_LISTINGS, RECEIVE_LISTING, REMOVE_LISTING } from './../actions/listing_actions';
 
-const listingsReducer = (state, action) => {
+const listingsReducer = (state = {}, action) => {
     Object.freeze(state);
 
     switch (state = {}, action.type) {
-        case RECEIVE_ALL_LISTINGS:
-            return
+        case RECEIVE_LISTINGS:
+            console.log(Object.assign({}, state, action.listings));
+            return Object.assign({}, state, action.listings);
         case RECEIVE_LISTING:
-            return
+            return Object.assign({}, state, {[action.listing.id]: action.listing});
         case REMOVE_LISTING:
-            return
+            const nextState = Object.assign({}, state);
+            delete nextState[action.listing.id];
+            return nextState;
         default:
             return state;
     }

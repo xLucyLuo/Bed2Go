@@ -22,6 +22,13 @@ class User < ApplicationRecord
         length: {minimum: 6}, 
         allow_nil: true
 
+    
+    has_many :listings,
+        foreign_key: :host_id,
+        class_name: :Listing
+
+    has_many :reservations
+
     #AASPIRE
     attr_reader :password
 

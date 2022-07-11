@@ -11,13 +11,13 @@ export const receiveCurrentUser = (currentUser) => ({
 });
 
 export const logoutCurrentUser = () => ({
-    type: LOGOUT_CURRENT_USER
+    type: LOGOUT_CURRENT_USER,
 });
 
 //errors is an Array
 export const receiveSessionErrors = (errors) => ({
     type: RECEIVE_SESSION_ERRORS,
-    errors
+    errors,
 });
 
 export const clearSessionErrors = () => ({

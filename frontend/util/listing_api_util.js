@@ -1,7 +1,8 @@
 export const getListings = () => {
     return $.ajax({
     method: "GET",
-    url: "/api/listings"
+    url: "/api/listings",
+    // error: (err) => console.log(err)
     })
   };
   
@@ -20,17 +21,17 @@ export const getListings = () => {
     })
   };
 
-  export const patchListing = (listing) => {
-    return $.ajax({
-      method: "PATCH",
-      url: `/api/listings${listing.id}`,
-      data: { listing }
-    })
-  };
+  // export const patchListing = (listing) => {
+  //   return $.ajax({
+  //     method: "PATCH",
+  //     url: `/api/listings${listing.id}`,
+  //     data: { listing }
+  //   })
+  // };
 
-  export const deleteListing = (id) => {
-    return $.ajax({
-      method: "DELETE",
-      url: `/api/listings/${id}`,
-    })
-  };
+  // export const deleteListing = (id) => {
+  //   return $.ajax({
+  //     method: "DELETE",
+  //     url: `/api/listings/${id}`,
+  //   })
+  // };
