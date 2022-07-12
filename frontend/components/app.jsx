@@ -5,6 +5,7 @@ import GreetingContainer from './greeting/greeting_container';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import SearchContainer from './search/search_container';
+import ListingShowContainer from './listing_show/listing_show_container';
 
 const App = () => (
   <div>
@@ -18,11 +19,10 @@ const App = () => (
     <Switch>
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        <Route path="/listings/:listingId" component={ListingShowContainer} />
         <Route exact path="/" component={SearchContainer} /> 
       {/* 
-      <ProtectedRoute exact path="/listings/new" component={ListingsFormContainer} />
-      <Route path="/listings/:listingId" component={ListingShowContainer} />
-      <Route exact path="/" component={SearchContainer} /> */}
+      <ProtectedRoute exact path="/listings/new" component={ListingsFormContainer} />*/}
     </Switch>
   </div>
 );

@@ -1,5 +1,5 @@
 import React from 'react';
-import MarkerManager from './../../util/marker_manager';
+import MarkerManager from '../../util/marker_manager';
 
 // note: can refactor to variables (will faill with error for typos)
 const mapOptionsByLocation = {

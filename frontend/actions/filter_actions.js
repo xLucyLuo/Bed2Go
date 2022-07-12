@@ -10,6 +10,5 @@ export const receiveFilter = (filter, value) => ({
 
 export const updateFilter = (filter, value) => (dispatch, getState) => {
     dispatch(receiveFilter(filter, value));
-    console.log(getState().ui.filters)
     return fetchListings(getState().ui.filters)(dispatch);
 };
