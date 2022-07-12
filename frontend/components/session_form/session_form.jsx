@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
           lname: "",
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.setDemoUser = this.setDemoUser.bind(this);
     };
 
     componentDidMount() {
@@ -17,6 +18,7 @@ class SessionForm extends React.Component {
     };
 
     handleSubmit(e) {
+        console.log(this.state)
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
@@ -27,15 +29,13 @@ class SessionForm extends React.Component {
     };
 
     setDemoUser() {
-        this.setState({
+        console.log("check")
+        return (e) => this.setState({
             email: "demo.user@mybnb.com",
             password: "123123",
             fname: "Demo",
             lname: "User",
         });
-
-        const user = Object.assign({}, this.state);
-        this.props.processForm(user);
     }
 
     renderErrors() {
@@ -76,7 +76,7 @@ class SessionForm extends React.Component {
                     }
                     <br/><br/>
                     <button value={formType}>{formType}</button>
-                    {<button onClick={this.setDemoUser}>Demo User</button>}
+                    {formType === "Log in" ? <button onClick={this.setDemoUser}>Demo User</button> : <div></div>}
                 </form>
                 <br/><br/>
                 {navLink}
