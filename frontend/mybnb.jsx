@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const store = configureStore(preloadedState);
 
-  // ReactDOM.render(<Root store={store} />, document.getElementById("root"));
+  ReactDOM.render(<Root store={store} />, document.getElementById("root"));
 
-  ReactDOM.render(<h1>WORKING</h1>, document.getElementById("root"));
+  // ReactDOM.render(<h1>WORKING</h1>, document.getElementById("root"));
 
   //FOR TESTING ONLY
   window.store = store;

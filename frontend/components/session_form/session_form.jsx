@@ -29,13 +29,15 @@ class SessionForm extends React.Component {
     };
 
     setDemoUser() {
-        console.log("check")
-        return (e) => this.setState({
+        
+        this.setState({
             email: "demo.user@mybnb.com",
             password: "123123",
             fname: "Demo",
             lname: "User",
-        });
+        })
+
+        console.log(this.state)
     }
 
     renderErrors() {
