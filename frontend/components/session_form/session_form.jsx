@@ -17,7 +17,6 @@ class SessionForm extends React.Component {
     };
 
     handleSubmit(e) {
-        console.log(e.target.value)
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
@@ -26,6 +25,18 @@ class SessionForm extends React.Component {
     update(field) {
         return (e) => this.setState({[field]: e.target.value});
     };
+
+    setDemoUser() {
+        this.setState = {
+            email: "demo.user@mybnb.com",
+            password: "123123",
+            fname: "Demo",
+            lname: "User",
+        };
+
+        const user = Object.assign({}, this.state);
+        this.props.processForm(user);
+    }
 
     renderErrors() {
         return (
@@ -65,6 +76,7 @@ class SessionForm extends React.Component {
                     }
                     <br/><br/>
                     <button value={formType}>{formType}</button>
+                    <button onClick={this.setDemoUser}>Demo User</button>
                 </form>
                 <br/><br/>
                 {navLink}
