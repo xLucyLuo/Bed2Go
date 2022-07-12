@@ -27,12 +27,12 @@ class SessionForm extends React.Component {
     };
 
     setDemoUser() {
-        this.setState = {
+        this.setState({
             email: "demo.user@mybnb.com",
             password: "123123",
             fname: "Demo",
             lname: "User",
-        };
+        });
 
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
@@ -76,7 +76,7 @@ class SessionForm extends React.Component {
                     }
                     <br/><br/>
                     <button value={formType}>{formType}</button>
-                    <button onClick={this.setDemoUser}>Demo User</button>
+                    {<button onClick={this.setDemoUser}>Demo User</button>}
                 </form>
                 <br/><br/>
                 {navLink}
