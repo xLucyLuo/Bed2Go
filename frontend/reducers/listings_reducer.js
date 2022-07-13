@@ -8,8 +8,8 @@ const listingsReducer = (state = {}, action) => {
             // return Object.assign({}, state, action.listings);
             return action.listings;
         case RECEIVE_LISTING:
-            // return Object.assign({}, state, {[action.listing.id]: action.listing});
-            return {[action.listing.id]: action.listing};
+            return Object.assign({}, state, {[action.listing.id]: action.listing});
+            // return {[action.listing.id]: action.listing};
         case REMOVE_LISTING:
             const nextState = Object.assign({}, state);
             delete nextState[action.listing.id];

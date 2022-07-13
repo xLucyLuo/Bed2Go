@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    updateFilter: (value, filter) => dispatch(updateFilter(value, filter)),
+    updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

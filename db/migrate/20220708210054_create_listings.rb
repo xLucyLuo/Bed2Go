@@ -9,10 +9,10 @@ class CreateListings < ActiveRecord::Migration[5.2]
       t.string :zip_code, null: false, index: true
       t.string :country, null: false, index: true
       t.string :region, null: false, index: true
-      t.decimal :lat, null: false
-      t.decimal :lng, null: false
+      t.float :lat, null: false
+      t.float :lng, null: false
       t.string :currency, null: false, default: 'USD'
-      t.decimal :price, null: false
+      t.float :price, null: false
       t.string :price_units, null: false, default: 'per night'
       t.string :other_fees
       t.string :other_fees_type

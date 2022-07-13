@@ -6,9 +6,11 @@ import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import SearchContainer from './search/search_container';
 import ListingShowContainer from './listing_show/listing_show_container';
+import ModalContainer from './modal/modal_container';
 
 const App = () => (
   <div>
+    <ModalContainer />
     <header>
         <Link to="/" className='logo'>
             <h1>Mybnb</h1>
@@ -17,8 +19,8 @@ const App = () => (
         <GreetingContainer />
     </header>
     <Switch>
-        <AuthRoute exact path="/login" component={LoginFormContainer} />
-        <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        {/* <AuthRoute exact path="/login" component={LoginFormContainer} />
+        <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}
         <Route path="/listings/:listingId" component={ListingShowContainer} />
         <Route exact path="/" component={SearchContainer} /> 
       {/* 

@@ -2,9 +2,7 @@ import React from 'react';
 import ListingIndexItem from './listing_index_item';
 
 const ListingIndex = ({ listings }) => {
-    if (!listings) {
-        return <div></div>
-    }
+    if (!listings) {return null;}
 
     return (
         <div>

@@ -1,6 +1,8 @@
 export default class MarkerManager {
-    constructor(map){
+    constructor(map, clickable, handleClick){
         this.map = map;
+        this.clickable = clickable;
+        this.handleClick = handleClick;
         this.markers = {};
     };
 
@@ -28,6 +30,7 @@ export default class MarkerManager {
             position: new google.maps.LatLng(lat, lng),
             map: this.map,
             label: price.toString(),
+            clickable: this.clickable,
         });
 
         marker.addListener("click", () => this.handleClick(listing));

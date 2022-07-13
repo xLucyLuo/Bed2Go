@@ -42,10 +42,10 @@ ActiveRecord::Schema.define(version: 2022_07_08_235531) do
     t.string "zip_code", null: false
     t.string "country", null: false
     t.string "region", null: false
-    t.decimal "lat", null: false
-    t.decimal "lng", null: false
+    t.float "lat", null: false
+    t.float "lng", null: false
     t.string "currency", default: "USD", null: false
-    t.decimal "price", null: false
+    t.float "price", null: false
     t.string "price_units", default: "per night", null: false
     t.string "other_fees"
     t.string "other_fees_type"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2022_07_08_235531) do
     t.integer "num_guests", null: false
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
-    t.decimal "payment", null: false
+    t.float "payment", null: false
     t.string "currency", default: "USD", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

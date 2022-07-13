@@ -36,19 +36,20 @@ class Listing < ApplicationRecord
     end
   
     def average_rating
-      # reviews.average(:cleanliness, :accuracy, :communication, :location, :check_in, :value)
-      # reviews.sum(:cleanliness, :accuracy, :communication, :location, :check_in, :value) 
-      # / num_reviews * 6
       ((reviews.average(:cleanliness) + 
         reviews.average(:accuracy) + 
         reviews.average(:communication) +
         reviews.average(:location) +
         reviews.average(:check_in) +
-        reviews.average(:value))/6).round(2)
+        reviews.average(:value))/6).round(2).to_f
     end
 
     def num_reviews
       reviews.count
+    end
+
+    def host_name
+      host.fname
     end
 
 end

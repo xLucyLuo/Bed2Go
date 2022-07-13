@@ -1,11 +1,12 @@
 import React from 'react';
-
+import { withRouter } from 'react-router-dom';
 const ListingIndexItem = (props) => {
     console.log(props.listing)
     const { averageRating, numReviews, typeOfPlace, propertyType, city, title, numBeds, price, priceUnits} = props.listing;
 
+
     return (
-        <div>
+        <div onClick={() => props.history.push(`listings/${props.listing.id}`)}>
             <p>
                 {`${typeOfPlace.split(" ")[0]} ${propertyType} in ${city}`} 
                 <span> &#9733; </span> 
@@ -19,4 +20,4 @@ const ListingIndexItem = (props) => {
     )
 };
 
-export default ListingIndexItem;
+export default withRouter(ListingIndexItem);

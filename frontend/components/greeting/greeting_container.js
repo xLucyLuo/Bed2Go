@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 import Greeting from './greeting';
 import { signup, login, logout } from './../../actions/session_actions';
+import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = ({ session , entities: { users } }) => ({
     currentUser: users[session.id],
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    signup: (user) => dispatch(signup(user)),
-    login: (user) => dispatch(login(user)),
+    openModal: modal => dispatch(openModal(modal)),
     logout: () => dispatch(logout()),
 });
 

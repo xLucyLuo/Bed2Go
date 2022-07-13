@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom';
 
 class Greeting extends React.Component {
     render() {
-        const {currentUser, logout} = this.props
+        const {currentUser, logout, openModal} = this.props
         if (currentUser) {
             return <div>
                 <p>Hello, {`${currentUser.fname}`}</p>
                 <button onClick={logout}>Log out</button>
             </div>
         } else {
-            return <div>
-                <Link to="/signup">Sign up</Link>
-                <span> or </span>
-                <Link to="/login">Log in</Link>
-            </div>
+            return <nav className="login-signup">
+                <button onClick={() => openModal('login')}>Login</button>
+                &nbsp;or&nbsp;
+                <button onClick={() => openModal('signup')}>Signup</button>
+            </nav>
         }
     }
 };

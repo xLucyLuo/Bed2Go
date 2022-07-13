@@ -7,6 +7,10 @@ class Api::ListingsController < ApplicationController
           price_range = (params[:minPrice]..params[:maxPrice])
           listings = listings.where(price: price_range)
         end
+
+        if params[:listingId]
+          listings = listings.where(id: params[:listingId])
+        end
         
         @listings = listings.includes(:reviews)
         render :index

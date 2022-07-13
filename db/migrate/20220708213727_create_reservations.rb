@@ -6,7 +6,7 @@ class CreateReservations < ActiveRecord::Migration[5.2]
       t.integer :num_guests, null: false
       t.datetime :start_date, null: false
       t.datetime :end_date, null: false
-      t.decimal :payment, null: false
+      t.float :payment, null: false
       t.string :currency, null: false, default: 'USD'
 
       t.timestamps

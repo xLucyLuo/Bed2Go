@@ -10,7 +10,7 @@ class SessionForm extends React.Component {
           lname: "",
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.setDemoUser = this.setDemoUser.bind(this);
+        this.demoLogin = this.demoLogin.bind(this);
     };
 
     componentDidMount() {
@@ -18,7 +18,6 @@ class SessionForm extends React.Component {
     };
 
     handleSubmit(e) {
-        console.log(this.state)
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
@@ -28,28 +27,20 @@ class SessionForm extends React.Component {
         return (e) => this.setState({[field]: e.target.value});
     };
 
-    setDemoUser() {
-        
-        // this.setState({
-        //     email: "demo.user@mybnb.com",
-        //     password: "123123",
-        //     fname: "Demo",
-        //     lname: "User",
-        // })
-
-        // const user = Object.assign({}, this.state);
-        this.props.processForm({
+    demoLogin(e) {
+        e.preventDefault();
+        this.props.login({
             email: "demo.user@mybnb.com",
             password: "123123",
-        });
-    }
+        })
+    };
 
     renderErrors() {
-        console.log("this is props in errors")
-        console.log(this.props.errors)
-        if (this.props.errors.length===0) {
-            return <></>
-        }
+        // console.log("this is props in errors")
+        // console.log(this.props.errors)
+        // if (this.props.errors.length===0) {
+        //     return <></>
+        // }
 
         return (
             <div>
@@ -66,7 +57,8 @@ class SessionForm extends React.Component {
     render() {
         const { formType, navLink } = this.props;
         return (
-            <div>
+            <div className="sign-in-form">
+                <div onClick={this.props.closeModal} className="close-x">X</div>
                 <h1>{formType}</h1>
                 {this.renderErrors()}
                 <form onSubmit={this.handleSubmit}>
@@ -84,22 +76,16 @@ class SessionForm extends React.Component {
                             <label htmlFor="lname-input">Last Name: </label>
                             <input id="lname-input" type="text" onChange={this.update("lname")} value={this.state.lname}/>
                         </div>    
-                        ) : <div></div>
+                        ) : null
                     }
                     <br/><br/>
-                    <button value={formType}>{formType}</button>
-                    {formType === "Log in" ? (
-                        <div>
-                            <br /> 
-                            <button onClick={(e) => {
-                                e.preventDefault()
-                                this.setDemoUser()
-                            }}>Demo User</button>
-                        </div>) : <div></div>
-                    }
+                    <button className="sign-in-button" value={formType}>{formType}</button>
+                    <br /> 
+                    <button className="demo-login-button" onClick={this.demoLogin}>Demo User</button>
                 </form>
                 <br/><br/>
-                {navLink}
+                {/* {navLink} */}
+                {this.props.otherForm}
             </div>
         )
     }
