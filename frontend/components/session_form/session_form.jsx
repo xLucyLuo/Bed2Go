@@ -20,7 +20,7 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        this.props.processForm(user).then(this.props.closeModal);
     };
 
     update(field) {
@@ -32,7 +32,7 @@ class SessionForm extends React.Component {
         this.props.login({
             email: "demo.user@mybnb.com",
             password: "123123",
-        })
+        }).then(this.props.closeModal)
     };
 
     renderErrors() {
