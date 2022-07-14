@@ -5,12 +5,12 @@ class Greeting extends React.Component {
     render() {
         const {currentUser, logout, openModal} = this.props
         if (currentUser) {
-            return <div>
+            return <div className="user-auths">
                 <p>Hello, {`${currentUser.fname}`}</p>
                 <button onClick={logout}>Log out</button>
             </div>
         } else {
-            return <nav className="login-signup">
+            return <nav className="user-auths">
                 <button onClick={() => openModal('login')}>Login</button>
                 <button onClick={() => openModal('signup')}>Signup</button>
             </nav>

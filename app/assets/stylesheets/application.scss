@@ -95,12 +95,12 @@ input {
   padding: 24px;
 }
 
-.login-signup {
+.user-auths {
   @include center(row);
   width: auto;
 }
 
-.login-signup button{
+.user-auths button{
   @include button($button-linear-gradient, white);
   margin: 10px;
   width: 150px;
@@ -245,7 +245,7 @@ input {
 }
 
 #price-range-slider {
-  margin: 0;
+  margin: 5px;
 }
 
 .range-to {
@@ -260,7 +260,7 @@ input {
 
 .min-price-section label, .max-price-section label {
   width: 50px;
-  margin: 0;
+  margin: 5px;
   padding: 0;
 } 
 
