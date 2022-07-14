@@ -43,7 +43,7 @@ class SessionForm extends React.Component {
         // }
 
         return (
-            <div>
+            <div className="error-message">
                 <ul>
                     {this.props.errors.map((err, i) => 
                         <li key={`${i}`}>{err}</li>
@@ -57,35 +57,31 @@ class SessionForm extends React.Component {
     render() {
         const { formType, navLink } = this.props;
         return (
-            <div className="sign-in-form">
-                <div onClick={this.props.closeModal} className="close-x">X</div>
-                <h1>{formType}</h1>
-                {this.renderErrors()}
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="email-input">Email: </label>
-                    <input id="email-input" type="text" onChange={this.update("email")} value={this.state.email}/>
-                    <br/><br/>
-                    <label htmlFor="password-input">Password: </label>
-                    <input id="password-input" type="password" onChange={this.update("password")} value={this.state.password}/>
-                    {formType === "Sign up" ? (
-                        <div>
-                            <br/>
-                            <label htmlFor="fname-input">First Name: </label>
-                            <input id="fname-input" type="text" onChange={this.update("fname")} value={this.state.fname}/>
-                            <br/><br/>
-                            <label htmlFor="lname-input">Last Name: </label>
-                            <input id="lname-input" type="text" onChange={this.update("lname")} value={this.state.lname}/>
-                        </div>    
-                        ) : null
-                    }
-                    <br/><br/>
+            <div className="session-form-container" > 
+                <header className="session-form-header">
+                    <button onClick={this.props.closeModal} className="close-x">X</button>
+                    <h1>{formType}</h1>
+                </header>
+                <form className="session-form" onSubmit={this.handleSubmit}>
+                    {this.renderErrors()}
+                    {/* <label htmlFor="email-input">Email: </label> */}
+                    <input id="email-input" placeholder="Email" type="text" onChange={this.update("email")} value={this.state.email}/>
+                    {/* <label htmlFor="password-input">Password: </label> */}
+                    <input id="password-input" placeholder="Password" type="password" onChange={this.update("password")} value={this.state.password}/>
+                    <br/>
+                    {/* <label htmlFor="fname-input">First Name: </label> */}
+                    <input id="fname-input" hidden={formType !== "Sign up"} placeholder="First Name" type="text" onChange={this.update("fname")} value={this.state.fname}/>
+                    {/* <label htmlFor="lname-input">Last Name: </label> */}
+                    <input id="lname-input" hidden={formType !== "Sign up"} placeholder="Last Name" type="text" onChange={this.update("lname")} value={this.state.lname}/>
+                    <br/>
                     <button className="sign-in-button" value={formType}>{formType}</button>
                     <br /> 
                     <button className="demo-login-button" onClick={this.demoLogin}>Demo User</button>
                 </form>
-                <br/><br/>
-                {/* {navLink} */}
-                {this.props.otherForm}
+                <footer className="session-form-footer">
+                    {/* {navLink} */}
+                    {this.props.otherForm}
+                </footer>
             </div>
         )
     }

@@ -5,11 +5,13 @@ import FilterForm from './filter_form'
 
 const Search = ({ listings, updateFilter, minPrice, maxPrice }) => {
     return (
-        <div>
-            <h1>Search Page</h1>
+        <div className="search-component">
+            {/* <h1>Search Page</h1> */}
             <FilterForm updateFilter={updateFilter} minPrice={minPrice} maxPrice={maxPrice}/>
-            <ListingIndex listings={listings}/>
-            <ListingMap listings={listings} updateFilter={updateFilter} />
+            <div className="search-views">
+                <ListingIndex listings={listings}/>
+                <ListingMap listings={listings} updateFilter={updateFilter} />
+            </div>
         </div>
 
     );

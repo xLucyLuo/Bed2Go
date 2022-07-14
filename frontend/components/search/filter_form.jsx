@@ -8,13 +8,20 @@ class FilterForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="filter-form">
                 <h2>Filters</h2>
-                <label htmlFor="min-price-input">Min Price: </label>
-                <input type="number" id="min-price-input" onChange={this.update("minPrice")} value={this.props.minPrice}/>
-            
-                <label htmlFor="max-price-input">Max Price: </label>
-                <input type="number" id="max-price-input" onChange={this.update("maxPrice")} value={this.props.maxPrice}/>
+                <input id="price-range-slider" type="range" onInput={this.update("maxPrice")} min="0" max="1499" value={this.props.maxPrice} class="slider" />
+                <div className="price-range-inputs">
+                    <div className="min-price-section">
+                        <label htmlFor="min-price-input">Min Price: </label>
+                        <input type="number" className="price-input" id="min-price-input" onChange={this.update("minPrice")} value={this.props.minPrice}/>
+                    </div>
+                    <span className="range-to"> &#8212; </span>
+                    <div className="max-price-section">
+                        <label htmlFor="max-price-input">Max Price: </label>
+                        <input type="number" className="price-input" id="max-price-input" onChange={this.update("maxPrice")} value={this.props.maxPrice}/>
+                    </div>
+                </div>
             </div>
         )
     };

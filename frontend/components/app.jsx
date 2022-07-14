@@ -11,9 +11,9 @@ import ModalContainer from './modal/modal_container';
 const App = () => (
   <div>
     <ModalContainer />
-    <header>
+    <header className="main-header">
         <Link to="/" className='logo'>
-            <h1>Mybnb</h1>
+            <h1 className="main-logo">Mybnb</h1>
         </Link>
         
         <GreetingContainer />

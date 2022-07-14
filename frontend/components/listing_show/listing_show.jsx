@@ -37,7 +37,7 @@ class ListingShow extends React.Component {
         } = listing
 
         return (
-            <div>
+            <div className="listing-show-container">
                 <img />
                 <h1>{title}</h1>
                 <p>
@@ -51,9 +51,9 @@ class ListingShow extends React.Component {
                         </span>
                         ) : null
                     }
-                     <span> {`${city}, ${state}, ${country}`}</span>
+                     <span>   ·   {`${city}, ${state}, ${country}`}</span>
                 </p>
-                <h2> {`${typeOfPlace.split(" ")[0]} ${propertyType} hosted by ${hostName}`}</h2>
+                <h2> {`${typeOfPlace.split(" ")[0]} ${propertyType.toLowerCase()} hosted by ${hostName}`}</h2>
                 <p>
                     <span> {`${maxGuests} guest${maxGuests>1 ? "s" : ""} · `} </span> 
                     <span> {`${numBedrooms} bedroom${numBedrooms>1 ? "s" : ""} · `} </span> 

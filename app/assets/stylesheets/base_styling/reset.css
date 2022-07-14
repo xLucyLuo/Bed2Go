@@ -10,10 +10,13 @@ html, body, header, nav, h1, a, ul, li, strong, main, button, i, section, img, d
   vertical-align: inherit;
   box-sizing: inherit;
   background: transparent;
+  width: 100%;
+  height: auto;
 }
 
 body {
   background-color: transparent;
+  box-sizing: border-box;
 }
 
 ul {

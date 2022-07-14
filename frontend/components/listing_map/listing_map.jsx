@@ -9,7 +9,7 @@ const SINGLE_MARKER_ZOOM = 14;
 const mapOptionsByLocation = {
     "San Francisco": {
         center: { lat: 37.7758, lng: -122.435 },
-        zoom: 13
+        zoom: 13,
     },
 };
 
@@ -36,12 +36,19 @@ class ListingMap extends React.Component{
             this.mapOptions = {
                 center: { lat: lat, lng: lng },
                 zoom: SINGLE_MARKER_ZOOM,
-                gestureHandling: "none"
+                gestureHandling: "none",
+                disableDefaultUI: true,
             }
-
+            
             markerClickable = false;
             // this.handleMarkerClick = () =>{}
         }
+        
+        this.mapOptions.streetViewControl = false;
+        this.mapOptions.mapTypeControl = false;
+        this.mapOptions.fullscreenControl = false;
+        this.mapOptions.streetViewControl = false;
+        this.mapOptions.zoomControlOptions = {position: google.maps.ControlPosition.RIGHT_TOP}
 
         this.map = new google.maps.Map(this.refs.map, this.mapOptions);
         this.setMapListeners();
@@ -89,7 +96,7 @@ class ListingMap extends React.Component{
 
     render() {
         return(
-            <div id='map-container' ref='map' /> //application.css sets width and height for render
+            <div id={`map-container${this.props.listingId ? '-show' : ''}`} ref='map' /> //application.css sets width and height for render
         );
     };
 }

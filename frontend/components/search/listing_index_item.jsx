@@ -6,7 +6,7 @@ const ListingIndexItem = (props) => {
 
 
     return (
-        <div onClick={() => props.history.push(`listings/${props.listing.id}`)}>
+        <div className="listing-index-item" onClick={() => props.history.push(`listings/${props.listing.id}`)}>
             <p>
                 {`${typeOfPlace.split(" ")[0]} ${propertyType} in ${city}`} 
                 <span> &#9733; </span> 

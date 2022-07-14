@@ -5,8 +5,7 @@ const ListingIndex = ({ listings }) => {
     if (!listings) {return null;}
 
     return (
-        <div>
-            <h1>Listings</h1>
+        <div className="listing-index" >
             {listings.map((listing) => <ListingIndexItem key={listing.id} listing={listing} />)}
         </div>
     );

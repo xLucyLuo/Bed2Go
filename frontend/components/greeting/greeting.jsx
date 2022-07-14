@@ -12,7 +12,6 @@ class Greeting extends React.Component {
         } else {
             return <nav className="login-signup">
                 <button onClick={() => openModal('login')}>Login</button>
-                &nbsp;or&nbsp;
                 <button onClick={() => openModal('signup')}>Signup</button>
             </nav>
         }
