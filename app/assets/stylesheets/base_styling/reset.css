@@ -1,4 +1,4 @@
-html, body, header, nav, h1, a, ul, li, strong, main, button, i, section, img, div, h2, p, form, fieldset, label, input, textarea, span, article, footer, time, small {
+html, body, header, nav, h1, a, ul, li, strong, main, button, i, section, img, div, h2, p, form, fieldset, label, input, textarea, span, article, footer, time, small, h3, h4 {
   margin: 0;
   padding: 0;
   border: 0;
@@ -19,7 +19,7 @@ body {
   box-sizing: border-box;
 }
 
-ul {
+ul, li {
   list-style: none;
 }
 

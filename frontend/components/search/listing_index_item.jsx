@@ -7,15 +7,18 @@ const ListingIndexItem = (props) => {
 
     return (
         <div className="listing-index-item" onClick={() => props.history.push(`listings/${props.listing.id}`)}>
-            <p>
-                {`${typeOfPlace.split(" ")[0]} ${propertyType} in ${city}`} 
-                <span> &#9733; </span> 
-                <span> {averageRating || 'New'} </span> 
-                <span> {`(${numReviews || 0})`} </span>
-            </p>
-            <li>{title}</li>
-            <li>{`${numBeds} bed`}</li>
-            <li>{`$${Math.round(price)} ${priceUnits}`}</li>
+            <img className="listings-tile-image" />
+            <div className="listing-index-item-title">
+                <h4>{`${typeOfPlace.split(" ")[0]} ${propertyType} in ${city}`}</h4>
+                <div className="listing-index-item-reviews">
+                    <span> &#9733; </span> 
+                    <span> {averageRating || 'New'} </span> 
+                    <span> {`(${numReviews || 0})`} </span>
+                </div>
+            </div>
+            <li className="desc-summary">{title}</li>
+            <li className="desc-summary">{`${numBeds} bed`}</li>
+            <li className="desc-summary">{`$${Math.round(price)} ${priceUnits}`}</li>
         </div>
     )
 };

@@ -7,9 +7,11 @@ const Search = ({ listings, updateFilter, minPrice, maxPrice }) => {
     return (
         <div className="search-component">
             {/* <h1>Search Page</h1> */}
-            <FilterForm updateFilter={updateFilter} minPrice={minPrice} maxPrice={maxPrice}/>
-            <div className="search-views">
+            <div className="search-list-view">
+                <FilterForm updateFilter={updateFilter} minPrice={minPrice} maxPrice={maxPrice}/>
                 <ListingIndex listings={listings}/>
+            </div>
+            <div className="search-map-view">
                 <ListingMap listings={listings} updateFilter={updateFilter} />
             </div>
         </div>

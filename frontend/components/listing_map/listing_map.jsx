@@ -9,7 +9,7 @@ const SINGLE_MARKER_ZOOM = 14;
 const mapOptionsByLocation = {
     "San Francisco": {
         center: { lat: 37.7758, lng: -122.435 },
-        zoom: 13,
+        zoom: 12,
     },
 };
 
