@@ -19,7 +19,7 @@ class Api::ReviewsController < ApplicationController
         elsif @review.update(review_params)
             render :show
         else
-            @review.errors.full_messages, status: 422
+            render json: @review.errors.full_messages, status: 422
         end
 
     end

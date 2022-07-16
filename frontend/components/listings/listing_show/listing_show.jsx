@@ -58,13 +58,15 @@ class ListingShow extends React.Component {
                         <span>   ·   {`${city}, ${state}, ${country}`}</span>
                     </p>
                 </div>
-                <h2> {`${typeOfPlace.split(" ")[0]} ${propertyType.toLowerCase()} hosted by ${hostName}`}</h2>
-                <p>
-                    <span> {`${maxGuests} guest${maxGuests>1 ? "s" : ""} · `} </span> 
-                    <span> {`${numBedrooms} bedroom${numBedrooms>1 ? "s" : ""} · `} </span> 
-                    <span> {`${numBeds} bed${numBeds>1 ? "s" : ""} · `} </span> 
-                    <span> {`${numBaths} bath${numBaths>1 ? "s" : ""}`} </span> 
-                </p>
+                <div className='listing-show-subtitle'>
+                    <h2> {`${typeOfPlace.split(" ")[0]} ${propertyType.toLowerCase()} hosted by ${hostName}`}</h2>
+                    <p>
+                        <span> {`${maxGuests} guest${maxGuests>1 ? "s" : ""} · `} </span> 
+                        <span> {`${numBedrooms} bedroom${numBedrooms>1 ? "s" : ""} · `} </span> 
+                        <span> {`${numBeds} bed${numBeds>1 ? "s" : ""} · `} </span> 
+                        <span> {`${numBaths} bath${numBaths>1 ? "s" : ""}`} </span> 
+                    </p>
+                </div>
                 <p>{description}</p>
                 <h2>What this place offers</h2>
                 <ul>
