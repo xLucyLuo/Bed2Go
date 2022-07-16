@@ -23,6 +23,10 @@ class ReviewForm extends React.Component {
   }
 
   renderErrors() {
+    if (this.props.errors.length === 0) {
+        return null;
+    }
+    
     return (
         <div className="error-message">
             <ul>
@@ -47,58 +51,71 @@ class ReviewForm extends React.Component {
                 </header>
                 <form className="review-form" onSubmit={this.handleSubmit}>
                     {this.renderErrors()}
-                    <label htmlFor="cleanliness-rating-input">Cleanliness: </label>
-                    <div className="rating-input" id="cleanliness-rating-input">
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
+
+                    <div class="review-category">
+                        <label htmlFor="cleanliness-rating-input">Cleanliness: </label>
+                        <div className="rating-input" id="cleanliness-rating-input">
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                        </div>
                     </div>
                     
-                    <label htmlFor="cleanliness-rating-input">Cleanliness: </label>
-                    <div className="rating-input" id="cleanliness-rating-input">
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
+                    <div class="review-category">
+                        <label htmlFor="accuracy-rating-input">Accuracy: </label>
+                        <div className="rating-input" id="accuracy-rating-input">
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                        </div>
+                    </div>
+                    
+                    <div class="review-category">
+                        <label htmlFor="communication-rating-input">Communication: </label>
+                        <div className="rating-input" id="communication-rating-input">
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                        </div>
                     </div>
 
-                    <label htmlFor="cleanliness-rating-input">Cleanliness: </label>
-                    <div className="rating-input" id="cleanliness-rating-input">
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
+                    <div class="review-category">
+                        <label htmlFor="location-rating-input">Location: </label>
+                        <div className="rating-input" id="location-rating-input">
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                        </div>
                     </div>
 
-                    <label htmlFor="cleanliness-rating-input">Cleanliness: </label>
-                    <div className="rating-input" id="cleanliness-rating-input">
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
+                    <div class="review-category">
+                        <label htmlFor="checkin-rating-input">Check-in: </label>
+                        <div className="rating-input" id="checkin-rating-input">
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                        </div>
                     </div>
 
-                    <label htmlFor="cleanliness-rating-input">Cleanliness: </label>
-                    <div className="rating-input" id="cleanliness-rating-input">
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                    </div>
-
-                    <label htmlFor="cleanliness-rating-input">Cleanliness: </label>
-                    <div className="rating-input" id="cleanliness-rating-input">
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
-                        <span> &#9733; </span> 
+                    <div class="review-category">
+                        <label htmlFor="value-rating-input">Value: </label>
+                        <div className="rating-input" id="value-rating-input">
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                            <span> &#9733; </span> 
+                        </div>
                     </div>
 
 
