@@ -13,9 +13,10 @@ class SessionForm extends React.Component {
         this.demoLogin = this.demoLogin.bind(this);
     };
 
-    componentDidMount() {
+    componentWillUnmount() {
         this.props.clearSessionErrors();
     };
+
 
     handleSubmit(e) {
         e.preventDefault();
@@ -36,12 +37,6 @@ class SessionForm extends React.Component {
     };
 
     renderErrors() {
-        // console.log("this is props in errors")
-        // console.log(this.props.errors)
-        // if (this.props.errors.length===0) {
-        //     return <></>
-        // }
-
         return (
             <div className="error-message">
                 <ul>
@@ -55,7 +50,7 @@ class SessionForm extends React.Component {
     };
 
     render() {
-        const { formType, navLink } = this.props;
+        const { formType } = this.props;
         return (
             <div className="session-form-container" > 
                 <header className="session-form-header">

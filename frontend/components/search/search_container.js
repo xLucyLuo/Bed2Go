@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Search from './search';
 import { updateFilter } from './../../actions/filter_actions';
+import { clearReviews } from './../../actions/review_actions';
 
 const mapStateToProps = (state, ownProps) => ({
     listings: Object.values(state.entities.listings),
@@ -12,6 +13,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
+    // clearReviews: () => dispatch(clearReviews()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

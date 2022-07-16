@@ -1,5 +1,5 @@
 import React from 'react';
-import MarkerManager from '../../util/marker_manager';
+import MarkerManager from './../../util/marker_manager';
 import { withRouter } from 'react-router-dom';
 
 //larger is more zoomed-in
@@ -30,18 +30,22 @@ class ListingMap extends React.Component{
         let markerClickable = true;
         // wrap 'map' ref node in a Google Map
         const { listingId, listings } = this.props
-        if (listings[0] && listings[0].id === listingId) {
-            const { lat , lng }= listings[0]
-            // debugger
-            this.mapOptions = {
-                center: { lat: lat, lng: lng },
-                zoom: SINGLE_MARKER_ZOOM,
-                gestureHandling: "none",
-                disableDefaultUI: true,
-            }
-            
-            markerClickable = false;
-            // this.handleMarkerClick = () =>{}
+
+        if (listings[0] && 
+            listings[0].id === listingId
+            && listings.length === 1) {
+
+                const { lat , lng }= listings[0]
+                // debugger
+                this.mapOptions = {
+                    center: { lat: lat, lng: lng },
+                    zoom: SINGLE_MARKER_ZOOM,
+                    gestureHandling: "none",
+                    disableDefaultUI: true,
+                }
+                
+                markerClickable = false;
+                // this.handleMarkerClick = () =>{}
         }
         
         this.mapOptions.streetViewControl = false;

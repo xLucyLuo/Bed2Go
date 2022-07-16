@@ -48,8 +48,8 @@ class Listing < ApplicationRecord
       reviews.count
     end
 
-    def host_name
-      host.fname
-    end
+    # def host_name
+    #   host.fname
+    # end
 
 end

@@ -1,4 +1,5 @@
 import * as listingAPIUtil from './../util/listing_api_util';
+import { receiveReviews } from './review_actions';
 
 export const RECEIVE_LISTINGS = 'RECEIVE_LISTINGS';
 export const RECEIVE_LISTING = 'RECEIVE_LISTINGS';
@@ -21,12 +22,16 @@ export const removeListing = (listing) => ({
 
 export const fetchListings = (filters) => (dispatch) => (
     listingAPIUtil.getListings(filters)
-        .then((listings) => dispatch(receiveListings(listings)))
+        .then((payload) => {
+            // console.log(payload);
+            dispatch(receiveListings(payload.listings));
+            dispatch(receiveReviews(payload.reviews));
+        })
 );
 
 export const fetchListing = (id) => (dispatch) => (
     listingAPIUtil.getListing(id)
-        .then((listing) => dispatch(receiveListing(listing)))
+        .then((listing) => {dispatch(receiveListing(listing))})
 );
 
 export const createListing = (listing) => (dispatch) => (
@@ -39,7 +44,7 @@ export const createListing = (listing) => (dispatch) => (
 //         .then((listing) => dispatch(receiveListing(listing)))
 // );
 
-// export const deleteListing = (id) => (dispatch) => ()
+// export const deleteListing = (id) => (dispatch) => (
 //     listingAPIUtil.deleteListing(id)
 //         .then((listing) => dispatch(removeListing(id)))
 // );

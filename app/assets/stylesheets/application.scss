@@ -17,11 +17,12 @@
 @import './base_styling/reset.css';
  
   
-$button-linear-gradient:linear-gradient(to right,#E61E4D 0%,#E31C5F 50%,#D70466 100%);
-$default-font-family: 'Circular', 'Roboto','Helvetica Neue',sans-serif;
+$default-linear-gradient:linear-gradient(to right,#E61E4D 0%,#E31C5F 50%,#D70466 100%);
+$default-font-family: 'Red Hat Display', 'Roboto','Helvetica Neue',sans-serif;
 $default-color: rgb(34, 34, 34) ;
 $default-lighter-color: rgb(113, 113, 113);
-$default-pink: #E31C5F ;
+$default-pink: #E31C5F;
+$default-pink-bright: #FF385C;
 
 @mixin center($direction) {
   display: flex;
@@ -62,7 +63,7 @@ body {
   @include center(column);
   font-family: $default-font-family;
   color: $default-color;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 h1 {
@@ -105,10 +106,18 @@ input {
   }
 }
 
+.app-container {
+  @include center(column);
+}
+
 .main-header {
   @include center(row);
-  padding: 5px;
   border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.main-header-content {
+  @include center(row);
+  padding: 5px;
 }
 
 .user-auths {
@@ -117,9 +126,11 @@ input {
 }
 
 .user-auths button{
-  @include button($button-linear-gradient, white);
-  margin: 10px;
-  width: 150px;
+  @include button($default-linear-gradient, white);
+  margin: 5px;
+  width: auto;
+  min-width: 75px;
+  white-space: nowrap;
 }
 
 .modal-background {
@@ -195,7 +206,7 @@ input {
 }
 
 .sign-in-button{
-  @include button($button-linear-gradient, white);
+  @include button($default-linear-gradient, white);
 }
 
 .demo-login-button {
@@ -244,10 +255,10 @@ input {
   // height: 30vh;
   // border: 1px solid black;
   margin: 5px;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1/1.25;
   padding: 5px;
   min-width: 200px;
-  max-width: 350px;
+  max-width: 325px;
   // box-sizing: border-box;
   // position: relative;
 }
@@ -258,6 +269,7 @@ input {
   aspect-ratio: 1/1;
   border: 0;
   border-radius: 12px;
+  margin-bottom: 10px;
 }
 
 .listing-index-item-title {
@@ -277,13 +289,22 @@ input {
 }
 
 .main-logo {
-  color: $default-pink;
+  // color: $default-pink;
+  background: $default-linear-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 32px;
 }
 
 .listing-show-container {
   @include center(column);
   padding: 24px;
+  row-gap: 16px;
+  max-width: 1200px;
+}
+
+.page-width-narrow {
+  max-width: 1200px;
 }
 
 .filter-form {
@@ -325,7 +346,73 @@ input {
   margin: 0;
 } 
 
+.review-index-content {
+  @include center(row);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-width: 475px;
+}
 
+.review-index-item-container {
+  @include center(column);
+  justify-content: flex-start;
+  flex-flow: column;
+  width: 45%;
+  min-width: 300px;
+  height: 130px;
+  border: 1px solid $default-lighter-color;
+  border-radius: 12px;
+  padding: 12px;
+  margin: 5px;
+}
+
+.review-comment {
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 12px;
+}
+
+.review-index-item-title {
+  @include center(row);
+}
+
+.review-index-item-title-desc {
+  margin-left: 10px;
+}
+
+.reviewer-name {
+  font-weight: 700;
+}
+
+.reviewer-image {
+  background-color: beige;
+  width: 62px;
+  height: 50px;
+  border: 0;
+  border-radius: 50%;
+}
+
+.review-form-container {
+  @include center(column);
+  padding: 24px;
+  row-gap: 16px;
+  max-width: 1200px;
+  text-align: center;
+}
+
+// .review-form {
+//   @include center(column);
+//   text-align: center;
+// }
+
+
+.review-form-container button{
+  width: auto;
+}
 
  // no longer needed
  // *= require_tree .

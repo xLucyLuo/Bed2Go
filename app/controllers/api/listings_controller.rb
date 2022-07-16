@@ -12,7 +12,7 @@ class Api::ListingsController < ApplicationController
           listings = listings.where(id: params[:listingId])
         end
         
-        @listings = listings.includes(:reviews)
+        @listings = listings.includes(:reviews, :host)
         render :index
     end
 

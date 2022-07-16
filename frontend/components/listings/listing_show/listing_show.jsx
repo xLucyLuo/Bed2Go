@@ -1,10 +1,13 @@
 import React from 'react';
-import ListingMap from '../listing_map/listing_map';
+import ListingMap from './../listing_map';
+import ReviewIndex from './../../review/review_index'
+import { fetchReviews } from '../../../actions/review_actions';
 
 class ListingShow extends React.Component {
     componentDidMount() {
         const { listingId, updateFilter } = this.props;
         updateFilter("listingId", listingId);
+        // fetchReviews("listingId", listingId)
         // debugger
     };
 
@@ -15,9 +18,9 @@ class ListingShow extends React.Component {
     };
 
     render() {
-        const { listing, listingId, updateFilter } = this.props;
-        
-        if (!listing) {return null;}
+        const { listings, listing, listingId, reviews, updateFilter } = this.props;
+
+        if (!listing || !listings || Object.keys(listings).length !== 1 || Object.keys(listings)[0] !== listingId.toString()) {return null;}
 
         const { 
             title, 
@@ -39,20 +42,22 @@ class ListingShow extends React.Component {
         return (
             <div className="listing-show-container">
                 <img />
-                <h1>{title}</h1>
-                <p>
-                    {
-                        numReviews ? (
-                        <span>
-                            <span> &#9733; </span> 
-                            <span> {averageRating} </span> 
-                            <span> · </span>
-                            <a> {`${numReviews} review${numReviews>1 ? "s" : ""}`} </a>
-                        </span>
-                        ) : null
-                    }
-                     <span>   ·   {`${city}, ${state}, ${country}`}</span>
-                </p>
+                <div className='listing-show-title'>
+                    <h1>{title}</h1>
+                    <p>
+                        {
+                            numReviews ? (
+                            <span>
+                                <span> &#9733; </span> 
+                                <span> {averageRating} </span> 
+                                <span> · </span>
+                                <a> {`${numReviews} review${numReviews>1 ? "s" : ""}`} </a>
+                            </span>
+                            ) : null
+                        }
+                        <span>   ·   {`${city}, ${state}, ${country}`}</span>
+                    </p>
+                </div>
                 <h2> {`${typeOfPlace.split(" ")[0]} ${propertyType.toLowerCase()} hosted by ${hostName}`}</h2>
                 <p>
                     <span> {`${maxGuests} guest${maxGuests>1 ? "s" : ""} · `} </span> 
@@ -65,6 +70,7 @@ class ListingShow extends React.Component {
                 <ul>
                     {/* //iteralte through listing_features */}
                 </ul>
+                <ReviewIndex reviews={reviews}/>
                 <h2>Where you'll be</h2>
                 {listing ? <ListingMap listings={[listing]} updateFilter={updateFilter} listingId={listingId}/> : <div></div>}
                 
