@@ -41,7 +41,7 @@ class ListingMap extends React.Component{
                     center: { lat: lat, lng: lng },
                     zoom: SINGLE_MARKER_ZOOM,
                     gestureHandling: "none",
-                    disableDefaultUI: true,
+                    // disableDefaultUI: true,
                 }
                 
                 markerClickable = false;

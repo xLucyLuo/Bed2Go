@@ -12,16 +12,18 @@ class User < ApplicationRecord
         format: {with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/}
 
     validates :session_token,
-        presence: true, 
-        uniqueness: true
-
+    presence: true, 
+    uniqueness: true
+    
     validates :fname, :lname, 
-        presence: true
-
+    presence: true
+    
     validates :password, 
-        length: {minimum: 6}, 
-        allow_nil: true
-
+    length: {minimum: 6}, 
+    allow_nil: true
+    
+    #AWS S3
+    has_one_attached :photo 
     
     has_many :listings,
         foreign_key: :host_id,
@@ -32,6 +34,7 @@ class User < ApplicationRecord
     has_many :reviews,
         foreign_key: :reviewer_id,
         class_name: :Review
+
 
     #AASPIRE
     attr_reader :password

@@ -14,13 +14,20 @@ class Listing < ApplicationRecord
       self.is_posted ||= false
     end
 
-    has_many :reviews
+    # AWS S3
+    has_one_attached :photo, dependent: :destroy
 
-    has_many :listing_features
+    has_many :reviews, dependent: :destroy
+
+    has_many :listing_features, dependent: :destroy
 
     belongs_to :host,
       foreign_key: :host_id,
       class_name: :User
+
+    has_many :features,
+      through: :listing_features
+
 
     #potentially refactor for wishlist
     # has_many :favorites

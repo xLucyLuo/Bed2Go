@@ -111,7 +111,7 @@ Review.create!(
     location: 5,
     check_in: 5,
     value: 3,
-    comment: "Perfect stay! Just a little expensive..."
+    comment: "Perfect stay! Highly recommend!"
 )
 
 # Review 2

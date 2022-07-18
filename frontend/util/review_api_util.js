@@ -25,7 +25,7 @@ export const getReviews = (filters) => {
   export const patchReview = (review) => {
     return $.ajax({
       method: "PATCH",
-      url: `/api/reviews${review.id}`,
+      url: `/api/reviews/${review.id}`,
       data: { review }
     })
   };

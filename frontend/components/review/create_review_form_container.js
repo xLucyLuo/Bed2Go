@@ -5,15 +5,14 @@ import ReviewForm from './review_form';
 
 const mapStateToProps = ({ errors: {reviews: reviewErrors} }, ownProps) => ({
   review: {
-    listing_id: "",
-     reviewer_id: "",
-     comment: "",
-     cleanliness: "",
-     accuracy: "",
-     communication: "",
-     location: "",
-     check_in: "",
-     value: "",
+    listingId: ownProps.match.params.listingId,
+    comment: "",
+    cleanliness: -1,
+    accuracy: -1,
+    communication: -1,
+    location: -1,
+    checkIn: -1,
+    value: -1,
   },
   errors: reviewErrors,
   formType: "Create Review",

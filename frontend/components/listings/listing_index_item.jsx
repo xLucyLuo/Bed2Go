@@ -2,13 +2,13 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 const ListingIndexItem = (props) => {
-    const { averageRating, numReviews, typeOfPlace, propertyType, city, title, numBeds, price, priceUnits} = props.listing;
+    const { averageRating, numReviews, typeOfPlace, propertyType, city, title, numBeds, price, priceUnits, imgUrl} = props.listing;
 
     return (
         <div className="listing-index-item" onClick={() => {
             props.history.push(`listings/${props.listing.id}`)
             }}>
-            <img className="listings-tile-image" />
+            <img className="listings-tile-image" src={imgUrl}/>
             <div className="listing-index-item-title">
                 <h4>{`${typeOfPlace.split(" ")[0]} ${propertyType} in ${city}`}</h4>
                 <div className="listing-index-item-reviews">

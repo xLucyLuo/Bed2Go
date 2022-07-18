@@ -3,6 +3,8 @@ class Api::ListingsController < ApplicationController
         bounds = params[:bounds]
         listings = bounds ? Listing.in_bounds(bounds) : Listing.all
 
+        listings = listings.includes(:reviews, :host, :features)
+
         if params[:minPrice] && params[:maxPrice]
           price_range = (params[:minPrice]..params[:maxPrice])
           listings = listings.where(price: price_range)
@@ -12,7 +14,7 @@ class Api::ListingsController < ApplicationController
           listings = listings.where(id: params[:listingId])
         end
         
-        @listings = listings.includes(:reviews, :host)
+        @listings = listings
         render :index
     end
 

@@ -2,7 +2,7 @@ import * as listingAPIUtil from './../util/listing_api_util';
 import { receiveReviews } from './review_actions';
 
 export const RECEIVE_LISTINGS = 'RECEIVE_LISTINGS';
-export const RECEIVE_LISTING = 'RECEIVE_LISTINGS';
+export const RECEIVE_LISTING = 'RECEIVE_LISTING';
 export const REMOVE_LISTING = 'REMOVE_LISTING';
 
 export const receiveListings = (listings) => ({
@@ -29,9 +29,9 @@ export const fetchListings = (filters) => (dispatch) => (
         })
 );
 
-export const fetchListing = (id) => (dispatch) => (
+export const fetchListing = (listingId) => (dispatch) => (
     listingAPIUtil.getListing(id)
-        .then((listing) => {dispatch(receiveListing(listing))})
+        .then((payload) => {dispatch(receiveListing(payload.listings[listingId]))})
 );
 
 export const createListing = (listing) => (dispatch) => (
@@ -44,7 +44,7 @@ export const createListing = (listing) => (dispatch) => (
 //         .then((listing) => dispatch(receiveListing(listing)))
 // );
 
-// export const deleteListing = (id) => (dispatch) => (
-//     listingAPIUtil.deleteListing(id)
-//         .then((listing) => dispatch(removeListing(id)))
+// export const deleteListing = (listingId) => (dispatch) => (
+//     listingAPIUtil.deleteListing(listingId)
+//         .then((listing) => dispatch(removeListing(listingId)))
 // );

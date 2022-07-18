@@ -3,6 +3,7 @@ class Api::ReviewsController < ApplicationController
 
     def create
         @review = Review.new(review_params)
+        @review[:reviewer_id] = current_user.id
 
         if @review.save
             render :show
@@ -12,7 +13,7 @@ class Api::ReviewsController < ApplicationController
     end
 
     def update
-        @review = current_user.reviews.find_by(id: params[id])
+        @review = current_user.reviews.find_by(id: params[:id])
 
         if !@review
             render json: ["Cannot edit this review"], status: :unprocessable_entity
@@ -25,11 +26,15 @@ class Api::ReviewsController < ApplicationController
     end
 
     def destroy
-        @review = current_user.reviews.find_by(id: params[id])
+        @review = current_user.reviews.find_by(id: params[:id])
 
-        @review.destroy if @review
+        if @review
+            @review.destroy 
+            render :show
+        else 
+            render json: ["Cannot delete this review"], status: 404
+        end
 
-        render json: ["Cannot delete this review"], status: 404
     end
 
     def show
@@ -50,14 +55,17 @@ class Api::ReviewsController < ApplicationController
         if params[:reviewerId]
             reviews = reviews.where(reviewer_id: params[:reviewerId])
         end
+
         
-        # @reviews = reviews.includes(:listing, review)
+        @reviews = reviews.includes(:listing, review)
         render :index
     end
 
     private
   
     def review_params
+        snake_case_params!(params[:review])
+
         params.require(:review).permit(:listing_id, :reviewer_id, :comment, :cleanliness, :accuracy, :communication, :location, :check_in, :value)
     end
 end

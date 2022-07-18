@@ -9,7 +9,7 @@ const mapStateToProps = (state, { match: { params } }) => {
         listings: state.entities.listings,
         listing: state.entities.listings[params.listingId],
         listingId: parseInt(params.listingId),
-        reviews: Object.values(state.entities.reviews),
+        reviews: Object.values(state.entities.reviews).reverse(),
     }
 }
 

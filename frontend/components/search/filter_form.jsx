@@ -3,7 +3,7 @@ import React from 'react';
 class FilterForm extends React.Component {
 
     update(field) {
-        return (e) => this.props.updateFilter(field, parseInt(e.target.value));
+        return (e) => this.props.updateFilter(field, parseInt(e.currentTarget.value));
     };
 
     render() {

@@ -8,6 +8,7 @@ import SearchContainer from './search/search_container';
 import ListingShowContainer from './listings/listing_show/listing_show_container';
 import ModalContainer from './modal/modal_container';
 import CreateReviewFormContainer from './review/create_review_form_container';
+import UpdateReviewFormContainer from './review/update_review_form_container';
 
 
 function App (props) {
@@ -31,6 +32,8 @@ function App (props) {
       <Route exact path="/listings/:listingId" component={ListingShowContainer} />
          
       <ProtectedRoute exact path="/listings/:listingId/reviews/new" component={CreateReviewFormContainer} />
+
+      <ProtectedRoute exact path="/listings/:listingId/reviews/:reviewId/edit" component={UpdateReviewFormContainer} />
 
       <Route exact path="/" component={SearchContainer} /> 
      
