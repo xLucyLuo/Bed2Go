@@ -19,7 +19,12 @@ const ListingIndexItem = (props) => {
             </div>
             <li className="desc-summary">{title}</li>
             <li className="desc-summary">{`${numBeds} bed`}</li>
-            <li className="desc-summary">{`$${Math.round(price)} ${priceUnits}`}</li>
+            <li className="desc-summary">
+                <span className="bold"> 
+                    {`$${Math.round(price)}`} 
+                </span> 
+                {` ${priceUnits}`}
+            </li>
         </div>
     );
 };

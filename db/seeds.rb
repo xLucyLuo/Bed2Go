@@ -1,3 +1,4 @@
+require 'open-uri'
 
 User.destroy_all
 Listing.destroy_all
@@ -7,8 +8,9 @@ Reservation.destroy_all
 Review.destroy_all
 
 
+
 # User 1
-User.create!(
+u1 = User.create!(
     email: "demo.user@mybnb.com", 
     password: "123123", 
     fname: "Demo",
@@ -16,7 +18,7 @@ User.create!(
 )
 
 # User 2
-User.create!(
+u2 = User.create!(
     email: "lucy.luo@mybnb.com", 
     password: "123123", 
     fname: "Lucy",
@@ -24,7 +26,7 @@ User.create!(
 )
 
 # User 3
-User.create!(
+u3 = User.create!(
     email: "cindy.vuong@mybnb.com", 
     password: "123123", 
     fname: "Cindy",
@@ -32,7 +34,7 @@ User.create!(
 )
 
 # User 4
-User.create!(
+u4 = User.create!(
     email: "wendy.shi@mybnb.com", 
     password: "123123", 
     fname: "Wendy",
@@ -40,7 +42,7 @@ User.create!(
 )
 
 # User 5
-User.create!(
+u5 = User.create!(
     email: "evie.zeng@mybnb.com", 
     password: "123123", 
     fname: "Evie",
@@ -48,7 +50,7 @@ User.create!(
 )
 
 # Listing 1
-Listing.create!(
+l1 = Listing.create!(
     title: "Beautiful and Spacious Loft - SOMA",
     description: "Beautiful and very Spacious Loft on a clean and protected cul-de-sac. Close to Convention Center and Downtown as well as vibrant nightlife and many excellent restaurants. Two separate living areas to enjoy. Large Balcony overlooks luscious urban garden. Residential street parking permit available upon prior request",
     street_address: "174A Langton St",
@@ -70,12 +72,12 @@ Listing.create!(
     num_baths: 1,
     property_type: "Condo",
     type_of_place: "Entire Place",
-    host_id: 2,
+    host_id: u2.id,
     is_posted: true
 )
 
 # Listing 2
-Listing.create!(
+l2 = Listing.create!(
     title: "Gorgeous Home with Large Golden Gate Bridge Views!",
     description: "Enjoy living in this airy and spacious Mediterranean- style home. Marble counters, custom cabinetry, and hardwood flooring make this home very appealing. Outside, you’ll find a garden and panoramic views of the whole Golden Gate Bridge through our large crystal-clear windows.",
     street_address: "43 Emerson St",
@@ -97,14 +99,41 @@ Listing.create!(
     num_baths: 1,
     property_type: "House",
     type_of_place: "Entire Place",
-    host_id: 4,
+    host_id: u4.id,
+    is_posted: true
+)
+
+# Listing 2
+l3= Listing.create!(
+    title: "Quiet Oasis Near Central Park",
+    description: "Style. Simplicity. Serenity. Welcome to our oasis in the heart of Manhattan, steps from 57th and Park. Carefully curated with world-class designer furniture, we’ve spared no expense in providing you with luxury surroundings while making you feel comfortable and at home. If you crave the authentic, personalized experience of staying in an Airbnb PLUS all the comforts and safety of a hotel, then look no more.",
+    street_address: "65 E 55th St",
+    city: "New York",
+    state: "New York",
+    zip_code: "10022",
+    country: "United States",
+    region: "North America",
+    lat: 40.760891,
+    lng: -73.972130,
+    currency: "USD" ,
+    price: 432.00,
+    price_units: "per night" ,
+    other_fees: "153;276",
+    other_fees_type: "Cleaning fee;Service fee",
+    max_guests: 2,
+    num_bedrooms: 1,
+    num_beds: 2,
+    num_baths: 1,
+    property_type: "Condo",
+    type_of_place: "Entire Place",
+    host_id: u3.id,
     is_posted: true
 )
 
 # Review 1
-Review.create!(
-    listing_id: 1,
-    reviewer_id: 3,
+r1 = Review.create!(
+    listing_id: l1.id,
+    reviewer_id: u3.id,
     cleanliness: 5,
     accuracy: 5,
     communication: 4,
@@ -115,9 +144,9 @@ Review.create!(
 )
 
 # Review 2
-Review.create!(
-    listing_id: 1,
-    reviewer_id: 4,
+r2 = Review.create!(
+    listing_id: l1.id,
+    reviewer_id: u4.id,
     cleanliness: 5,
     accuracy: 5,
     communication: 5,
@@ -128,9 +157,9 @@ Review.create!(
 )
 
 # Review 3
-Review.create!(
-    listing_id: 1,
-    reviewer_id: 5,
+r3 = Review.create!(
+    listing_id: l1.id,
+    reviewer_id: u5.id,
     cleanliness: 5,
     accuracy: 5,
     communication: 5,
@@ -141,9 +170,9 @@ Review.create!(
 )
 
 # Review 4
-Review.create!(
-    listing_id: 2,
-    reviewer_id: 2,
+r4 = Review.create!(
+    listing_id: l2.id,
+    reviewer_id: u2.id,
     cleanliness: 5,
     accuracy: 4,
     communication: 5,
@@ -153,9 +182,9 @@ Review.create!(
     comment: "It was an awesome week in SF. The place was even better than in the picture. Thanks!"
 )
 
-Reservation.create!(
-    user_id: 1,
-    listing_id: 2,
+r5 = Reservation.create!(
+    user_id: u1.id,
+    listing_id: l2.id,
     num_guests: 2,
     start_date: DateTime.new(2021,9,14),
     end_date: DateTime.new(2009,9,16),
@@ -163,28 +192,28 @@ Reservation.create!(
 )
 
 # Feature 1
-Feature.create!(
+f1 = Feature.create!(
     name: "Hair dryer",
     category: "Amenities",
     subcategory: "Bathroom",
 )
 
 # Feature 2
-Feature.create!(
+f2 = Feature.create!(
     name: "Shampoo",
     category: "Amenities",
     subcategory: "Bathroom",
 )
 
 # Feature 3
-Feature.create!(
+f3 = Feature.create!(
     name: "Washer",
     category: "Amenities",
     subcategory: "Bedroom and laundry",
 )
 
 # Feature 4
-Feature.create!(
+f4 = Feature.create!(
     name: "Essentials",
     description: "Towels, bedsheets, soap, and toilet paper",
     category: "Amenities",
@@ -192,56 +221,56 @@ Feature.create!(
 )
 
 # Feature 5
-Feature.create!(
+f5 = Feature.create!(
     name: "TV",
     category: "Amenities",
     subcategory: "Entertainment",
 )
 
 # Feature 6
-Feature.create!(
+f6 = Feature.create!(
     name: "Heating",
     category: "Amenities",
     subcategory: "Heating and Cooling",
 )
 
 # Feature 7
-Feature.create!(
+f7 = Feature.create!(
     name: "Air conditioning",
     category: "Amenities",
     subcategory: "Heating and Cooling"
 )
 
 # Feature 8
-Feature.create!(
+f8 = Feature.create!(
     name: "Smoke alarm",
     category: "Amenities",
     subcategory: "Home Safety"
 )
 
 # Feature 9
-Feature.create!(
+f9 = Feature.create!(
     name: "Carbon monoxide alarm",
     category: "Amenities",
     subcategory: "Home Safety"
 )
 
 # Feature 10
-Feature.create!(
+f10 = Feature.create!(
     name: "Wifi",
     category: "Amenities",
     subcategory: "Internet and Office"
 )
 
 # Feature 11
-Feature.create!(
+f11 = Feature.create!(
     name: "Dedicated workspace",
     category: "Amenities",
     subcategory: "Internet and Office"
 )
 
 # Feature 12
-Feature.create!(
+f12 = Feature.create!(
     name: "Kitchen",
     description: "Space where guests can cook their own meals",
     category: "Amenities",
@@ -249,21 +278,21 @@ Feature.create!(
 )
 
 # Feature 13
-Feature.create!(
+f13 = Feature.create!(
     name: "Refrigerator",
     category: "Amenities",
     subcategory: "Kitchen and dining"
 )
 
 # Feature 14
-Feature.create!(
+f14 = Feature.create!(
     name: "Microwave",
     category: "Amenities",
     subcategory: "Kitchen and dining"
 )
 
 # Feature 15
-Feature.create!(
+f15 = Feature.create!(
     name: "Cooking basics",
     description: "Pots and pans, oil, salt and pepper",
     category: "Amenities",
@@ -271,7 +300,7 @@ Feature.create!(
 )
 
 # Feature 16
-Feature.create!(
+f16 = Feature.create!(
     name: "Dishes and silverware",
     description: "Bowls, chopsticks, plates, cups, etc.",
     category: "Amenities",
@@ -279,21 +308,21 @@ Feature.create!(
 )
 
 # Feature 17
-Feature.create!(
+f17 = Feature.create!(
     name: "Coffee maker",
     category: "Amenities",
     subcategory: "Kitchen and dining"
 )
 
 # Feature 18
-Feature.create!(
+f18 = Feature.create!(
     name: "Free street parking",
     category: "Amenities",
     subcategory: "Parking and facilities"
 )
 
 # Feature 19
-Feature.create!(
+f19 = Feature.create!(
     name: "Elevator",
     description: "The home or building has an elevator that’s at least 52 inches deep and a doorway at least 32 inches wide",
     category: "Amenities",
@@ -301,115 +330,173 @@ Feature.create!(
 )
 
 # Feature 20
-Feature.create!(
+f20 = Feature.create!(
     name: "Self check-in",
     category: "Amenities",
     subcategory: "Services"
 )
 
 # Feature 21
-Feature.create!(
+f21 = Feature.create!(
     name: "Lockbox",
     category: "Amenities",
     subcategory: "Services"
 )
   
 # Listing Feature 1
-ListingFeature.create!(
-    listing_id: 1,
-    feature_id: 1
+lf1 = ListingFeature.create!(
+    listing_id: l1.id,
+    feature_id: f1.id
 )
 
 # Listing Feature 2
-ListingFeature.create!(
-    listing_id: 1,
-    feature_id: 3
+lf2 = ListingFeature.create!(
+    listing_id: l1.id,
+    feature_id: f3.id
 )
 
 # Listing Feature 3
-ListingFeature.create!(
-    listing_id: 1,
-    feature_id: 5
+lf3 = ListingFeature.create!(
+    listing_id: l1.id,
+    feature_id: f5.id
 )
 
 # Listing Feature 4
-ListingFeature.create!(
-    listing_id: 1,
-    feature_id: 6
+lf4 = ListingFeature.create!(
+    listing_id: l1.id,
+    feature_id: f6.id
 )
 
 
 # Listing Feature 5
-ListingFeature.create!(
-    listing_id: 1,
-    feature_id: 8
+lf5 = ListingFeature.create!(
+    listing_id: l1.id,
+    feature_id: f8.id
 )
 
 # Listing Feature 6
-ListingFeature.create!(
-    listing_id: 1,
-    feature_id: 10
+lf6 = ListingFeature.create!(
+    listing_id: l1.id,
+    feature_id: f10.id
 )
 
 # Listing Feature 7
-ListingFeature.create!(
-    listing_id: 1,
-    feature_id: 12
+lf7 = ListingFeature.create!(
+    listing_id: l1.id,
+    feature_id: f12.id
 )
 
 # Listing Feature 8
-ListingFeature.create!(
-    listing_id: 1,
-    feature_id: 20
+lf8 = ListingFeature.create!(
+    listing_id: l1.id,
+    feature_id: f20.id
 )
 
-
-
 # Listing Feature 9
-ListingFeature.create!(
-    listing_id: 2,
-    feature_id: 2
+lf9 = ListingFeature.create!(
+    listing_id: l2.id,
+    feature_id: f2.id
 )
 
 # Listing Feature 10
-ListingFeature.create!(
-    listing_id: 2,
-    feature_id: 4
+lf10 = ListingFeature.create!(
+    listing_id: l2.id,
+    feature_id: f4.id
 )
 
 # Listing Feature 11
-ListingFeature.create!(
-    listing_id: 2,
-    feature_id: 6
+lf11 = ListingFeature.create!(
+    listing_id: l2.id,
+    feature_id: f6.id
 )
 
 # Listing Feature 12
-ListingFeature.create!(
-    listing_id: 2,
-    feature_id: 7
+lf12 = ListingFeature.create!(
+    listing_id: l2.id,
+    feature_id: f7.id
 )
 
 
 # Listing Feature 13
-ListingFeature.create!(
-    listing_id: 2,
-    feature_id: 9
+lf13 = ListingFeature.create!(
+    listing_id: l2.id,
+    feature_id: f9.id
 )
 
 # Listing Feature 14
-ListingFeature.create!(
-    listing_id: 2,
-    feature_id: 11
+lf14 = ListingFeature.create!(
+    listing_id: l2.id,
+    feature_id: f11.id
 )
 
 # Listing Feature 15
-ListingFeature.create!(
-    listing_id: 2,
-    feature_id: 18
+lf15 = ListingFeature.create!(
+    listing_id: l2.id,
+    feature_id: f18.id
 )
 
 # Listing Feature 16
-ListingFeature.create!(
-    listing_id: 2,
-    feature_id: 21
+lf16 = ListingFeature.create!(
+    listing_id: l2.id,
+    feature_id: f21.id
 )
+
+
+
+ListingFeature.create!(
+    listing_id: l3.id,
+    feature_id: f1.id
+)
+
+
+ListingFeature.create!(
+    listing_id: l3.id,
+    feature_id: f4.id
+)
+
+
+ListingFeature.create!(
+    listing_id: l3.id,
+    feature_id: f5.id
+)
+
+
+ListingFeature.create!(
+    listing_id: l3.id,
+    feature_id: f7.id
+)
+
+ListingFeature.create!(
+    listing_id: l3.id,
+    feature_id: f9.id
+)
+
+ListingFeature.create!(
+    listing_id: l3.id,
+    feature_id: f12.id
+)
+
+ListingFeature.create!(
+    listing_id: l3.id,
+    feature_id: f16.id
+)
+
+ListingFeature.create!(
+    listing_id: l3.id,
+    feature_id: f20.id
+)
+
+
+
+# # AWS S3
+# pathname = "https://mybnb-lucyluo-dev.s3.us-west-1.amazonaws.com/App-AWS/"
+
+# l1.photos.attach(
+#     io: URI.open("#{pathname}l1-1.webp"),
+#     filename: "l1-1.webp"
+# )
+
+# u2.photos.attach(
+#     io: URI.open("#{pathname}u-default.jpeg"),
+#     filename: "u-default.jpeg"
+# )

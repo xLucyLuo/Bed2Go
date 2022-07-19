@@ -2,7 +2,8 @@ import React from 'react';
 import ListingMap from './../listing_map';
 import ReviewIndexContainer from './../../review/review_index_container'
 import { fetchReviews } from './../../../actions/review_actions';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import ReservationForm from './../../reservation/reservation_form';
 
 class ListingShow extends React.Component {
     componentDidMount() {
@@ -64,28 +65,30 @@ class ListingShow extends React.Component {
                 totalRatingsSum += reviews[review][rating]
             }
         }
-        let overallRating = Math.round(totalRatingsSum/(countReviews * Object.keys(sumRatings).length)*100)/100
+
+        let overallRating = 0;
+        if (countReviews > 0) {
+            overallRating = (Math.round(totalRatingsSum/(countReviews * Object.keys(sumRatings).length)*10)/10).toFixed(1);
+        }
 
         // debugger
 
         return (
+
             <div className="listing-show-container">
                 
                 <div className='listing-show-title'>
                     <h1>{title}</h1>
                     <p>
-                        {
-                            countReviews ? (
-                            <span>
-                                <span> &#9733; </span> 
-                                <span> {overallRating} </span> 
-                                <span> · </span>
-                                <a  onClick={() => {document.getElementById('review-index-container').scrollIntoView()}}> 
-                                    {`${countReviews} review${countReviews>1 ? "s" : ""}`} 
-                                </a>
-                            </span>
-                            ) : null
-                        }
+                        <span>
+                            <span> &#9733; </span> 
+                            <span> {overallRating || "New"} </span> 
+                            <span> · </span>
+                            <a  onClick={() => {document.getElementById('review-index-container').scrollIntoView()}}> 
+                                {`${countReviews || 0} review${countReviews || 0 >1 ? "s" : ""}`} 
+                            </a>
+                        </span>
+                            
                         <span>   ·   {`${city}, ${state}, ${country}`}</span>
                     </p> 
                 </div>
@@ -93,11 +96,6 @@ class ListingShow extends React.Component {
                 <div className="listing-show-images">
                     <img className="main-listing-image" src={imgUrl}/>
                     <div className="oth-listing-images-container">
-    
-                        {/* <div className="oth-listing-image" >
-                            <img src="" alt="" />
-                            <span className="img-hover-overlay"/>
-                        </div> */}
                         <img className="oth-listing-image" />
                         <img className="oth-listing-image" />
                         <img className="oth-listing-image" />
@@ -105,31 +103,41 @@ class ListingShow extends React.Component {
                     </div>
                 </div>
                 
-                <div className='listing-show-subtitle'>
-                    <div className='listing-show-subtitle-text'>
-                        <h2> {`${typeOfPlace.split(" ")[0]} ${propertyType.toLowerCase()} hosted by ${hostName}`}</h2>
-                        <p>
-                            <span> {`${maxGuests} guest${maxGuests>1 ? "s" : ""} · `} </span> 
-                            <span> {`${numBedrooms} bedroom${numBedrooms>1 ? "s" : ""} · `} </span> 
-                            <span> {`${numBeds} bed${numBeds>1 ? "s" : ""} · `} </span> 
-                            <span> {`${numBaths} bath${numBaths>1 ? "s" : ""}`} </span> 
-                        </p>
-                    </div>
-                    <img className="host-image" src={hostImgUrl} />
-                </div>
-                <p className='listing-show-description'>{description}</p>
-                <div className="listing-show-features">
-                    <h2>What this place offers</h2>
-                    <ul className="features-list">
-                        {Object.values(features).map((feature, idx) => {
-                            return(
-                                <li className="features-list-item" key={idx}>{feature.name}</li>
-                            )
-                        })}
-                    </ul>
+                <div className='listing-info-and-reservation'>
+                    <div className="listing-info">
+                        <div className='listing-show-subtitle'>
+                            <div className='listing-show-subtitle-text'>
+                                <h2> {`${typeOfPlace.split(" ")[0]} ${propertyType.toLowerCase()} hosted by ${hostName}`}</h2>
+                                <p>
+                                    <span> {`${maxGuests} guest${maxGuests>1 ? "s" : ""} · `} </span> 
+                                    <span> {`${numBedrooms} bedroom${numBedrooms>1 ? "s" : ""} · `} </span> 
+                                    <span> {`${numBeds} bed${numBeds>1 ? "s" : ""} · `} </span> 
+                                    <span> {`${numBaths} bath${numBaths>1 ? "s" : ""}`} </span> 
+                                </p>
+                            </div>
+                            <img className="host-image" src={hostImgUrl} />
+                        </div>
+                        <p className='listing-show-description'>{description}</p>
+                        <div className="listing-show-features">
+                            <h2>What this place offers</h2>
+                            <ul className="features-list">
+                                {Object.values(features).map((feature, idx) => {
+                                    return(
+                                        <li className="features-list-item" key={idx}>{feature.name}</li>
+                                    )
+                                })}
+                            </ul>
 
+                        </div>
+                    </div>
+                    <div className="listing-reservation">
+                        <ReservationForm />
+                    </div>
                 </div>
-                <ReviewIndexContainer listingId={listingId} header={<h2>&#9733; {`${ overallRating } · ${countReviews} review${countReviews>1 ? "s" : ""}`}</h2>}/>
+
+                
+
+                <ReviewIndexContainer listingId={listingId} sumRatings={sumRatings} overallRating={ overallRating } countReviews={countReviews} />
                 <h2>Where you'll be</h2>
                 {listing ? <ListingMap listings={[listing]} updateFilter={updateFilter} listingId={listingId}/> : <div></div>}
                 

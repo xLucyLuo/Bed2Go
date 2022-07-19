@@ -23,7 +23,7 @@ class User < ApplicationRecord
     allow_nil: true
     
     #AWS S3
-    has_one_attached :photo 
+    # has_many_attached :photos
     
     has_many :listings,
         foreign_key: :host_id,

@@ -9,6 +9,7 @@ import ListingShowContainer from './listings/listing_show/listing_show_container
 import ModalContainer from './modal/modal_container';
 import CreateReviewFormContainer from './review/create_review_form_container';
 import UpdateReviewFormContainer from './review/update_review_form_container';
+import SearchBar from './search/search_bar';
 
 
 function App (props) {
@@ -20,24 +21,28 @@ function App (props) {
     <header className={`main-header`}>
         <div className={`main-header-content${ props.location.pathname.match(/\/listings\/+[^\/]/) ? " page-width-narrow" : ""}`}>
           <Link to="/" className='logo'>
+              <img className="logo" src=""/>
               <h1 className="main-logo">Mybnb</h1>
           </Link>
+          <SearchBar />
           <GreetingContainer />
         </div>
     </header>
-    <Switch>
-      {/* <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}
+    {/* <div className="main-body"> */}
+      <Switch>
+        {/* <AuthRoute exact path="/login" component={LoginFormContainer} />
+        <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}
 
-      <Route exact path="/listings/:listingId" component={ListingShowContainer} />
-         
-      <ProtectedRoute exact path="/listings/:listingId/reviews/new" component={CreateReviewFormContainer} />
+        <Route exact path="/listings/:listingId" component={ListingShowContainer} />
+          
+        <ProtectedRoute exact path="/listings/:listingId/reviews/new" component={CreateReviewFormContainer} />
 
-      <ProtectedRoute exact path="/listings/:listingId/reviews/:reviewId/edit" component={UpdateReviewFormContainer} />
+        <ProtectedRoute exact path="/listings/:listingId/reviews/:reviewId/edit" component={UpdateReviewFormContainer} />
 
-      <Route exact path="/" component={SearchContainer} /> 
-     
-    </Switch>
+        <Route exact path="/" component={SearchContainer} /> 
+      
+      </Switch>
+    {/* </div> */}
   </div>
   )
 };

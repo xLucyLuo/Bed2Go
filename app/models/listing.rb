@@ -3,7 +3,7 @@ class Listing < ApplicationRecord
       presence: true,
       uniqueness: true
 
-    validates :description, :street_address, :city, :state, :zip_code, :country, :region, :lat, :lng, :currency, :price, :price_units, :max_guests, :num_bedrooms, :num_beds, :num_baths, :property_type, :type_of_place, :host_id, :is_posted,
+    validates :description, :street_address, :city, :state, :zip_code, :country, :region, :lat, :lng, :currency, :price, :price_units, :max_guests, :num_bedrooms, :num_beds, :num_baths, :property_type, :type_of_place, :host_id,
       presence: true
 
     before_validation :defaults, :on => :create
@@ -15,7 +15,7 @@ class Listing < ApplicationRecord
     end
 
     # AWS S3
-    has_one_attached :photo, dependent: :destroy
+    # has_many_attached :photos, dependent: :destroy
 
     has_many :reviews, dependent: :destroy
 
@@ -43,6 +43,9 @@ class Listing < ApplicationRecord
     end
   
     def average_rating
+
+      return 0 if num_reviews < 1
+
       ((reviews.average(:cleanliness) + 
         reviews.average(:accuracy) + 
         reviews.average(:communication) +

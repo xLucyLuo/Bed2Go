@@ -2,12 +2,12 @@ import React from 'react';
 import { withRouter } from 'react-router-dom'
 
 const HOVER_STATES = {
-    cleanlinessHover: -1,
-    accuracyHover: -1,
-    communicationHover: -1,
-    locationHover: -1,
-    checkInHover: -1,
-    valueHover: -1,
+    cleanlinessHover: 0,
+    accuracyHover: 0,
+    communicationHover: 0,
+    locationHover: 0,
+    checkInHover: 0,
+    valueHover: 0,
 }
 
 class ReviewForm extends React.Component {
@@ -46,7 +46,6 @@ class ReviewForm extends React.Component {
             review => this.props.history.goBack(),
             err => window.scrollTo(0, 0)
         )
-
   }
 
   update(field) {

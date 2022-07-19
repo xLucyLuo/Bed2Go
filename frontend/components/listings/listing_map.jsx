@@ -4,12 +4,14 @@ import { withRouter } from 'react-router-dom';
 
 //larger is more zoomed-in
 const SINGLE_MARKER_ZOOM = 14;
+const MAP_ID = '2e84cab39be786ee'
 
 // note: can refactor to variables (will faill with error for typos)
 const mapOptionsByLocation = {
     "San Francisco": {
         center: { lat: 37.7758, lng: -122.435 },
         zoom: 12,
+        mapId: MAP_ID,
     },
 };
 
@@ -42,6 +44,7 @@ class ListingMap extends React.Component{
                     zoom: SINGLE_MARKER_ZOOM,
                     gestureHandling: "none",
                     // disableDefaultUI: true,
+                    mapId: MAP_ID,
                 }
                 
                 markerClickable = false;
@@ -78,6 +81,25 @@ class ListingMap extends React.Component{
             this.props.updateFilter("bounds", bounds);
         });
 
+        const input= document.getElementById("google-maps-search");
+        const autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)']})
+        autocomplete.addListener('place_changed', () => {
+            const place = autocomplete.getPlace();
+
+            if (place.geometry.viewport) {
+                this.map.fitBounds(place.geometry.viewport);
+              } else {
+                this.map.setCenter(place.geometry.location);
+                this.map.setZoom(12);  // Why 17? Because it looks good.
+              }
+   
+            // debugger
+         })
+
+
+
+
+
         // this.map.addListener("click", (e) => {
         //     const coords = {
         //         lat: e.latLng.lat(),
@@ -98,6 +120,8 @@ class ListingMap extends React.Component{
       this.props.history.push(`listings/${listing.id}`);
     }
 
+
+    
     render() {
         return(
             <div id={`map-container${this.props.listingId ? '-show' : ''}`} ref='map' /> //application.css sets width and height for render

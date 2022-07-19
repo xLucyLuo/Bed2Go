@@ -31,6 +31,10 @@ export default class MarkerManager {
             map: this.map,
             label: price.toString(),
             clickable: this.clickable,
+            // labelContent:"checkcheck",
+            // labelClass: "labels",
+            // labelAnchor: new google.maps.Point(3, 30),
+            // labelInBackground:false,
         });
 
         marker.addListener("click", () => this.handleClick(listing));
