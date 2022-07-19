@@ -47,17 +47,25 @@ $default-pink-bright: #FF385C;
   margin-bottom: 24px;
   margin-bottom: 16px;
   // border: 1px solid black;
+
 }
 
 #map-container {
-  @include center(column);
-  height: calc(100vh - 100px);
+  // @include center(column);
+  // height: calc(100vh - 100px);
+  height: 100%;
   width: 100%;
   // position: absolute;
+  // position: fixed;
   top: 0px;
+  // bottom: 0px;
   // aspect-ratio: 1/0.5;
   // filter: brightness(110%) contrast(90%) saturate(90%);
   // filter: saturation(120%);
+  @media screen and (max-width: 700px) {
+
+    // height: 1%
+  }
 }
 
 #map-container-show{
@@ -147,7 +155,11 @@ input, textarea {
   // display: inline-block;
   background-color: white;
   width: 100vw;
-  padding: 0 24px 0 24px;
+  height: 80px;
+
+  @media screen and (max-width: 900px) {
+    padding: 0 12px 0 12px;
+  }
 }
 
 
@@ -267,7 +279,6 @@ input, textarea {
 }
 
 
-
 .search-bar-container {
   @include center(row);
   width: 500px;
@@ -329,29 +340,58 @@ input, textarea {
 .search-component {
   @include center(row);
   width: 100%; 
-  height: 100%;
+  top: 80px;
+  height: calc(100vh - 80px);
+  position: fixed;
+  flex: 1;
   padding: 0;
   justify-content: flex-start;
+  // bottom:0;
+
+  @media screen and (max-width: 700px) {
+    @include center(column);
+    flex-wrap: wrap;
+    flex-flow: column-reverse wrap;
+    overflow: auto;
+
+  }
 }
 
 .search-list-view {
   @include center(column);
-  width: 60%; 
+  justify-content: flex-start;
+  overflow: auto;
+  width: 50%; 
   max-width: 725px;
   height: 100%;
   padding: 0;
   align-self: flex-start;
+  flex-wrap: nowrap;
+  position: relative;
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    height: 60%;
+    // bottom: 0px;
+  }
 }
 
 .search-map-view {
-  // position: relative;
-  width: 40%; 
-  height: calc(100vh-80px);
+  // position: fixed;
+  width: 50%; 
+  height: calc(100vh - 80px);
   padding: 0;
   min-width: 200px;
   flex: 1;
-  align-self: flex-start;
+  // align-self: flex-start;
   bottom: 0px;
+  
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    height: 40%;
+    overflow: scroll;
+    bottom:auto;
+    // position: relative;
+  }
 }
 
 .listing-index{
@@ -374,6 +414,9 @@ input, textarea {
   max-width: 325px;
   // box-sizing: border-box;
   // position: relative;
+  @media screen and (max-width: 700px) {
+    // width: 100%;
+  }
 }
 
 .listings-tile-image {
@@ -582,6 +625,9 @@ input, textarea {
   padding-bottom: 24px;
   width: 100%;
   margin-top: 16px;
+  top: 0px;
+  position: sticky;
+  background: white;
 }
 
 .price-range-inputs {
