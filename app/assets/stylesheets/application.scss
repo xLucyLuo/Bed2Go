@@ -909,6 +909,8 @@ span.star{
   border-bottom-left-radius: 12px;
   padding: 12px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  position: sticky;
+  top: 0;
 }
 
 .reservation-form-container {
@@ -916,10 +918,9 @@ span.star{
   // background: #ff000080;
   width: 100%;
   padding: 12px;
-  position: sticky;
-  top: 0;
-  float:right;
-  shape-outside:linear-gradient(transparent,transparent);
+
+  // float: right;
+  // shape-outside:linear-gradient(transparent,transparent);
   gap: 12px;
 }
 
