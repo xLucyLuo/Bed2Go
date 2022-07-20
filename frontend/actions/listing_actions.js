@@ -5,10 +5,13 @@ export const RECEIVE_LISTINGS = 'RECEIVE_LISTINGS';
 export const RECEIVE_LISTING = 'RECEIVE_LISTING';
 export const REMOVE_LISTING = 'REMOVE_LISTING';
 
-export const receiveListings = (listings) => ({
-    type: RECEIVE_LISTINGS,
-    listings,
-});
+export const receiveListings = (listings) => {
+    // debugger
+    return ({
+        type: RECEIVE_LISTINGS,
+        listings,
+    })
+};
 
 export const receiveListing = (listing) => ({
     type: RECEIVE_LISTING,

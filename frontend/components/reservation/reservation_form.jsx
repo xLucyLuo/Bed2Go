@@ -27,9 +27,10 @@ export default class ReservationForm extends React.Component {
 
         return e => {
             that.setState({ [field]: e.currentTarget.value })
-            if (field === "startDate" && new Date(e.currentTarget.value) > new Date(that.state.endDate)){
+            // if (field === "startDate" && new Date(e.currentTarget.value) > new Date(that.state.endDate)){
+            if (field === "startDate"){
                 const startDate = new Date(e.currentTarget.value)
-                const endDate = new Date(startDate.getTime() + ((24+7) * 60 * 60 * 1000))
+                const endDate = new Date(startDate.getTime() + ((24+9) * 60 * 60 * 1000))
                 that.setState({ endDate: endDate.toLocaleDateString('en-ca')})
             }
         };
@@ -46,14 +47,14 @@ export default class ReservationForm extends React.Component {
         const otherFeesArr = otherFees.split(";").map((amt) => parseInt(amt));
         const otherFeesTotal = otherFeesArr.map((amt) => amt*numDays);
         const totalPayment = accomodationTotal + otherFeesTotal.reduce((a, b) => a + b, 0);
-        // this.setState({"payment": totalPayment})
+        
         // debugger 
         
         return (
             <div className="reservation-form-container" >
             {/* <div className="right-side" > */}
                 <header className="reservation-form-header">
-                    <h2 reservation-form-header-title>
+                    <h2 className="reservation-form-header-title">
                         {`$${price}`} <span className="reservation-price-units"> {` ${priceUnits}`} </span>
                     </h2>
                     <p className="reservation-review-summary">
@@ -79,7 +80,7 @@ export default class ReservationForm extends React.Component {
                     </div>
 
                     <div className="reservation-buttons-container">
-                        <button className="reservation-button">Reserve</button>
+                        <button className="reservation-button" onClick={() => this.setState({"payment": totalPayment})}>Reserve</button>
                         <p className="reservation-submit-note">You won't be charged yet</p>
                     </div>
         

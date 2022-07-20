@@ -10,6 +10,8 @@ import ModalContainer from './modal/modal_container';
 import CreateReviewFormContainer from './review/create_review_form_container';
 import UpdateReviewFormContainer from './review/update_review_form_container';
 import SearchBar from './search/search_bar';
+import ReservationIndexContainer from './reservation/reservation_index_container';
+// import CheckoutForm from './reservation/checkout_form';
 
 
 function App (props) {
@@ -19,7 +21,7 @@ function App (props) {
     <ModalContainer />
     
     <header className={`main-header`}>
-        <div className={`main-header-content${ props.location.pathname.match(/\/listings\/+[^\/]/) ? " page-width-narrow" : ""}`}>
+        <div className={`main-header-content${ props.location.pathname.match(/\/listings\/+[^\/]/) || props.location.pathname.match(/\/trips/) ? " page-width-narrow" : ""}`}>
           <Link to="/" className='logo'>
               <img className="logo" src=""/>
               <h1 className="main-logo">Mybnb</h1>
@@ -38,6 +40,10 @@ function App (props) {
         <ProtectedRoute exact path="/listings/:listingId/reviews/new" component={CreateReviewFormContainer} />
 
         <ProtectedRoute exact path="/listings/:listingId/reviews/:reviewId/edit" component={UpdateReviewFormContainer} />
+
+        {/* <ProtectedRoute exact path="/listings/:listingId/checkout/new" component={CheckoutForm} /> */}
+
+        <ProtectedRoute exact path="/trips" component={ReservationIndexContainer} />
 
         <Route exact path="/" component={SearchContainer} /> 
       

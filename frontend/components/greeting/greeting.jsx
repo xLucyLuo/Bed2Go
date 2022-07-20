@@ -1,13 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class Greeting extends React.Component {
     render() {
-        const {currentUser, logout, openModal} = this.props
+        const {currentUser, logout, openModal, history} = this.props
         if (currentUser) {
             return <div className="user-auths">
                 <p>Hello, {`${currentUser.fname}`}</p>
+                <button onClick={() => {
+                    history.push(`/trips`)
+                }}>Trips</button>
                 <button onClick={logout}>Log out</button>
+                
             </div>
         } else {
             return <nav className="user-auths">
@@ -18,5 +22,5 @@ class Greeting extends React.Component {
     }
 };
 
-export default Greeting;
+export default withRouter(Greeting);
 

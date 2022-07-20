@@ -187,7 +187,7 @@ rs1 = Reservation.create!(
     listing_id: l2.id,
     num_guests: 2,
     start_date: DateTime.new(2021,9,14),
-    end_date: DateTime.new(2009,9,16),
+    end_date: DateTime.new(2021,9,16),
     payment: 1580.04
 )
 

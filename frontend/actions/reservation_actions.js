@@ -1,4 +1,5 @@
 import * as reservationAPIUtil from './../util/reservation_api_util';
+import { receiveListings, receiveListing} from './listing_actions'
 
 export const RECEIVE_RESERVATIONS = 'RECEIVE_RESERVATIONS';
 export const RECEIVE_RESERVATION = 'RECEIVE_RESERVATION';
@@ -43,12 +44,14 @@ export const clearReservationErrors = () => ({
 
 
 export const fetchReservations = (filters) => (dispatch) => {
-    debugger
+
     return (
         reservationAPIUtil.getReservations(filters)
             .then((payload) => {
-                // console.log(payload);
+                // console.log(payload.listings);
+                // debugger
                 dispatch(receiveReservations(payload.reservations));
+                // debugger
                 dispatch(receiveListings(payload.listings));
             })
     );

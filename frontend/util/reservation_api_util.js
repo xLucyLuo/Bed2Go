@@ -14,23 +14,23 @@ export const getReservations = (filters) => {
     })
   };
   
-  export const postReservation = (review) => {
+  export const postReservation = (reservation) => {
     return $.ajax({
     method: "POST",
     url: "/api/reservations",
-    data: { review }
+    data: { reservation }
     })
   };
 
-  export const patchReview = (review) => {
+  export const patchReservation = (reservation) => {
     return $.ajax({
       method: "PATCH",
-      url: `/api/reservations/${review.id}`,
-      data: { review }
+      url: `/api/reservations/${reservation.id}`,
+      data: { reservation }
     })
   };
 
-  export const deleteReview = (id) => {
+  export const deleteReservation = (id) => {
     return $.ajax({
       method: "DELETE",
       url: `/api/reservations/${id}`,
