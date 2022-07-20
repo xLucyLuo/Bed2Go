@@ -2,6 +2,7 @@ import React from 'react';
 import MarkerManager from './../../util/marker_manager';
 import { withRouter } from 'react-router-dom';
 
+
 //larger is more zoomed-in
 const SINGLE_MARKER_ZOOM = 14;
 const MAP_ID = '2e84cab39be786ee'
@@ -26,6 +27,8 @@ class ListingMap extends React.Component{
         //map.fitBounds(bounds);
 
         this.mapOptions = DEFAULT_MAP_OPTIONS;
+
+
     }
 
     componentDidMount() {
@@ -81,24 +84,44 @@ class ListingMap extends React.Component{
             this.props.updateFilter("bounds", bounds);
         });
 
-        const input= document.getElementById("google-maps-search");
-        const autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)']})
-        autocomplete.addListener('place_changed', () => {
-            const place = autocomplete.getPlace();
+        this.input = document.getElementById("google-maps-search");
+        this.autocomplete = new google.maps.places.Autocomplete(this.input,{types: ['(cities)']})
+        this.service = new google.maps.places.AutocompleteService({types: ['(cities)']});
+        this.place = ""
+        let that = this
+        this.autocomplete.addListener('place_changed', () => {
+            // debugger
+            that.place = that.autocomplete.getPlace();
 
-            if (place.geometry.viewport) {
-                this.map.fitBounds(place.geometry.viewport);
-              } else {
-                this.map.setCenter(place.geometry.location);
-                this.map.setZoom(12);  // Why 17? Because it looks good.
-              }
+            if (that.place.geometry && that.place.geometry.viewport) {
+                that.map.fitBounds(that.place.geometry.viewport);
+            } else {
+                // that.map.setCenter(place.geometry.location);
+                // that.map.setZoom(12);  //preference
+
+                that.service.getQueryPredictions({input: that.place.name}, (predictions) => {
+                    predictions[0].description ? that.input.value = predictions[0].description : "";
+                    // that.input.dispatchEvent(new Event('change'));
+                    // that.place = that.autocomplete.getPlace();
+                    // that.map.fitBounds(that.place.geometry.viewport);
+                })
+            }
    
             // debugger
          })
 
-
-
-
+        this.input.addEventListener("keypress", function(event) {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                // that.input.dispatchEvent(new Event('change'));
+                // that.place = that.autocomplete.getPlace();
+                // that.map.fitBounds(that.place.geometry.viewport);
+            }
+        });
+    }
 
         // this.map.addListener("click", (e) => {
         //     const coords = {
@@ -107,7 +130,6 @@ class ListingMap extends React.Component{
         //     };
         //     this.handleClick(coords);
         // });
-    };
 
     // handleClick(coords) {
     //     this.props.history.push({

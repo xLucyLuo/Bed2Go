@@ -3,7 +3,7 @@ import ListingMap from './../listing_map';
 import ReviewIndexContainer from './../../review/review_index_container'
 import { fetchReviews } from './../../../actions/review_actions';
 import { withRouter } from 'react-router-dom';
-import ReservationForm from './../../reservation/reservation_form';
+import CreateReservationFormContainer from './../../reservation/create_reservation_form_container';
 
 class ListingShow extends React.Component {
     componentDidMount() {
@@ -131,7 +131,7 @@ class ListingShow extends React.Component {
                         </div>
                     </div>
                     <div className="listing-reservation">
-                        <ReservationForm />
+                        <CreateReservationFormContainer sumRatings={sumRatings} overallRating={ overallRating } countReviews={countReviews}/>
                     </div>
                 </div>
 
@@ -139,7 +139,7 @@ class ListingShow extends React.Component {
 
                 <ReviewIndexContainer listingId={listingId} sumRatings={sumRatings} overallRating={ overallRating } countReviews={countReviews} />
                 <h2>Where you'll be</h2>
-                {listing ? <ListingMap listings={[listing]} updateFilter={updateFilter} listingId={listingId}/> : <div></div>}
+                {listing ? <ListingMap listings={[listing]} updateFilter={updateFilter} listingId={listingId}/> : null}
                 
             </div>
         );

@@ -8,6 +8,7 @@ json.listings do
     end
 end
 
+
 json.reviews do
     @listing.reviews.each do |review|
         json.set! review.id do

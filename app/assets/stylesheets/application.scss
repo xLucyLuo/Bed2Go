@@ -84,7 +84,7 @@ body {
   @include center(column);
   font-family: $default-font-family;
   color: $default-color;
-  font-size: 16px;
+  font-size: 17px;
   padding: 0 40px 40px 40px;
 }
 
@@ -150,6 +150,7 @@ input, textarea {
   border-bottom: 1px solid rgb(235, 235, 235);
   column-gap: 12px;
   position: sticky;
+  padding-bottom: 2px;
   top: 0;
   z-index: 10;
   // display: inline-block;
@@ -158,7 +159,7 @@ input, textarea {
   height: 80px;
 
   @media screen and (max-width: 900px) {
-    padding: 0 12px 0 12px;
+    padding: 0 12px 2px 12px;
   }
 }
 
@@ -265,7 +266,7 @@ input, textarea {
   // padding: 24px;
 }
 
-.sign-in-button, .reservation-button {
+.sign-in-button {
   @include button($default-linear-gradient, white);
 }
 
@@ -461,7 +462,13 @@ input, textarea {
   row-gap: 24px;
   max-width: 1120px;
   padding-top: 24px;
-  
+ 
+}
+
+.listing-show-container {
+  // top: 80px;
+  // position:fixed;
+  // overflow: scroll;
 }
 
 
@@ -522,7 +529,7 @@ input, textarea {
 
 .listing-show-images {
   @include center(row);
-  aspect-ratio: 1/0.45;
+  aspect-ratio: 1/0.50;
   // height: 50vh;
   border-radius: 12px;
   overflow: hidden;
@@ -957,13 +964,14 @@ span.star{
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   position: sticky;
   top: 0;
+  padding: 24px;
 }
 
 .reservation-form-container {
   @include center(column);
   // background: #ff000080;
   width: 100%;
-  padding: 12px;
+  // padding: 12px;
 
   // float: right;
   // shape-outside:linear-gradient(transparent,transparent);
@@ -980,6 +988,7 @@ span.star{
   border-radius: 0;
   border: none;
   padding-left: 12px;
+  height: 56px;
 }
 
 #reservation-checkin-input {
@@ -1003,8 +1012,9 @@ span.star{
 }
 
 .reservation-buttons-container {
-  padding: 12px 0 24px 0;
+  padding: 24px 0 24px 0;
   text-align: center;
+
 
 }
 
@@ -1023,13 +1033,59 @@ span.star{
 
 .reservation-info-cost {
   text-align: right;
+  height: 36px;
+  padding-top: 16px;
 }
 
-.reservation-form-header span {
-  font-size: 16px;
+.reservation-form-header {
+  @include center(row);
+  justify-content: space-between;
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.reservation-form-header-title {
+  white-space: nowrap;
+  width: flex;
+}
+
+.reservation-form-header span.reservation-price.units {
+  font-size: 18px;
   font-weight: normal;
 }
 
+.reservation-review-summary {
+  font-size: 16px;
+  font-weight: normal;
+  width: auto;
+  white-space: nowrap;
+
+}
+
+.reservation-button {
+  @include button($default-linear-gradient, white);
+  height: 48px;
+  padding: 0;
+  margin: 0;
+}
+
+.reservation-submit-note {
+  font-size: 16px;
+  text-align: center;
+  height: 26px;
+  margin-top: 16px;
+  color: $default-lighter-color;
+}
+
+.reservation-info.total{
+  height: 45px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid lightgray;
+  vertical-align: bottom;
+  font-size: 16px;
+  font-weight: bold;
+}
 
 // no longer needed
 // *= require_tree .

@@ -35,9 +35,15 @@ class User < ApplicationRecord
         foreign_key: :reviewer_id,
         class_name: :Review
 
+    has_many :reservations
+
+    has_many :hosted_reservations,
+        through: :listings,
+        source: :reservations
 
     #AASPIRE
     attr_reader :password
+    
 
     after_initialize :ensure_session_token
 

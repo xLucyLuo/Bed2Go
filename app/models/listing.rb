@@ -3,7 +3,7 @@ class Listing < ApplicationRecord
       presence: true,
       uniqueness: true
 
-    validates :description, :street_address, :city, :state, :zip_code, :country, :region, :lat, :lng, :currency, :price, :price_units, :max_guests, :num_bedrooms, :num_beds, :num_baths, :property_type, :type_of_place, :host_id,
+    validates :description, :street_address, :city, :state, :zip_code, :country, :region, :lat, :lng, :price, :max_guests, :num_bedrooms, :num_beds, :num_baths, :property_type, :type_of_place, :host_id,
       presence: true
 
     before_validation :defaults, :on => :create
@@ -27,6 +27,12 @@ class Listing < ApplicationRecord
 
     has_many :features,
       through: :listing_features
+
+    has_many :reservations
+
+    has_many :users, 
+      through: :reservations,
+      source: :user
 
 
     #potentially refactor for wishlist

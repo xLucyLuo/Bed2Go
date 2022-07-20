@@ -7,6 +7,7 @@ import Root from './components/root';
 import { signup, login, logout } from './actions/session_actions';
 import * as listingAPIUtil from './util/listing_api_util';
 import { fetchListings } from './actions/listing_actions'
+import * as reservationAPIUtil from './util/reservation_api_util'
 
 document.addEventListener("DOMContentLoaded", () => {
   let preloadedState = undefined
@@ -36,4 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
   //                     fname: "Demo",
   //                     lname: "User"
   //                   };
+
+  window.reservationAPIUtil = reservationAPIUtil
 });

@@ -182,7 +182,7 @@ r4 = Review.create!(
     comment: "It was an awesome week in SF. The place was even better than in the picture. Thanks!"
 )
 
-r5 = Reservation.create!(
+rs1 = Reservation.create!(
     user_id: u1.id,
     listing_id: l2.id,
     num_guests: 2,
