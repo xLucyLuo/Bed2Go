@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ReviewIndex from './review_index';
 import { deleteReview } from './../../actions/review_actions';
-import { openModal } from '../../actions/modal_actions';
+import { openModal } from './../../actions/modal_actions';
 
 const mapStateToProps = (state, { listingId }) => {
     // console.log(this.state)

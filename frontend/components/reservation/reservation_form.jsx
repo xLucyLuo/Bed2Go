@@ -1,39 +1,67 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
+import * as miscUtil from './../../util/misc_util'
 
-
-export default class ReservationForm extends React.Component {
+class ReservationForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = Object.assign({}, props.reservation);
     
         this.handleSubmit = this.handleSubmit.bind(this);
         this.update = this.update.bind(this);
+        this.handleButtonClick = this.handleButtonClick.bind(this);
+
+        this.overlappingDates = ['Select Dates!']
       }
 
     handleSubmit(e) {
         e.preventDefault();
 
-        this.props.submit(this.state)
-            .then(
-                // review => this.props.history.goBack(),
-                // err => window.scrollTo(0, 0)
-            )
+        if(this.overlappingDates.length > 0){
+            alert(`Date(s) unavailable! \n${this.overlappingDates.join("\n")}`)
+            return
         }
 
-        update(field) {
+        // debugger
+        this.props.submit(this.state)
+            .then(
+                reservation => this.props.history.push('/trips')
+            )
+    }
+
+    update(field) {
         // debugger
 
-        const that =this
+        const that = this;
+        
 
         return e => {
+ 
             that.setState({ [field]: e.currentTarget.value })
+
+
+
             // if (field === "startDate" && new Date(e.currentTarget.value) > new Date(that.state.endDate)){
             if (field === "startDate"){
-                const startDate = new Date(e.currentTarget.value)
-                const endDate = new Date(startDate.getTime() + ((24+9) * 60 * 60 * 1000))
-                that.setState({ endDate: endDate.toLocaleDateString('en-ca')})
+                const startDate = new Date(e.currentTarget.value);
+                const endDate = new Date(startDate.getTime() + ((24+9) * 60 * 60 * 1000));
+                that.setState({ endDate: endDate.toLocaleDateString('en-ca')});
             }
-        };
+    };
+    }
+
+    handleButtonClick(e, totalPayment){
+        // debugger
+        // e.preventDefault();
+
+        const { currentUserId, openModal, history, location } = this.props;
+
+        if (currentUserId) {
+            this.setState({"payment": totalPayment})
+        } else {
+            e.preventDefault();
+            openModal("login");
+        }        
     }
 
     render() {
@@ -47,6 +75,11 @@ export default class ReservationForm extends React.Component {
         const otherFeesArr = otherFees.split(";").map((amt) => parseInt(amt));
         const otherFeesTotal = otherFeesArr.map((amt) => amt*numDays);
         const totalPayment = accomodationTotal + otherFeesTotal.reduce((a, b) => a + b, 0);
+
+        const disabledDates = this.props.disabledDates.map((date) =>date.toLocaleDateString('en-ca'))
+        // debugger
+        const selectedDates = miscUtil.getDaysArray(this.state.startDate, this.state.endDate).map((date) =>date.toLocaleDateString('en-ca'));
+        this.overlappingDates = selectedDates.filter(value => disabledDates.includes(value))
         
         // debugger 
         
@@ -80,7 +113,7 @@ export default class ReservationForm extends React.Component {
                     </div>
 
                     <div className="reservation-buttons-container">
-                        <button className="reservation-button" onClick={() => this.setState({"payment": totalPayment})}>Reserve</button>
+                        <button className={`reservation-button ${this.overlappingDates.length > 0 ? "button-unavailable" : ""}`} onClick={(e) => this.handleButtonClick(e,totalPayment)}>{this.overlappingDates.length > 0 ? "Check Availability" : "Reserve"}</button>
                         <p className="reservation-submit-note">You won't be charged yet</p>
                     </div>
         
@@ -112,3 +145,5 @@ export default class ReservationForm extends React.Component {
         )
     }
 }
+
+export default withRouter(ReservationForm)

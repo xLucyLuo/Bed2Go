@@ -10,6 +10,7 @@ const mapStateToProps = (state, { match: { params } }) => {
         listing: state.entities.listings[params.listingId],
         listingId: parseInt(params.listingId),
         reviews: Object.values(state.entities.reviews).reverse(),
+        reservations: Object.values(state.entities.reservations)
     }
 }
 

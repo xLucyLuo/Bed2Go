@@ -4,6 +4,8 @@ import ReviewIndexContainer from './../../review/review_index_container'
 import { fetchReviews } from './../../../actions/review_actions';
 import { withRouter } from 'react-router-dom';
 import CreateReservationFormContainer from './../../reservation/create_reservation_form_container';
+import ReservationCalendar from './../../reservation/reservation_calendar';
+import * as miscUtil from './../../../util/misc_util'
 
 class ListingShow extends React.Component {
     componentDidMount() {
@@ -21,7 +23,7 @@ class ListingShow extends React.Component {
 
     render() {
         
-        const { listings, listing, listingId, reviews, updateFilter } = this.props;
+        const { listings, listing, listingId, reviews, updateFilter, reservations } = this.props;
 
         if (!listing || !listings || Object.keys(listings).length !== 1 || Object.keys(listings)[0] !== listingId.toString()) {return null;}
 
@@ -72,6 +74,10 @@ class ListingShow extends React.Component {
         }
 
         // debugger
+        let disabledDates = []
+        for (let reservation of reservations) {
+            disabledDates = disabledDates.concat(miscUtil.getDaysArray(reservation.startDate, reservation.endDate));
+        }
 
         return (
 
@@ -127,15 +133,21 @@ class ListingShow extends React.Component {
                                     )
                                 })}
                             </ul>
-
                         </div>
+
+                        <div className="listing-show-availability">
+                            <h2>Check Availability</h2>
+                            <ReservationCalendar disabledDates={disabledDates}/>
+                        </div>
+
                     </div>
+
                     <div className="listing-reservation">
-                        <CreateReservationFormContainer sumRatings={sumRatings} overallRating={ overallRating } countReviews={countReviews}/>
+                        <CreateReservationFormContainer sumRatings={sumRatings} overallRating={ overallRating } countReviews={countReviews}
+                        disabledDates={disabledDates}/>
                     </div>
                 </div>
 
-                
 
                 <ReviewIndexContainer listingId={listingId} sumRatings={sumRatings} overallRating={ overallRating } countReviews={countReviews} />
                 <h2>Where you'll be</h2>

@@ -45,3 +45,15 @@ end
     end
   end
 end
+
+
+
+@listings.each do |listing|
+  json.reservations do
+    listing.reservations.each do |reservation|
+        json.set! reservation.id do
+          json.partial! 'api/reservations/reservation', reservation: reservation
+        end
+    end
+  end
+end

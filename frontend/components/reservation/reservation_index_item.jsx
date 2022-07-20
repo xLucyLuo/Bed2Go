@@ -7,8 +7,10 @@ const ReservationIndexItem = (props) => {
     const { typeOfPlace, propertyType, streetAddress, city, state, country, hostName, imgUrl} = props.listing;
     const { startDate, endDate} = props.reservation;
 
-    const startDateD = new Date(startDate)
-    const endDateD = new Date(endDate)
+    let startDateD = new Date(startDate)
+    let endDateD = new Date(endDate)
+    startDateD = new Date(startDateD.getTime() + ((24) * 60 * 60 * 1000))
+    endDateD = new Date(endDateD.getTime() + ((24) * 60 * 60 * 1000))
     let dateFormat = { month:"short", day:"numeric"};
     let yearFormat = {year: "numeric"};
     let isSameYear = startDateD.getYear() === endDateD.getYear()
