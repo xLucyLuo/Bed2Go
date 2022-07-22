@@ -14,11 +14,11 @@
       window.homeMarkerURL = "<%= image_url('home-marker.webp')%>";
       window.homeRadiusMarkerURL = "<%= image_url('home-radius-marker.png')%>"; 
       window.gmAPIKey = "<%= Rails.application.credentials.google[:api_key]%>";
-      window.gmMapID = "<%= Rails.application.credentials.google[:api_key]%>";
+      window.gmMapID = "<%= Rails.application.credentials.google[:map_id]%>";
     </script>
 
 
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&map_ids=#{Rails.application.credentials.google[:api_key]}&libraries=places" %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&map_ids=#{Rails.application.credentials.google[:map_id]}&libraries=places" %>
 
    
 
