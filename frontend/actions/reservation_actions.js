@@ -63,7 +63,7 @@ export const fetchReservation = (reservationId) => (dispatch) => {
         reservationAPIUtil.getReservation(reservationId)
             .then((payload) => {
                 dispatch(receiveReservation(payload.reservations[reservationId]));
-                dispatch(receiveListing(payload.listings[listingId]))
+                // dispatch(receiveListing(payload.listings[listingId]))
             })
     )
 };

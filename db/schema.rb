@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2022_07_17_040023) do
     t.string "currency", default: "USD", null: false
     t.float "price", null: false
     t.string "price_units", default: "per night", null: false
+    t.float "additional_guest_charge", default: 0.0, null: false
     t.string "other_fees"
     t.string "other_fees_type"
     t.integer "max_guests", null: false

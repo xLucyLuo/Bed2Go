@@ -29,7 +29,7 @@ export default class MarkerManager {
 
 
     createMarkerFromListing(listing) {
-        const { id, lat, lng, price } = listing;
+        const { id, lat, lng, price, additionalGuestCharge } = listing;
 
         // debugger
         const label = {

@@ -753,7 +753,7 @@ input, textarea {
 .oth-listing-image {
   @include cover();
   display: grid;
-  background-color: beige;
+  background-color: transparent; // beige;
   width: calc(50% - 4px);
   height: calc(50% - 4px);
   border: 0;
@@ -1019,7 +1019,7 @@ input, textarea {
 
 .reviewer-image, .host-image {
   @include cover();
-  background-color: beige;
+  background-color: transparent; // beige;
   width: 56px;
   height: 56px;
   border: 0;
@@ -1148,7 +1148,7 @@ span.star{
   padding: 12px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   position: sticky;
-  top: 0;
+  top: 80px;
   padding: 24px;
 
 }

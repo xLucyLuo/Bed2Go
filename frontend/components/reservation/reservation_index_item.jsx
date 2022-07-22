@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 const ReservationIndexItem = (props) => {
 
     if (!props.listing || !props.reservation){return null}
-    const { typeOfPlace, propertyType, streetAddress, city, state, country, hostName, imgUrls} = props.listing;
+    const { id, typeOfPlace, propertyType, streetAddress, city, state, country, hostName, imgUrls} = props.listing;
     const { startDate, endDate} = props.reservation;
 
     let startDateD = new Date(startDate)
@@ -18,7 +18,7 @@ const ReservationIndexItem = (props) => {
 
     // debugger
     return (
-        <div className="reservation-item-container">
+        <div className="reservation-item-container" onClick={() => props.history.push(`/listings/${id}`)}>
             <div className="reservation-item-text">
                 <div className="reservation-item-title">
                     <h2>{`${city}`}</h2>

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import * as miscUtil from './../../util/misc_util'
 
 const ListingIndexItem = (props) => {
-    const { averageRating, numReviews, typeOfPlace, propertyType, city, title, numBeds, price, priceUnits, imgUrls} = props.listing;
+    const { averageRating, numReviews, typeOfPlace, propertyType, city, title, numBeds, price, priceUnits, imgUrls, additionalGuestCharge} = props.listing;
  
     if (!props.listing || !miscUtil) {return null;}
 

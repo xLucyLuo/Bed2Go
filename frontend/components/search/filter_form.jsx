@@ -16,6 +16,7 @@ class FilterForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.loading = false;
+        this.reset = this.reset.bind(this)
     }
 
     handleSubmit(e) {
@@ -44,7 +45,8 @@ class FilterForm extends React.Component {
 
     reset() {
         this.setState({maxPrice: 1499});
-        this.setState({minPrice: 1499});
+        this.setState({minPrice: 0});
+        return;
     }
 
     render() {
@@ -71,9 +73,9 @@ class FilterForm extends React.Component {
                         </div>
                     </div>
                     <footer className="filter-form-footer">
-                        <p className="linkText" onClick={this.reset}>
+                        <a className="linkText" onClick={this.reset}>
                             <span >Clear All</span>
-                        </p>
+                        </a>
                         <button className={`filter-apply-button ${this.loading? "button-unavailable" : ""}`}> Apply</button>
                     </footer>
                 </form>

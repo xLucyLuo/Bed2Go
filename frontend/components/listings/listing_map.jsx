@@ -28,7 +28,7 @@ class ListingMap extends React.Component{
 
         this.mapOptions = DEFAULT_MAP_OPTIONS;
 
-
+        this.preventUpdateFilter = false;
     }
 
     componentDidMount() {
@@ -100,7 +100,11 @@ class ListingMap extends React.Component{
             // debugger
             // console.log("idle")
             // console.log(bounds)
-            this.props.updateFilter("bounds", bounds);
+            if (!this.preventUpdateFilter){
+                this.preventUpdateFilter = true;
+                this.props.updateFilter("bounds", bounds)
+                .then(()=> this.preventUpdateFilter = false);
+            }
         });
 
         this.input = document.getElementById("google-maps-search");
@@ -129,8 +133,8 @@ class ListingMap extends React.Component{
                 //   console.log("autocomplete")
                 //   console.log(bounds)
 
-                  this.props.updateFilter("bounds", bounds)
-                    .then(this.props.history.push("/"))
+                //   this.props.updateFilter("bounds", bounds)
+                //     .then(this.props.history.push("/"))
  
             } else {
                 // that.map.setCenter(place.geometry.location);
@@ -162,17 +166,17 @@ class ListingMap extends React.Component{
             // debugger
          })
 
-        this.input.addEventListener("keypress", function(event) {
-            // If the user presses the "Enter" key on the keyboard
-            if (event.key === "Enter") {
-                // Cancel the default action, if needed
-                event.preventDefault();
-                // Trigger the button element with a click
-                // that.input.dispatchEvent(new Event('change'));
-                // that.place = that.autocomplete.getPlace();
-                // that.map.fitBounds(that.place.geometry.viewport);
-            }
-        });
+        // this.input.addEventListener("keypress", function(event) {
+        //     // If the user presses the "Enter" key on the keyboard
+        //     if (event.key === "Enter") {
+        //         // Cancel the default action, if needed
+        //         event.preventDefault();
+        //         // Trigger the button element with a click
+        //         // that.input.dispatchEvent(new Event('change'));
+        //         // that.place = that.autocomplete.getPlace();
+        //         // that.map.fitBounds(that.place.geometry.viewport);
+        //     }
+        // });
     }
 
         // this.map.addListener("click", (e) => {

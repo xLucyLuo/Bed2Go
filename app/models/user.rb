@@ -46,17 +46,16 @@ class User < ApplicationRecord
     attr_reader :password
     
 
-    after_initialize :ensure_session_token 
-    # ,:ensure_photo_attached
+    after_initialize :ensure_session_token, :ensure_photo_attached
 
-    # def ensure_photo_attached
-    #     require 'open-uri'
-    #     self.photo.attach(
-    #         io: URI.open("https://mybnb-lucyluo-dev.s3.us-west-1.amazonaws.com/App-AWS/u-default.jpeg"),
-    #         filename: "u-default.jpeg"
-    #     ) if !self.photo.attached? 
+    def ensure_photo_attached
+        require 'open-uri'
+        self.photo.attach(
+            io: URI.open("https://mybnb-lucyluo-dev.s3.us-west-1.amazonaws.com/App-AWS/u-default.jpeg"),
+            filename: "u-default.jpeg"
+        ) if !self.photo.attached? 
         
-    # end
+    end
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)

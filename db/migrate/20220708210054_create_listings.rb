@@ -14,6 +14,7 @@ class CreateListings < ActiveRecord::Migration[5.2]
       t.string :currency, null: false, default: 'USD'
       t.float :price, null: false
       t.string :price_units, null: false, default: 'per night'
+      t.float :additional_guest_charge, null: false, default: 0
       t.string :other_fees
       t.string :other_fees_type
       t.integer :max_guests, null: false

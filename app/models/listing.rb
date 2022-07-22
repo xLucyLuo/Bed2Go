@@ -12,6 +12,7 @@ class Listing < ApplicationRecord
       self.currency ||= "USD"
       self.price_units ||= "per night"
       self.is_posted ||= false
+      self.additional_guest_charge ||= 0
     end
 
     # AWS S3

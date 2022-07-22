@@ -82,11 +82,11 @@ class ReservationForm extends React.Component {
 
     render() {
         
-        const { price, priceUnits, otherFees, otherFeesType, maxGuests} = this.props.listing;
+        const { price, priceUnits, otherFees, otherFeesType, maxGuests, additionalGuestCharge} = this.props.listing;
         const { overallRating, countReviews } = this.props;
 
         const numDays = (new Date(this.state.endDate) - new Date(this.state.startDate) )/ (24 * 60 * 60 * 1000);
-        const accomodationTotal = price * numDays;
+        const accomodationTotal = (price +additionalGuestCharge*(this.state.numGuests-1)) * numDays;
         const otherFeesTypeArr = otherFeesType.split(";");
         const otherFeesArr = otherFees.split(";").map((amt) => parseInt(amt));
         const otherFeesTotal = otherFeesArr.map((amt) => amt*numDays);
@@ -104,7 +104,7 @@ class ReservationForm extends React.Component {
             {/* <div className="right-side" > */}
                 <header className="reservation-form-header">
                     <h2 className="reservation-form-header-title">
-                        {`$${price}`} <span className="reservation-price-units"> {` ${priceUnits}`} </span>
+                        {`$${price + additionalGuestCharge*(this.state.numGuests-1)}`} <span className="reservation-price-units"> {` ${priceUnits}`} </span>
                     </h2>
                     <p className="reservation-review-summary">
                         <span>
@@ -123,16 +123,16 @@ class ReservationForm extends React.Component {
                     <div className="reservation-inputs-container">
                         {/* <label htmlFor="checkin-input">CHECK-IN </label> */}
                         <div className="reservation-checkin-input-container">
-                            <label forHTML="reservation-checkin-input">CHECK-IN</label>
+                            <label HTMLfor="reservation-checkin-input">CHECK-IN</label>
                             <input type="date" className="reservation-input" id="reservation-checkin-input" placeholder="Check-in" value={this.state.startDate} onChange={this.update('startDate')} min={`${new Date().toLocaleDateString('en-ca')}`}/>
                         </div>
                         <div className="reservation-checkout-input-container">
-                            <label forHTML="reservation-checkout-input">CHECKOUT</label>
+                            <label HTMLfor="reservation-checkout-input">CHECKOUT</label>
                             <input type="date" className="reservation-input" id="reservation-checkout-input" placeholder="Check-out" value={this.state.endDate} onChange={this.update('endDate')} min={`${new Date(new Date(this.state.startDate).getTime() + ((24+9) * 60 * 60 * 1000)).toLocaleDateString('en-ca') }`}/>
                         </div>
                         <div className="reservation-guests-input-container" onClick={this.focusElement("reservation-guests-input") }>
-                            <label forHTML="reservation-guests-input">GUESTS</label>
-                            <span class="units-suffix">
+                            <label HTMLfor="reservation-guests-input">GUESTS</label>
+                            <span className="units-suffix">
                                 <input type="number" className="reservation-input" id="reservation-guests-input"  value={this.state.numGuests} onChange={this.update('numGuests')} min="1" max={`${maxGuests}`} />
                                 <p>{`guest${this.state.numGuests>1 ? "s" : ""}`}</p>
                             </span>
@@ -159,7 +159,7 @@ class ReservationForm extends React.Component {
                             ))
                         }
                         <div className="reservation-info total">
-                                <p className="reservation-info-label">Total before taxes</p>
+                                <p className="reservation-info-label">Total</p>
                                 <p className="reservation-info-cost" onChange={this.update('payment')} value={totalPayment}>{`$${totalPayment.toLocaleString('en-US')}`}</p>
                         </div>
                     </div>
