@@ -123,7 +123,7 @@ class ReviewForm extends React.Component {
                     </div>
 
                     <div className="buttons-container">
-                        <a className="back-nav" onClick={this.props.history.goBack}>{"< "} <span className="underline">Back</span> </a>
+                        <a className="linkText" onClick={this.props.history.goBack}>{"< "} <span>Back</span> </a>
                         <br /> 
                         <button className="submit-button" onClick={this.handleSubmit}>Submit</button>
                     </div>

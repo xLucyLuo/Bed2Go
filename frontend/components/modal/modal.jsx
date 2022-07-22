@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginFormContainer from './../session_form/login_form_container';
 import SignupFormContainer from './../session_form/signup_form_container';
+import FilterFormContainer from './../../components/search/filter_form_container';
 
 function Modal({modal, closeModal}) {
     if (!modal) {
@@ -14,6 +15,9 @@ function Modal({modal, closeModal}) {
         break;
       case 'signup':
         component = <SignupFormContainer />;
+        break;
+      case 'filter':
+        component = <FilterFormContainer />;
         break;
       default:
         return null;

@@ -22,8 +22,8 @@ function App (props) {
     
     <header className={`main-header`}>
         <div className={`main-header-content${ props.location.pathname.match(/\/listings\/+[^\/]/) || props.location.pathname.match(/\/trips/) ? " page-width-narrow" : ""}`}>
-          <Link to="/" className='logo'>
-              <img className="logo" src=""/>
+          <Link to="/" className='logo-group'>
+              <img className="logo" src={window.logoURL} />
               <h1 className="main-logo">Mybnb</h1>
           </Link>
           <SearchBar />

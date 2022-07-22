@@ -42,7 +42,7 @@ class ListingShow extends React.Component {
             numBeds,
             numBaths,
             description,
-            imgUrl,
+            imgUrls,
             hostImgUrl,
             features,
         } = listing
@@ -100,12 +100,11 @@ class ListingShow extends React.Component {
                 </div>
 
                 <div className="listing-show-images">
-                    <img className="main-listing-image" src={imgUrl}/>
+                    <img className="main-listing-image" src={imgUrls[0]}/>
                     <div className="oth-listing-images-container">
-                        <img className="oth-listing-image" />
-                        <img className="oth-listing-image" />
-                        <img className="oth-listing-image" />
-                        <img className="oth-listing-image" />
+                        {imgUrls.map((imgUrl, idx) => 
+                            idx > 0 ? <img className="oth-listing-image" key={`${listing.id}-p${idx}`} src={imgUrl}/> : null
+                        )}
                     </div>
                 </div>
                 
@@ -113,7 +112,7 @@ class ListingShow extends React.Component {
                     <div className="listing-info">
                         <div className='listing-show-subtitle'>
                             <div className='listing-show-subtitle-text'>
-                                <h2> {`${typeOfPlace.split(" ")[0]} ${propertyType.toLowerCase()} hosted by ${hostName}`}</h2>
+                                <h2> {`${miscUtil.SUBTITLE_PLACE_TYPE[typeOfPlace][propertyType]} hosted by ${hostName}`}</h2>
                                 <p>
                                     <span> {`${maxGuests} guest${maxGuests>1 ? "s" : ""} · `} </span> 
                                     <span> {`${numBedrooms} bedroom${numBedrooms>1 ? "s" : ""} · `} </span> 
@@ -135,7 +134,7 @@ class ListingShow extends React.Component {
                             </ul>
                         </div>
 
-                        <div className="listing-show-availability">
+                        <div className="listing-show-availability" id="nav-listing-availability">
                             <h2>Check Availability</h2>
                             <ReservationCalendar disabledDates={disabledDates}/>
                         </div>

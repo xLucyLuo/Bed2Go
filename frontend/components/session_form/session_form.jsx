@@ -59,7 +59,7 @@ class SessionForm extends React.Component {
             <div className="session-form-container" > 
                 <header className="session-form-header">
                     <button onClick={this.props.closeModal} className="close-x">X</button>
-                    <h1>{formType}</h1>
+                    <h2>{formType}</h2>
                 </header>
                 <form className="session-form" onSubmit={this.handleSubmit}>
                     {this.renderErrors()}

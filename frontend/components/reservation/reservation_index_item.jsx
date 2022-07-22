@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 const ReservationIndexItem = (props) => {
 
     if (!props.listing || !props.reservation){return null}
-    const { typeOfPlace, propertyType, streetAddress, city, state, country, hostName, imgUrl} = props.listing;
+    const { typeOfPlace, propertyType, streetAddress, city, state, country, hostName, imgUrls} = props.listing;
     const { startDate, endDate} = props.reservation;
 
     let startDateD = new Date(startDate)
@@ -51,8 +51,8 @@ const ReservationIndexItem = (props) => {
                     </div>
                 </div>
             </div>
-            <div className="reservation-item-image">
-                <img className="reservations-tile-image" src={imgUrl}/>
+            <div className="reservation-item-image-container">
+                <img className="reservations-tile-image" src={imgUrls[0]}/>
             </div>
         </div>
     );

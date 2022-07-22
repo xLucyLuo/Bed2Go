@@ -1,3 +1,4 @@
+import el from 'date-fns/esm/locale/el/index.js';
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import * as miscUtil from './../../util/misc_util'
@@ -18,6 +19,7 @@ class ReservationForm extends React.Component {
         e.preventDefault();
 
         if(this.overlappingDates.length > 0){
+            document.getElementById('nav-listing-availability').scrollIntoView()
             alert(`Date(s) unavailable! \n${this.overlappingDates.join("\n")}`)
             return
         }
@@ -36,10 +38,16 @@ class ReservationForm extends React.Component {
         
 
         return e => {
- 
+            // debugger
+            if(field==="numGuests" && (
+                parseInt(e.currentTarget.value) > this.props.listing.maxGuests || 
+                (parseInt(e.currentTarget.value) < 1))) {
+                    e.currentTarget.focus()
+                    e.currentTarget.select()
+                    return
+            }
+
             that.setState({ [field]: e.currentTarget.value })
-
-
 
             // if (field === "startDate" && new Date(e.currentTarget.value) > new Date(that.state.endDate)){
             if (field === "startDate"){
@@ -62,6 +70,14 @@ class ReservationForm extends React.Component {
             e.preventDefault();
             openModal("login");
         }        
+    }
+
+    focusElement(elementId) {
+        return () => {
+            const el = document.getElementById(elementId);
+            el.focus();
+            el.select();
+        }
     }
 
     render() {
@@ -106,9 +122,21 @@ class ReservationForm extends React.Component {
 
                     <div className="reservation-inputs-container">
                         {/* <label htmlFor="checkin-input">CHECK-IN </label> */}
-                        <input type="date" className="reservation-input" id="reservation-checkin-input" placeholder="Check-in" value={this.state.startDate} onChange={this.update('startDate')} min={`${new Date().toLocaleDateString('en-ca')}`}/>
-                        <input type="date" className="reservation-input" id="reservation-checkout-input" placeholder="Check-out" value={this.state.endDate} onChange={this.update('endDate')} min={`${this.state.startDate}`}/>
-                        <input type="number" className="reservation-input" id="reservation-guests-input" placeholder="Guests" value={this.state.numGuests} onChange={this.update('numGuests')} min="1" max={`${maxGuests}`} />
+                        <div className="reservation-checkin-input-container">
+                            <label forHTML="reservation-checkin-input">CHECK-IN</label>
+                            <input type="date" className="reservation-input" id="reservation-checkin-input" placeholder="Check-in" value={this.state.startDate} onChange={this.update('startDate')} min={`${new Date().toLocaleDateString('en-ca')}`}/>
+                        </div>
+                        <div className="reservation-checkout-input-container">
+                            <label forHTML="reservation-checkout-input">CHECKOUT</label>
+                            <input type="date" className="reservation-input" id="reservation-checkout-input" placeholder="Check-out" value={this.state.endDate} onChange={this.update('endDate')} min={`${new Date(new Date(this.state.startDate).getTime() + ((24+9) * 60 * 60 * 1000)).toLocaleDateString('en-ca') }`}/>
+                        </div>
+                        <div className="reservation-guests-input-container" onClick={this.focusElement("reservation-guests-input") }>
+                            <label forHTML="reservation-guests-input">GUESTS</label>
+                            <span class="units-suffix">
+                                <input type="number" className="reservation-input" id="reservation-guests-input"  value={this.state.numGuests} onChange={this.update('numGuests')} min="1" max={`${maxGuests}`} />
+                                <p>{`guest${this.state.numGuests>1 ? "s" : ""}`}</p>
+                            </span>
+                        </div>
                         {/* <textarea  id="comment-input" onChange={this.update("comment")} value={this.state.comment} placeholder="Write a public reservation">{this.state.comment}</textarea> */}
                     </div>
 
@@ -120,7 +148,7 @@ class ReservationForm extends React.Component {
                     <div className="reservation-costs-container">
                         <div className="reservation-info">
                             <p className="reservation-info-label">{`$${price} x ${numDays} night${numDays>1 ? "s" : ""}`}</p>
-                            <p className="reservation-info-cost">{`$${accomodationTotal}`}</p>
+                            <p className="reservation-info-cost">{`$${accomodationTotal.toLocaleString('en-US')}`}</p>
                         </div>
                         {
                             otherFeesTotal.map((feeTotal, idx) => (

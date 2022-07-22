@@ -14,7 +14,7 @@ const Protected = ({ component: Component, path, isLoggedIn, exact}) => {
     <Route path={path} exact={exact} render={(props) => {
       // debugger
       return(
-        isLoggedIn ? <Component {...props} /> : props.history.goBack()
+        isLoggedIn ? <Component {...props} /> : props.history.goBack() || <Redirect to="/" />
       )
     }
   } />

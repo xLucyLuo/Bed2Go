@@ -2,9 +2,10 @@ json.listings do
     json.set! @listing.id do
         json.partial! 'listing', listing: @listing
         # json.reviewIds []
-        json.host_name @listing.host.fname
-        json.host_img_url url_for(@listing.host.photo)
-        json.img_url url_for(@listing.photo)
+        host = @listing.host
+        json.host_name host.fname
+        json.host_img_url url_for(host.photo)
+        json.img_urls @listing.photos.map { |photo| url_for(photo) }
     end
 end
 

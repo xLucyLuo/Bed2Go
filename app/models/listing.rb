@@ -15,7 +15,7 @@ class Listing < ApplicationRecord
     end
 
     # AWS S3
-    # has_many_attached :photos, dependent: :destroy
+    has_many_attached :photos, dependent: :destroy
 
     has_many :reviews, dependent: :destroy
 
@@ -28,6 +28,7 @@ class Listing < ApplicationRecord
     has_many :features,
       through: :listing_features
 
+    #need logic for ensuring no reservation before deleting or maintain basic copy of info on the reservation
     has_many :reservations
 
     has_many :users, 

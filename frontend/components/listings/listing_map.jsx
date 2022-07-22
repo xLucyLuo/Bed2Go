@@ -33,6 +33,14 @@ class ListingMap extends React.Component{
 
     componentDidMount() {
         let markerClickable = true;
+        let icon = {
+            url: `${window.markerURL}`, 
+            scaledSize: new google.maps.Size(75, 30), // scaled size
+            origin: new google.maps.Point(0,0), // origin
+            anchor: new google.maps.Point(35,15) // anchor
+        };
+        let addRadius = false;
+        let addLabel = true;
         // wrap 'map' ref node in a Google Map
         const { listingId, listings } = this.props
 
@@ -51,6 +59,14 @@ class ListingMap extends React.Component{
                 }
                 
                 markerClickable = false;
+                icon = {
+                    url: this.iconURL || `${window.homeMarkerURL}`, 
+                    scaledSize: new google.maps.Size(50, 50), // scaled size
+                    origin: new google.maps.Point(0,0), // origin
+                    anchor: new google.maps.Point(24,24) // anchor
+                };
+                addRadius = true;
+                addLabel = false;
                 // this.handleMarkerClick = () =>{}
         }
         
@@ -58,11 +74,12 @@ class ListingMap extends React.Component{
         this.mapOptions.mapTypeControl = false;
         this.mapOptions.fullscreenControl = false;
         this.mapOptions.streetViewControl = false;
+        this.mapOptions.clickableIcons = false
         this.mapOptions.zoomControlOptions = {position: google.maps.ControlPosition.RIGHT_TOP}
 
         this.map = new google.maps.Map(this.refs.map, this.mapOptions);
         this.setMapListeners();
-        this.MarkerManager = new MarkerManager(this.map, markerClickable, this.handleMarkerClick.bind(this));
+        this.MarkerManager = new MarkerManager(this.map, icon, addRadius, addLabel, markerClickable, this.handleMarkerClick.bind(this));
         this.MarkerManager.updateMarkers(listings);
     };
 
@@ -80,7 +97,9 @@ class ListingMap extends React.Component{
               northEast: { lat: north, lng: east },
               southWest: { lat: south, lng: west },
             };
-
+            // debugger
+            // console.log("idle")
+            // console.log(bounds)
             this.props.updateFilter("bounds", bounds);
         });
 
@@ -91,17 +110,50 @@ class ListingMap extends React.Component{
         let that = this
         this.autocomplete.addListener('place_changed', () => {
             // debugger
-            that.place = that.autocomplete.getPlace();
-
+            that.place = that.autocomplete.getPlace(that.input.value);
+            // debugger
             if (that.place.geometry && that.place.geometry.viewport) {
-                that.map.fitBounds(that.place.geometry.viewport);
+                that.map.fitBounds(that.place.geometry.viewport)
+                
+                
+                console.log(that.map.getBounds().toJSON())
+                console.log(that.place.geometry)
+                
+                
+                const { north, south, east, west } = that.map.getBounds().toJSON();
+                const bounds = {
+                    northEast: { lat: north, lng: east },
+                    southWest: { lat: south, lng: west },
+                  };
+
+                //   console.log("autocomplete")
+                //   console.log(bounds)
+
+                  this.props.updateFilter("bounds", bounds)
+                    .then(this.props.history.push("/"))
+ 
             } else {
                 // that.map.setCenter(place.geometry.location);
                 // that.map.setZoom(12);  //preference
 
                 that.service.getQueryPredictions({input: that.place.name}, (predictions) => {
                     predictions[0].description ? that.input.value = predictions[0].description : "";
-                    // that.input.dispatchEvent(new Event('change'));
+
+                    google.maps.event.trigger( this.input, 'focus', {} )
+
+                    
+                    this.input.dispatchEvent(new KeyboardEvent( 'keypress', {key: 'ArrowDown'} ))
+                    // debugger
+                    // this.input.dispatchEvent(new KeyboardEvent( 'keypress', {key: 'Enter'} ))
+
+                    // google.maps.event.trigger( this.refs.mapSearch, 'keypress', {key: 'Enter'} )
+                    // google.maps.event.trigger( this.input, 'blur', {} )
+
+                    // google.maps.event.trigger(that.autocomplete, 'place_changed');
+
+                    // debugger
+                    
+                 
                     // that.place = that.autocomplete.getPlace();
                     // that.map.fitBounds(that.place.geometry.viewport);
                 })
