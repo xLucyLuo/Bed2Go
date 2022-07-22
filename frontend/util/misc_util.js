@@ -18,18 +18,18 @@ export const SUBTITLE_PLACE_TYPE = {
     }, 
     "Private room": 
     {
-        "House": "Private room",
-        "Appartment": "Private room",
-        "Guesthouse": "Private room",
-        "Hotel": "Private room"
+        "House": "Private room in home",
+        "Appartment": "Private room in condo",
+        "Guesthouse": "Private room in guest suite",
+        "Hotel": "Hotel Room"
     }, 
     "Shared room": 
     {
-        "House": "Shared room",
-        "Appartment": "Shared room",
-        "Guesthouse": "Shared room",
-        "Hotel": "Shared room"
-    }  
+        "House": "Shared room in home",
+        "Appartment": "Shared room in condo",
+        "Guesthouse": "Shared room in guest suite",
+        "Hotel": "Shared room in hostel"
+    } 
 }
 
 //miscUtil.TITLE_PLACE_TYPE[typeOfPlace][propertyType]
@@ -43,17 +43,17 @@ export const TITLE_PLACE_TYPE = {
     }, 
     "Private room": 
     {
-        "House": "Private room in home",
-        "Appartment": "Private room in condo",
-        "Guesthouse": "Private room in guest suite",
-        "Hotel": "Hotel Room"
+        "House": "Private room",
+        "Appartment": "Private room",
+        "Guesthouse": "Private room",
+        "Hotel": "Private room"
     }, 
     "Shared room": 
     {
-        "House": "Shared room in home",
-        "Appartment": "Shared room in condo",
-        "Guesthouse": "Shared room in guest suite",
-        "Hotel": "Shared room in hostel"
+        "House": "Shared room",
+        "Appartment": "Shared room",
+        "Guesthouse": "Shared room",
+        "Hotel": "Shared room"
     }  
 }
 

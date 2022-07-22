@@ -61,9 +61,9 @@ class ListingMap extends React.Component{
                 markerClickable = false;
                 icon = {
                     url: this.iconURL || `${window.homeMarkerURL}`, 
-                    scaledSize: new google.maps.Size(50, 50), // scaled size
+                    scaledSize: new google.maps.Size(44, 44), // scaled size
                     origin: new google.maps.Point(0,0), // origin
-                    anchor: new google.maps.Point(24,24) // anchor
+                    anchor: new google.maps.Point(22,22) // anchor
                 };
                 addRadius = true;
                 addLabel = false;

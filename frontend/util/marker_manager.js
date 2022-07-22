@@ -59,7 +59,7 @@ export default class MarkerManager {
         if (this.addRadius){
             const circle = new google.maps.Circle({
                 map: this.map,
-                radius: 500,
+                radius: 875,
                 fillColor: '#E31C5F',
                 strokeColor: '#FF385C',
                 strokeOpacity: 0.1,

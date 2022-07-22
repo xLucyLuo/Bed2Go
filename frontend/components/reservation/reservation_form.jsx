@@ -123,15 +123,15 @@ class ReservationForm extends React.Component {
                     <div className="reservation-inputs-container">
                         {/* <label htmlFor="checkin-input">CHECK-IN </label> */}
                         <div className="reservation-checkin-input-container">
-                            <label HTMLfor="reservation-checkin-input">CHECK-IN</label>
+                            <label htmlFor="reservation-checkin-input">CHECK-IN</label>
                             <input type="date" className="reservation-input" id="reservation-checkin-input" placeholder="Check-in" value={this.state.startDate} onChange={this.update('startDate')} min={`${new Date().toLocaleDateString('en-ca')}`}/>
                         </div>
                         <div className="reservation-checkout-input-container">
-                            <label HTMLfor="reservation-checkout-input">CHECKOUT</label>
+                            <label htmlFor="reservation-checkout-input">CHECKOUT</label>
                             <input type="date" className="reservation-input" id="reservation-checkout-input" placeholder="Check-out" value={this.state.endDate} onChange={this.update('endDate')} min={`${new Date(new Date(this.state.startDate).getTime() + ((24+9) * 60 * 60 * 1000)).toLocaleDateString('en-ca') }`}/>
                         </div>
                         <div className="reservation-guests-input-container" onClick={this.focusElement("reservation-guests-input") }>
-                            <label HTMLfor="reservation-guests-input">GUESTS</label>
+                            <label htmlFor="reservation-guests-input">GUESTS</label>
                             <span className="units-suffix">
                                 <input type="number" className="reservation-input" id="reservation-guests-input"  value={this.state.numGuests} onChange={this.update('numGuests')} min="1" max={`${maxGuests}`} />
                                 <p>{`guest${this.state.numGuests>1 ? "s" : ""}`}</p>
