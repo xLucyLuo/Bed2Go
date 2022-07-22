@@ -8,13 +8,17 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
-    <script type = "text/javascript"> 
+    <script type = "text/javascript">   
       window.logoURL = "<%= image_url('logo.png')%>"; 
       window.markerURL = "<%= image_url('marker.png')%>"; 
       window.homeMarkerURL = "<%= image_url('home-marker.webp')%>";
       window.homeRadiusMarkerURL = "<%= image_url('home-radius-marker.png')%>"; 
+      window.gmAPIKey = "<%= rails.application.credentials.google[:api_key]%>"; ``
+      window.gmMapID = "<%= rails.application.credentials.google[:api_key]%>";
     </script>
 
+
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{window.gmAPIKey}&map_ids=#{window.gmMapID}&libraries=places" %>
 
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}&map_ids=#{ENV['MAP_ID']}&libraries=places" %>
 

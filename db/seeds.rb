@@ -1692,32 +1692,6 @@ l21.photos.attach(
     io: URI.open("#{pathname}l21-5.webp"),
     filename: "l21-5.webp"
 )
-
-l21.photos.attach(
-    io: URI.open("#{pathname}l21-1.webp"),
-    filename: "l21-1.webp"
-)
-
-l21.photos.attach(
-    io: URI.open("#{pathname}l21-2.webp"),
-    filename: "l21-2.webp"
-)
-
-l21.photos.attach(
-    io: URI.open("#{pathname}l21-3.webp"),
-    filename: "l21-3.webp"
-)
-
-l21.photos.attach(
-    io: URI.open("#{pathname}l21-4.webp"),
-    filename: "l21-4.webp"
-)
-
-l21.photos.attach(
-    io: URI.open("#{pathname}l21-5.webp"),
-    filename: "l21-5.webp"
-)
-
 ListingFeature.create!(
     listing_id: l21.id,
     feature_id: kitchen.id

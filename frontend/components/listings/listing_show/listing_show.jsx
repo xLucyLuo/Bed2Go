@@ -26,6 +26,8 @@ class ListingShow extends React.Component {
         const { listings, listing, listingId, reviews, updateFilter, reservations } = this.props;
 
         if (!listing || !listings || Object.keys(listings).length !== 1 || Object.keys(listings)[0] !== listingId.toString()) {return null;}
+        
+        // debugger
 
         const { 
             title, 

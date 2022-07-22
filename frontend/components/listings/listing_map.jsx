@@ -108,13 +108,13 @@ class ListingMap extends React.Component{
         });
 
         this.input = document.getElementById("google-maps-search");
-        this.autocomplete = new google.maps.places.Autocomplete(this.input,{types: ['(cities)']})
-        this.service = new google.maps.places.AutocompleteService({types: ['(cities)']});
+        this.autocomplete = new google.maps.places.Autocomplete(this.input,{types: ['(regions)']})
+        this.service = new google.maps.places.AutocompleteService({types: ['(regions)']});
         this.place = ""
         let that = this
         this.autocomplete.addListener('place_changed', () => {
             // debugger
-            that.place = that.autocomplete.getPlace(that.input.value);
+            that.place = that.autocomplete.getPlace();
             // debugger
             if (that.place.geometry && that.place.geometry.viewport) {
                 that.map.fitBounds(that.place.geometry.viewport)

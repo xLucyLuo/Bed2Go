@@ -52,7 +52,7 @@ export default class SearchBar extends React.Component {
     render() {
         return (
           <form ref={this.ref}className="search-bar-container" onSubmit={this.handleSubmit}>
-            <input id="google-maps-search" className="search-bar input-location" placeholder="Start your search" value={this.state.locationFilter} onChange={this.update('locationFilter')}/>
+            <input id="google-maps-search" className="search-bar input-location" placeholder="Start your search (e.g. San Francisco, New York, Toronto, etc.)" value={this.state.locationFilter} onChange={this.update('locationFilter')}/>
             {/* <input className="search-bar input-checkin" placeholder="Check in"/>
             <input className="search-bar input-checkout" placeholder="Check out"/>
             <input className="search-bar input-guests" placeholder="Who"/> */}
