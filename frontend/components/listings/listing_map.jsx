@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 
 //larger is more zoomed-in
-const SINGLE_MARKER_ZOOM = 14;
+const SINGLE_MARKER_ZOOM = 13;
 const MAP_ID = '2e84cab39be786ee'
 
 // note: can refactor to variables (will faill with error for typos)
