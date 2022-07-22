@@ -25,10 +25,10 @@ export default class SearchBar extends React.Component {
 
       google.maps.event.trigger( searchBar, 'focus', {} )
       
-      const pacItem = document.getElementsByClassName('pac-item')[0]
-      pacItem.dispatchEvent(new KeyboardEvent('keypress', {
-        key: 'ArrowDown',
-      }))
+      // const pacItem = document.getElementsByClassName('pac-item')[0]
+      // pacItem.dispatchEvent(new KeyboardEvent('keypress', {
+      //   key: 'ArrowDown',
+      // }))
 
       // debugger
       // console.log(pacItem)

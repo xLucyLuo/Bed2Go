@@ -133,8 +133,8 @@ class ListingMap extends React.Component{
                 //   console.log("autocomplete")
                 //   console.log(bounds)
 
-                //   this.props.updateFilter("bounds", bounds)
-                //     .then(this.props.history.push("/"))
+                  that.props.updateFilter("bounds", bounds)
+                    // .then(this.that.history.push("/"))
  
             } else {
                 // that.map.setCenter(place.geometry.location);
@@ -143,10 +143,10 @@ class ListingMap extends React.Component{
                 that.service.getQueryPredictions({input: that.place.name}, (predictions) => {
                     predictions[0].description ? that.input.value = predictions[0].description : "";
 
-                    google.maps.event.trigger( this.input, 'focus', {} )
+                    google.maps.event.trigger( that.input, 'focus', {} )
 
                     
-                    this.input.dispatchEvent(new KeyboardEvent( 'keypress', {key: 'ArrowDown'} ))
+                    that.input.dispatchEvent(new KeyboardEvent( 'keypress', {key: 'ArrowDown'} ))
                     // debugger
                     // this.input.dispatchEvent(new KeyboardEvent( 'keypress', {key: 'Enter'} ))
 

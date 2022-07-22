@@ -1,4 +1,7 @@
 require 'open-uri'
+# AWS S3
+pathname = "https://mybnb-lucyluo-dev.s3.us-west-1.amazonaws.com/App-AWS/"
+
 
 User.destroy_all
 Listing.destroy_all
@@ -122,11 +125,40 @@ l1 = Listing.create!(
     price: 187.00,
     price_units: "per night" ,
     additional_guest_charge: 96,
-    other_fees: "71;89",
+    other_fees: "61;79",
     other_fees_type: "Cleaning fee;Service fee",
     host_id: lucy.id,
     is_posted: true
 )
+
+l3 = Listing.create!(
+    title: "2br Victorian House with Breathtaking views",
+    description: "Amazing Victorian House on top of Potrero Hill one of the best places in San Francisco to have a magnificent view of the city. Spacious house with a breathtaking terrace and a gorgeous garden. Wifi, parking, access to Netflix, Amazon, Peacock. Very close to downtown, the Mission, Castro, Ferry building, AT&T Giants, Chase Center, general hospital, UCSF, just 15 minutes from the airport. Great restaurants, wineries, parks and tours at historical Anchor Steam Factory in the neighborhood.",
+    type_of_place: "Entire place",
+    property_type: "House",
+    max_guests: 4,
+    num_bedrooms: 2,
+    num_beds: 2,
+    num_baths: 1,
+    street_address: "750 Rhode Island St",
+    city: "San Francisco",
+    state: "CA",
+    zip_code: "94107",
+    country: "United States",
+    region: "North America",
+    lat: 37.760147,
+    lng: -122.402630,
+    currency: "USD" ,
+    price: 242.00,
+    price_units: "per night" ,
+    additional_guest_charge: 73,
+    other_fees: "92;72;83",
+    other_fees_type: "Cleaning fee;Service fee;Occupancy taxes and fees",
+    host_id: wendy.id,
+    is_posted: true
+)
+
+
 
 # Listing 2
 l2 = Listing.create!(
@@ -150,7 +182,7 @@ l2 = Listing.create!(
     price: 212.00,
     price_units: "per night" ,
     additional_guest_charge: 115,
-    other_fees: "55;76",
+    other_fees: "55;66",
     other_fees_type: "Cleaning fee;Service fee",
     host_id: wendy.id,
     is_posted: true
@@ -175,10 +207,10 @@ l11= Listing.create!(
     lat: 40.760891,
     lng: -73.972130,
     currency: "USD" ,
-    price: 278.00,
+    price: 238.00,
     price_units: "per night" ,
-    additional_guest_charge: 102,
-    other_fees: "62;86",
+    additional_guest_charge: 96,
+    other_fees: "52;76",
     other_fees_type: "Cleaning fee;Service fee",
     host_id: cindy.id,
     is_posted: true
@@ -237,11 +269,11 @@ r4 = Review.create!(
 )
 
 rs1 = Reservation.create!(
-    user_id: demo.id,
-    listing_id: l2.id,
+    user_id: lucy.id,
+    listing_id: l1.id,
     num_guests: 2,
-    start_date: DateTime.new(2022,9,14),
-    end_date: DateTime.new(2022,9,16),
+    start_date: DateTime.new(2022,8,14),
+    end_date: DateTime.new(2022,8,17),
     payment: 1580.04
 )
 
@@ -360,6 +392,18 @@ coffee_maker = Feature.create!(
 
 parking = Feature.create!(
     name: "Free street parking",
+    category: "Amenities",
+    subcategory: "Parking and facilities"
+)
+
+pool = Feature.create!(
+    name: "Shared pool",
+    category: "Amenities",
+    subcategory: "Parking and facilities"
+)
+
+sauna = Feature.create!(
+    name: "Shared sauna",
     category: "Amenities",
     subcategory: "Parking and facilities"
 )
@@ -528,8 +572,8 @@ ListingFeature.create!(
 
 
 
+
 # AWS S3
-pathname = "https://mybnb-lucyluo-dev.s3.us-west-1.amazonaws.com/App-AWS/"
 
 # should attach default image before validation
 demo.photo.attach(
@@ -690,34 +734,7 @@ l11.photos.attach(
     filename: "l11-5.webp"
 )
 
-
-l3 = Listing.create!(
-    title: "2br Victorian House with Breathtaking views",
-    description: "Amazing Victorian House on top of Potrero Hill one of the best places in San Francisco to have a magnificent view of the city. Spacious house with a breathtaking terrace and a gorgeous garden. Wifi, parking, access to Netflix, Amazon, Peacock. Very close to downtown, the Mission, Castro, Ferry building, AT&T Giants, Chase Center, general hospital, UCSF, just 15 minutes from the airport. Great restaurants, wineries, parks and tours at historical Anchor Steam Factory in the neighborhood.",
-    type_of_place: "Entire place",
-    property_type: "House",
-    max_guests: 4,
-    num_bedrooms: 2,
-    num_beds: 2,
-    num_baths: 1,
-    street_address: "750 Rhode Island St",
-    city: "San Francisco",
-    state: "CA",
-    zip_code: "94107",
-    country: "United States",
-    region: "North America",
-    lat: 37.760147,
-    lng: -122.402630,
-    currency: "USD" ,
-    price: 342.00,
-    price_units: "per night" ,
-    additional_guest_charge: 83,
-    other_fees: "129;82;93",
-    other_fees_type: "Cleaning fee;Service fee;Occupancy taxes and fees",
-    host_id: wendy.id,
-    is_posted: true
-)
-
+# l3 continued... moved above l2 for ordering
 l3.photos.attach(
     io: URI.open("#{pathname}l3-1.webp"),
     filename: "l3-1.webp"
@@ -806,9 +823,11 @@ Review.create!(
     communication: 5,
     location: 5,
     check_in: 3,
-    value: 2,
+    value: 4,
     comment: "Such a nice place! Great views from the deck, nice private garden, comfy beds, great location. Small grocery around the corner and great restaurants within a short walk!"
 )
+
+
 
 
 l4  = Listing.create!(
@@ -829,10 +848,10 @@ l4  = Listing.create!(
     lat: 37.7022646,
     lng: -122.4919588,
     currency: "USD" ,
-    price: 211.00,
+    price: 188.00,
     price_units: "per night" ,
     additional_guest_charge: 124,
-    other_fees: "129;82;93",
+    other_fees: "94;72;76",
     other_fees_type: "Cleaning fee;Service fee;Occupancy taxes and fees",
     host_id: lucy.id,
     is_posted: true
@@ -913,10 +932,10 @@ l5 = Listing.create!(
     lat: 37.801928,
     lng: -122.410182,
     currency: "USD" ,
-    price: 59,
+    price: 45,
     price_units: "per night" ,
-    additional_guest_charge: 59,
-    other_fees: "17;19",
+    additional_guest_charge: 45,
+    other_fees: "13;15",
     other_fees_type: "Service fee;Occupancy taxes and fees",
     host_id: alex.id,
     is_posted: true
@@ -1011,6 +1030,757 @@ Review.create!(
 )
 
 
+l6 = Listing.create!(
+    title: "Ocean Beach Getaway - Entire spacious suite",
+    description: "Great Ocean Beach location, nearly 800 square ft (70 square meter) private guest suite. 10 mins walking distance from the beach. 5 mins walking to Golden Gate Park and Dutch Windmill! Very close to the Cliff House, Lands End, and Golden gate bridge. Private suite with a full bathroom, kitchenette, spacious living room and two bedrooms. Street parking is free in the neighborhood. The suite is the ground floor of a two-story house. The hosts live upstairs.",
+    type_of_place: "Entire place",
+    property_type: "Guesthouse",
+    max_guests: 4,
+    num_bedrooms: 2,
+    num_beds: 3,
+    num_baths: 1,
+    street_address: "757 47th Ave",
+    city: "San Francisco",
+    state: "CA",
+    zip_code: "94121",
+    country: "United States",
+    region: "North America",
+    lat: 37.77336120605469,
+    lng: -122.50791931152344,
+    currency: "USD" ,
+    price: 221,
+    price_units: "per night" ,
+    additional_guest_charge: 50,
+    other_fees: "61;32;38",
+    other_fees_type: "Cleaning fee;Service fee;Occupancy taxes and fees",
+    host_id: anthonie.id,
+    is_posted: true
+)
+
+l6.photos.attach(
+    io: URI.open("#{pathname}l6-1.webp"),
+    filename: "l6-1.webp"
+)
+
+l6.photos.attach(
+    io: URI.open("#{pathname}l6-2.webp"),
+    filename: "l6-2.webp"
+)
+
+l6.photos.attach(
+    io: URI.open("#{pathname}l6-3.webp"),
+    filename: "l6-3.webp"
+)
+
+l6.photos.attach(
+    io: URI.open("#{pathname}l6-4.webp"),
+    filename: "l6-4.webp"
+)
+
+l6.photos.attach(
+    io: URI.open("#{pathname}l6-5.webp"),
+    filename: "l6-5.webp"
+)
+
+ListingFeature.create!(
+    listing_id: l6.id,
+    feature_id: kitchen.id
+)
+
+
+ListingFeature.create!(
+    listing_id: l6.id,
+    feature_id: wifi.id
+)
+
+ListingFeature.create!(
+    listing_id: l6.id,
+    feature_id: hair_dryer.id
+)
+
+ListingFeature.create!(
+    listing_id: l6.id,
+    feature_id: bathtub.id
+)
+
+ListingFeature.create!(
+    listing_id: l6.id,
+    feature_id: tv.id
+)
+
+ListingFeature.create!(
+    listing_id: l6.id,
+    feature_id: bathtub.id
+)
+
+
+Review.create!(
+    listing_id: l6.id,
+    reviewer_id: evie.id,
+    cleanliness: 5,
+    accuracy: 5,
+    communication: 5,
+    location: 5,
+    check_in: 5,
+    value: 5,
+    comment: "We had a wonderful stay here -- quiet and comfortable. The place is close to local restaurants, as well as a short walk to the beach."
+)
+
+Review.create!(
+    listing_id: l6.id,
+    reviewer_id: cindy.id,
+    cleanliness: 5,
+    accuracy: 4,
+    communication: 4,
+    location: 4,
+    check_in: 4,
+    value: 5,
+    comment: "Such a cute place, we really enjoyed our stay"
+)
+
+Review.create!(
+    listing_id: l6.id,
+    reviewer_id: alex.id,
+    cleanliness: 4,
+    accuracy: 4,
+    communication: 5,
+    location: 5,
+    check_in: 4,
+    value: 4,
+    comment: "We had a great stay. The proximity to Golden Gate Park, the beach, Lands End, the bridge and the numerous amazing eateries makes the location nearly perfect. The neighborhood is one of the safest in San Francisco and we felt abundantly comfortable walking about with our two younger daughters. Great place!"
+)
+
+
+l7 = Listing.create!(
+    title: "Cindy & Frank's Place",
+    description: "Cindy and Frank’s place is a comfortable, spacious studio with a private entrance, and all the comforts of home. It is located in the renovated basement of a 19th century farmhouse and is fully apportioned with a queen size bed, a large bathroom with a deep tub and access to both front and back yards. It has all the basics, and then some. It is a perfect base of operations for days and nights on the town or around the Bay and a great place to stay in and get things done.",
+    type_of_place: "Entire place",
+    property_type: "Appartment",
+    max_guests: 3,
+    num_bedrooms: 0,
+    num_beds: 1,
+    num_baths: 1,
+    street_address: "3199 Mission St",
+    city: "San Francisco",
+    state: "CA",
+    zip_code: "94107",
+    country: "United States",
+    region: "North America",
+    lat: 37.7456129,
+    lng: -122.4195709,
+    currency: "USD" ,
+    price: 159,
+    price_units: "per night" ,
+    additional_guest_charge: 25,
+    other_fees: "77;62;73",
+    other_fees_type: "Cleaning fee;Service fee;Occupancy taxes and fees",
+    host_id: cindy.id,
+    is_posted: true
+)
+
+l7.photos.attach(
+    io: URI.open("#{pathname}l7-1.webp"),
+    filename: "l7-1.webp"
+)
+
+l7.photos.attach(
+    io: URI.open("#{pathname}l7-2.webp"),
+    filename: "l7-2.webp"
+)
+
+l7.photos.attach(
+    io: URI.open("#{pathname}l7-3.webp"),
+    filename: "l7-3.webp"
+)
+
+l7.photos.attach(
+    io: URI.open("#{pathname}l7-4.webp"),
+    filename: "l7-4.webp"
+)
+
+l7.photos.attach(
+    io: URI.open("#{pathname}l7-5.webp"),
+    filename: "l7-5.webp"
+)
+
+ListingFeature.create!(
+    listing_id: l7.id,
+    feature_id: bathtub.id
+)
+
+ListingFeature.create!(
+    listing_id: l7.id,
+    feature_id: kitchen.id
+)
+
+
+ListingFeature.create!(
+    listing_id: l7.id,
+    feature_id: wifi.id
+)
+
+ListingFeature.create!(
+    listing_id: l7.id,
+    feature_id: tv.id
+)
+
+ListingFeature.create!(
+    listing_id: l7.id,
+    feature_id: hair_dryer.id
+)
+
+ListingFeature.create!(
+    listing_id: l7.id,
+    feature_id: self_checkin.id
+)
+
+Review.create!(
+    listing_id: l7.id,
+    reviewer_id: evie.id,
+    cleanliness: 3,
+    accuracy: 5,
+    communication: 5,
+    location: 5,
+    check_in: 4,
+    value: 4,
+    comment: "Very thoughtful, local, recommendations. The space is charming and well located to get a sense of the Mission/Bengal Heights neighbourhoods in SF. Would highly recommend staying here!"
+)
+
+Review.create!(
+    listing_id: l7.id,
+    reviewer_id: danny.id,
+    cleanliness: 5,
+    accuracy: 4,
+    communication: 5,
+    location: 5,
+    check_in: 5,
+    value: 5,
+    comment: "Very clean, modern, good communication. If we come back to San Fran will definitely stay here again"
+)
+
+Review.create!(
+    listing_id: l7.id,
+    reviewer_id: paulo.id,
+    cleanliness: 4,
+    accuracy: 5,
+    communication: 5,
+    location: 4,
+    check_in: 5,
+    value: 4,
+    comment: "great place with lots to do nearby. Cindy was a wonderful host and quick to respond to any questions we had. would stay again next time in the area!"
+)
+
+
+l12 = Listing.create!(
+    title: "Spacious, Sunlit Limestone 1 br",
+    description: "Enjoy the best of Brownstone Brooklyn in our historic limestone townhouse, built in 1897! This space with private entrance is located on the light-filled third floor of our owner-occupied home and outfitted with vintage and modern furnishings.",
+    type_of_place: "Entire place",
+    property_type: "Appartment",
+    max_guests: 4,
+    num_bedrooms: 1,
+    num_beds: 1,
+    num_baths: 1,
+    street_address: "323 MacDonough St",
+    city: "Brooklyn",
+    state: "CA",
+    zip_code: "11233",
+    country: "United States",
+    region: "North America",
+    lat: 40.68220138549805,
+    lng: -73.93340301513672,
+    currency: "USD" ,
+    price: 211.00,
+    price_units: "per night" ,
+    additional_guest_charge: 25,
+    other_fees: "116;49",
+    other_fees_type: "Cleaning fee;Service fee",
+    host_id: paulo.id,
+    is_posted: true
+)
+
+l12.photos.attach(
+    io: URI.open("#{pathname}l12-1.webp"),
+    filename: "l12-1.webp"
+)
+
+l12.photos.attach(
+    io: URI.open("#{pathname}l12-2.webp"),
+    filename: "l12-2.webp"
+)
+
+l12.photos.attach(
+    io: URI.open("#{pathname}l12-3.webp"),
+    filename: "l12-3.webp"
+)
+
+l12.photos.attach(
+    io: URI.open("#{pathname}l12-4.webp"),
+    filename: "l12-4.webp"
+)
+
+l12.photos.attach(
+    io: URI.open("#{pathname}l12-5.webp"),
+    filename: "l12-5.webp"
+)
+
+ListingFeature.create!(
+    listing_id: l12.id,
+    feature_id: workspace.id
+)
+
+
+ListingFeature.create!(
+    listing_id: l12.id,
+    feature_id: self_checkin.id
+)
+
+ListingFeature.create!(
+    listing_id: l12.id,
+    feature_id: kitchen.id
+)
+
+ListingFeature.create!(
+    listing_id: l12.id,
+    feature_id: wifi.id
+)
+
+ListingFeature.create!(
+    listing_id: l12.id,
+    feature_id: tv.id
+)
+
+ListingFeature.create!(
+    listing_id: l12.id,
+    feature_id: bathtub.id
+)
+
+ListingFeature.create!(
+    listing_id: l12.id,
+    feature_id: washer.id
+)
+
+ListingFeature.create!(
+    listing_id: l12.id,
+    feature_id: air_conditioning.id
+)
+
+
+Review.create!(
+    listing_id: l12.id,
+    reviewer_id: lucy.id,
+    cleanliness: 5,
+    accuracy: 5,
+    communication: 5,
+    location: 5,
+    check_in: 4,
+    value: 4,
+    comment: "This is an absolutely fantastic spot. It was extremely clean and stocked with everything we needed for our stay. The air conditioning kept us cool in the 90+ degree weather while we were there, and the location was great as well. We would definitely stay here again!"
+)
+
+Review.create!(
+    listing_id: l12.id,
+    reviewer_id: anthonie.id,
+    cleanliness: 5,
+    accuracy: 4,
+    communication: 5,
+    location: 5,
+    check_in: 3,
+    value: 2,
+    comment: "Great location and exactly as advertised."
+)
+
+
+l13 = Listing.create!(
+    title: "2,000 Sq Ft Two-Bedroom Loft",
+    description: "As an AirBnB consultant between LA, NYC and The Catskills, I swore I would finally design a home that I keep to myself...buuut looks like I’m succumbing to BnBing it afterall. 2,000 sq ft to yourself with the amenities of a home. Can’t beat that in a hotel in NYC for this price. Do note, however, that this is my home and not a hotel, so only those booked are allowed inside, with Quiet Hours from 10pm-7am. There is a strict $1,000 fine if this is broken. G Train: Classon, 20 mins to Manhattan",
+    type_of_place: "Private room",
+    property_type: "Appartment",
+    max_guests: 4,
+    num_bedrooms: 2,
+    num_beds: 2,
+    num_baths: 1,
+    street_address: "116 N 5th St",
+    city: "Brooklyn",
+    state: "NY",
+    zip_code: "11247",
+    country: "United States",
+    region: "North America",
+    lat: 40.7127281,
+    lng: -74.0060152,
+    currency: "USD" ,
+    price: 417.00,
+    price_units: "per night" ,
+    additional_guest_charge: 122,
+    other_fees: "54",
+    other_fees_type: "Service fee",
+    host_id: abby.id,
+    is_posted: true
+)
+
+l13.photos.attach(
+    io: URI.open("#{pathname}l13-1.webp"),
+    filename: "l13-1.webp"
+)
+
+l13.photos.attach(
+    io: URI.open("#{pathname}l13-2.webp"),
+    filename: "l13-2.webp"
+)
+
+l13.photos.attach(
+    io: URI.open("#{pathname}l13-3.webp"),
+    filename: "l13-3.webp"
+)
+
+l13.photos.attach(
+    io: URI.open("#{pathname}l13-4.webp"),
+    filename: "l13-4.webp"
+)
+
+l13.photos.attach(
+    io: URI.open("#{pathname}l13-5.webp"),
+    filename: "l13-5.webp"
+)
+
+ListingFeature.create!(
+    listing_id: l13.id,
+    feature_id: kitchen.id
+)
+
+
+ListingFeature.create!(
+    listing_id: l13.id,
+    feature_id: wifi.id
+)
+
+ListingFeature.create!(
+    listing_id: l13.id,
+    feature_id: workspace.id
+)
+
+ListingFeature.create!(
+    listing_id: l13.id,
+    feature_id: parking.id
+)
+
+ListingFeature.create!(
+    listing_id: l13.id,
+    feature_id: tv.id
+)
+
+ListingFeature.create!(
+    listing_id: l13.id,
+    feature_id: air_conditioning.id
+)
+
+ListingFeature.create!(
+    listing_id: l13.id,
+    feature_id: hair_dryer.id
+)
+
+ListingFeature.create!(
+    listing_id: l13.id,
+    feature_id: elevator.id
+)
+
+
+Review.create!(
+    listing_id: l13.id,
+    reviewer_id: wendy.id,
+    cleanliness: 5,
+    accuracy: 4,
+    communication: 5,
+    location: 5,
+    check_in: 4,
+    value: 4,
+    comment: "Amazing loft and host! You will not be disappointed!"
+)
+
+Review.create!(
+    listing_id: l13.id,
+    reviewer_id: evie.id,
+    cleanliness: 5,
+    accuracy: 5,
+    communication: 4,
+    location: 3,
+    check_in: 5,
+    value: 5,
+    comment: "The flat is stunning. Huge space, looks even better than the photos. Definitely a recommend when staying in NY."
+)
+
+Review.create!(
+    listing_id: l13.id,
+    reviewer_id: chris.id,
+    cleanliness: 5,
+    accuracy: 5,
+    communication: 4,
+    location: 5,
+    check_in: 4,
+    value: 4,
+    comment: "AMAZING place! Pictures are spot on. Highly recommend! Beds were so comfy! Close to lots of fun things to do in BK."
+)
+
+
+l8 = Listing.create!(
+    title: "Cozy guest studio in Russian Hill",
+    description: "Cozy studio guest suite/apartment, with separate entrance. Bathroom w/shower, large closet (8x3 ft), small kitchenette. Queen bed + pull-out couch (twin bed). Very quiet. Away from street. Private outdoor area. In Polk & Chestnut area, close to great restaurants/cafes, easy walk to Aquatic Park and Ghirardelli Square.",
+    type_of_place: "Entire place",
+    property_type: "Guesthouse",
+    max_guests: 2,
+    num_bedrooms: 1,
+    num_beds: 2,
+    num_baths: 1,
+    street_address: "1183 Chestnut St",
+    city: "San Francisco",
+    state: "CA",
+    zip_code: "94109",
+    country: "United States",
+    region: "North America",
+    lat: 37.80255126953125,
+    lng: -122.42267608642578,
+    currency: "USD" ,
+    price: 199,
+    price_units: "per night" ,
+    additional_guest_charge: 45,
+    other_fees: "75;39",
+    other_fees_type: "Cleaning fee;Service fee",
+    host_id: adam.id,
+    is_posted: true
+)
+
+l8.photos.attach(
+    io: URI.open("#{pathname}l8-1.webp"),
+    filename: "l8-1.webp"
+)
+
+l8.photos.attach(
+    io: URI.open("#{pathname}l8-2.webp"),
+    filename: "l8-2.webp"
+)
+
+l8.photos.attach(
+    io: URI.open("#{pathname}l8-3.webp"),
+    filename: "l8-3.webp"
+)
+
+l8.photos.attach(
+    io: URI.open("#{pathname}l8-4.webp"),
+    filename: "l8-4.webp"
+)
+
+l8.photos.attach(
+    io: URI.open("#{pathname}l8-5.webp"),
+    filename: "l8-5.webp"
+)
+
+ListingFeature.create!(
+    listing_id: l8.id,
+    feature_id: kitchen.id
+)
+
+
+ListingFeature.create!(
+    listing_id: l8.id,
+    feature_id: wifi.id
+)
+
+ListingFeature.create!(
+    listing_id: l8.id,
+    feature_id: workspace.id
+)
+
+ListingFeature.create!(
+    listing_id: l8.id,
+    feature_id: parking.id
+)
+
+ListingFeature.create!(
+    listing_id: l8.id,
+    feature_id: tv.id
+)
+
+ListingFeature.create!(
+    listing_id: l8.id,
+    feature_id: bathtub.id
+)
+
+
+Review.create!(
+    listing_id: l8.id,
+    reviewer_id: lucy.id,
+    cleanliness: 5,
+    accuracy: 5,
+    communication: 5,
+    location: 5,
+    check_in: 5,
+    value: 5,
+    comment: "Comfortable and cozy and in an amazing location to explore the city! Communication was clear and easy. Loved the stay!"
+)
+
+Review.create!(
+    listing_id: l8.id,
+    reviewer_id: evie.id,
+    cleanliness: 5,
+    accuracy: 4,
+    communication: 5,
+    location: 5,
+    check_in: 4,
+    value: 5,
+    comment: "Great stay! Great location too. Very central and easy to commute."
+)
+
+Review.create!(
+    listing_id: l8.id,
+    reviewer_id: danny.id,
+    cleanliness: 4,
+    accuracy: 4,
+    communication: 5,
+    location: 5,
+    check_in: 4,
+    value: 4,
+    comment: "This space was exactly what we were looking for. We had a great time being close to Fisherman’s wharf and many other attractions. It was clean and exactly what we expected from the listing."
+)
+
+l21 = Listing.create!(
+    title: "Amazing Location: 1BDR + Den by Scotiabank Arena",
+    description: "High Floor Cozy 1 BDR + Den, 1 baths condo with unobstructed view of the city/lake, and right next to Scotiabank Arena, ideal stay for business & leisure! WALKING DISTANCE to: CN Tower, Scotiabank Arena, Rogers Center, Toronto Convention Center, Ripley's Aquarium, Royal Alexander Theater, St. Lawrence's Marker, Harbourfront, etc",
+    type_of_place: "Entire place",
+    property_type: "Appartment",
+    max_guests: 2,
+    num_bedrooms: 1,
+    num_beds: 2,
+    num_baths: 1,
+    street_address: "295 Adelaide St W",
+    city: "Toronto",
+    state: "ON",
+    zip_code: "M5V 0L4",
+    country: "Canada",
+    region: "North America",
+    lat: 43.6459356,
+    lng: -79.3995823,
+    currency: "USD" ,
+    price: 167,
+    price_units: "per night" ,
+    additional_guest_charge: 5,
+    other_fees: "58;38",
+    other_fees_type: "Cleaning fee;Service fee",
+    host_id: lucy.id,
+    is_posted: true
+)
+
+l21.photos.attach(
+    io: URI.open("#{pathname}l21-1.webp"),
+    filename: "l21-1.webp"
+)
+
+l21.photos.attach(
+    io: URI.open("#{pathname}l21-2.webp"),
+    filename: "l21-2.webp"
+)
+
+l21.photos.attach(
+    io: URI.open("#{pathname}l21-3.webp"),
+    filename: "l21-3.webp"
+)
+
+l21.photos.attach(
+    io: URI.open("#{pathname}l21-4.webp"),
+    filename: "l21-4.webp"
+)
+
+l21.photos.attach(
+    io: URI.open("#{pathname}l21-5.webp"),
+    filename: "l21-5.webp"
+)
+
+l21.photos.attach(
+    io: URI.open("#{pathname}l21-1.webp"),
+    filename: "l21-1.webp"
+)
+
+l21.photos.attach(
+    io: URI.open("#{pathname}l21-2.webp"),
+    filename: "l21-2.webp"
+)
+
+l21.photos.attach(
+    io: URI.open("#{pathname}l21-3.webp"),
+    filename: "l21-3.webp"
+)
+
+l21.photos.attach(
+    io: URI.open("#{pathname}l21-4.webp"),
+    filename: "l21-4.webp"
+)
+
+l21.photos.attach(
+    io: URI.open("#{pathname}l21-5.webp"),
+    filename: "l21-5.webp"
+)
+
+ListingFeature.create!(
+    listing_id: l21.id,
+    feature_id: kitchen.id
+)
+
+
+ListingFeature.create!(
+    listing_id: l21.id,
+    feature_id: wifi.id
+)
+
+ListingFeature.create!(
+    listing_id: l21.id,
+    feature_id: workspace.id
+)
+
+ListingFeature.create!(
+    listing_id: l21.id,
+    feature_id: pool.id
+)
+
+ListingFeature.create!(
+    listing_id: l21.id,
+    feature_id: sauna.id
+)
+
+ListingFeature.create!(
+    listing_id: l21.id,
+    feature_id: tv.id
+)
+
+ListingFeature.create!(
+    listing_id: l21.id,
+    feature_id: elevator.id
+)
+
+
+Review.create!(
+    listing_id: l21.id,
+    reviewer_id: wendy.id,
+    cleanliness: 5,
+    accuracy: 5,
+    communication: 4,
+    location: 5,
+    check_in: 4,
+    value: 4,
+    comment: "Lucy has a great place with an excellent location. It was a good value and would definitely stay here again."
+)
+
+Review.create!(
+    listing_id: l21.id,
+    reviewer_id: evie.id,
+    cleanliness: 5,
+    accuracy: 4,
+    communication: 5,
+    location: 5,
+    check_in: 4,
+    value: 5,
+    comment: "Perfect location in Toronto. Close to everything you need! The apartment was clean and the beds are very comfy. Would recommend staying here!"
+)
+
+
+
 # temp-l = Listing.create!(
 #     title: "2br Victorian House with Breathtaking views",
 #     description: "Amazing Victorian House on top of Potrero Hill one of the best places in San Francisco to have a magnificent view of the city. Spacious house with a breathtaking terrace and a gorgeous garden. Wifi, parking, access to Netflix, Amazon, Peacock.Very close to downtown, the Mission, Castro, Ferry building, AT&T Giants, Chase Center, general hospital, UCSF, just 15 minutes from the airport. Great restaurants, wineries, parks and tours at historical Anchor Steam Factory in the neighborhood.",
@@ -1022,7 +1792,7 @@ Review.create!(
 #     num_baths: 1,
 #     street_address: "750 Rhode Island St",
 #     city: "San Francisco",
-#     state: "New York",
+#     state: "CA",
 #     zip_code: "94107",
 #     country: "United States",
 #     region: "North America",

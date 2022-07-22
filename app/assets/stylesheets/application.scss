@@ -127,6 +127,12 @@ $default-pink-bright: #FF385C;
   }
 }
 
+.gm-control-active {
+  border-radius: 12px;
+  overflow: hidden !important;
+  // background-color: red !important;
+}
+
 #map-container-show{
   @include center(column);
   width: 100%;
@@ -457,9 +463,9 @@ input, textarea {
   @include button(white, black);
   @include center(row);
   // justify-content: space-between;
-  column-gap: 8px;
+  column-gap: 6;
   margin: 5px;
-  width: 120px;
+  width: auto;
   padding: 6px 12px 6px 12px;
   text-align: center;
   min-width: 70px;
@@ -470,6 +476,10 @@ input, textarea {
   // background: white;
   font-size: 16x;
 
+}
+
+.open-filter-modal-button i{
+  padding-right: 6px;
 }
 
 .search-list-view {
@@ -856,6 +866,8 @@ input, textarea {
 } 
 
 .review-index-container {
+  @include center(column);
+  overflow: auto;
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
   padding-top: 48px;
@@ -966,7 +978,7 @@ input, textarea {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 68px;
+  height: 90px;
   margin-top: 12px;
   padding-left: 12px;
   -webkit-line-clamp: 3;
@@ -1446,6 +1458,16 @@ span.date-range-to {
   column-gap: 34px;
 }
 
+.rdrCalendarWrapper {
+  @media screen and (max-width: 1100px) {
+    // width: 100%
+  }
+}
+
+.rdrMonthsVertical{
+  // aspect-ratio: 1/1;
+}
+
 .rdrMonthAndYearPickers {
   @include center(row);
   justify-content: center;
@@ -1654,6 +1676,8 @@ span.date-range-to {
         width: 100%;
       }
 }
+
+
 
 
 // no longer needed
