@@ -13,14 +13,14 @@
       window.markerURL = "<%= image_url('marker.png')%>"; 
       window.homeMarkerURL = "<%= image_url('home-marker.webp')%>";
       window.homeRadiusMarkerURL = "<%= image_url('home-radius-marker.png')%>"; 
-      window.gmAPIKey = "<%= rails.application.credentials.google[:api_key]%>"; ``
-      window.gmMapID = "<%= rails.application.credentials.google[:api_key]%>";
+      window.gmAPIKey = "<%= Rails.application.credentials.google[:api_key]%>";
+      window.gmMapID = "<%= Rails.application.credentials.google[:api_key]%>";
     </script>
 
 
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{window.gmAPIKey}&map_ids=#{window.gmMapID}&libraries=places" %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&map_ids=#{Rails.application.credentials.google[:api_key]}&libraries=places" %>
 
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}&map_ids=#{ENV['MAP_ID']}&libraries=places" %>
+   
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
