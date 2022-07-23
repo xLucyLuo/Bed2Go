@@ -12,10 +12,10 @@
 # Technologies, Libraries, APIs
 
 ## APIs:
-- **Google Maps** and **Places** API for location search
+- <ins>**Google Maps Places**</ins> API for location search
 
 ## Libraries:
-- **React Date Range** library for displaying available booking dates on calendar
+- <ins>**React Date Range**</ins> library for displaying available booking dates on calendar
 
 ## Front-end:
 - React
