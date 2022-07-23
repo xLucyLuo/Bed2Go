@@ -1,24 +1,34 @@
-# Mybnb
+# <a href="https://mybnb-lucyluo.herokuapp.com/#/"><h1>Mybnb</h1></a> 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**<a href="https://mybnb-lucyluo.herokuapp.com/#/">Mybnb</a>** is a full-stack, single-page applicationn clone of Airbnb that uses React and Redux on the front-end and Ruby on Rails, PostgresSQL and AWS S3 on the back-end.
 
-Things you may want to cover:
+<ins>**Key Features:**</ins>
++ User authentifiication, requiring signin to access certain features
++ Browse listings by location (Google Maps API) and apply search filters (e.g. price)
++ Make reservations on available dates and view all bookings
++ Leave ratings and reviews on listings
++ Compatible with various screne sizes
 
-* Ruby version
+# Technologies, Libraries, APIs
 
-* System dependencies
+##APIs:
+- Google Maps and Places API for location search
 
-* Configuration
+##Libraries:
+- React Date Range library for displaying available booking dates on calendar
 
-* Database creation
+##Front-end:
+- React
+- Redux
+- SCSS
+- Node.js
+- jQuery
 
-* Database initialization
+##Back-end:
+- Ruby on Rails
+- PostgresSQL
+- jBuilder
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##Cloud Hosting Services
+- Heroku
+- AWS S3 (Amazon Simple Storage Services)
