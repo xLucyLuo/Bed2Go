@@ -4,7 +4,7 @@
 
 <ins>**Key Features:**</ins>
 + User authentifiication require users to be logged in to access certain features (e.g. reservations and reviews)
-+ Browse listings by location (Google Maps API) and apply search filters (e.g. price)
++ Browse listings by various locations (Google Maps API) and apply search filters (e.g. price)
 + Make reservations on available dates and view all bookings
 + Leave ratings and reviews on listings
 + Compatible with various screne sizes
