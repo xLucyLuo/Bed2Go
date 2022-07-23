@@ -1,6 +1,6 @@
 # <a href="https://mybnb-lucyluo.herokuapp.com/#/"><h1>Mybnb</h1></a> 
 
-**<a href="https://mybnb-lucyluo.herokuapp.com/#/">Mybnb</a>** is a full-stack, single-page applicationn clone of Airbnb that uses React and Redux on the front-end and Ruby on Rails, PostgresSQL and AWS S3 on the back-end.
+**<a href="https://mybnb-lucyluo.herokuapp.com/#/">Mybnb</a>** is a full-stack, single-page application clone of Airbnb that uses React and Redux on the front-end and Ruby on Rails, PostgresSQL and AWS S3 on the back-end.
 
 <ins>**Key Features:**</ins>
 + User authentifiication, requiring signin to access certain features
