@@ -3,7 +3,7 @@
 **<a href="https://mybnb-lucyluo.herokuapp.com/#/">Mybnb</a>** is a full-stack, single-page application clone of Airbnb that uses React and Redux on the front-end and Ruby on Rails, PostgresSQL and AWS S3 on the back-end.
 
 <ins>**Key Features:**</ins>
-+ User authentifiication, requiring signin to access certain features
++ User authentifiication require users to be logged in to access certain features (e.g. reservations and reviews)
 + Browse listings by location (Google Maps API) and apply search filters (e.g. price)
 + Make reservations on available dates and view all bookings
 + Leave ratings and reviews on listings
