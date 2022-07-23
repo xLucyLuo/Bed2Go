@@ -11,24 +11,24 @@
 
 # Technologies, Libraries, APIs
 
-##APIs:
-- Google Maps and Places API for location search
+## APIs:
+- **Google Maps** and **Places** API for location search
 
-##Libraries:
-- React Date Range library for displaying available booking dates on calendar
+## Libraries:
+- **React Date Range** library for displaying available booking dates on calendar
 
-##Front-end:
+## Front-end:
 - React
 - Redux
 - SCSS
 - Node.js
 - jQuery
 
-##Back-end:
+## Back-end:
 - Ruby on Rails
 - PostgresSQL
 - jBuilder
 
-##Cloud Hosting Services
+## Cloud Hosting Services
 - Heroku
 - AWS S3 (Amazon Simple Storage Services)
