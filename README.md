@@ -12,7 +12,7 @@
 # Technologies, Libraries, APIs
 
 ## APIs:
-- <ins>**Google Maps and Places**</ins> API for location search
+- <ins>**Google Maps Platform**</ins> Maps and Places API for dynamic maps and location search
 
 ## Libraries:
 - <ins>**React Date Range**</ins> library for displaying available booking dates on calendar
