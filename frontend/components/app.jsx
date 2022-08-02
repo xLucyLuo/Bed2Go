@@ -49,7 +49,28 @@ function App (props) {
       
       </Switch>
     {/* </div> */}
+
+    <footer className={`main-footer`}>
+        <div className="main-footer-content">
+          <p className="footer-subheading">Contact: </p>
+          <a className="social-link" href="https://github.com/xLucyLuo" target="_blank">
+            <i class="fab fa-github"></i>
+            <p className="social-link-label"> Github</p>
+          </a>
+          <a className="social-link" href="https://www.linkedin.com/in/lucyluo08/" target="_blank">
+            <i class="fab fa-linkedin"></i>
+            <p className="social-link-label"> LinkedIn</p>
+          </a>
+          <a className="social-link" href="mailto:lucyluo08@gmail.com" target="_blank">
+            <i class="fas fa-envelope"></i>
+            <p className="social-link-label"> Email</p>
+          </a>
+
+        </div>
+    </footer>
   </div>
+
+  
   )
 };
 
