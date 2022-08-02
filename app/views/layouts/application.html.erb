@@ -17,6 +17,7 @@
       window.gmMapID = "<%= Rails.application.credentials.google[:map_id]%>";
     </script>
 
+    <link rel="icon" href="<%= image_url('logo.png')%>">
 
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}&map_ids=#{Rails.application.credentials.google[:map_id]}&libraries=places" %>
 

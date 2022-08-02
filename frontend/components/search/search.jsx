@@ -6,7 +6,7 @@ import ListingMap from './../listings/listing_map';
 
 class Search extends React.Component{
     render() {
-        const { listings, updateFilter, openModal } = this.props
+        const { listings, updateFilter, bounds, openModal } = this.props
         return (
             <div className="search-component">
                 {/* <h1>Search Page</h1> */}
@@ -22,7 +22,7 @@ class Search extends React.Component{
                     <ListingIndex listings={listings}/>
                 </div>
                 <div className="search-map-view">
-                    <ListingMap listings={listings} updateFilter={updateFilter} />
+                    <ListingMap listings={listings} updateFilter={updateFilter} bounds={bounds}/>
                 </div>
             </div>
     

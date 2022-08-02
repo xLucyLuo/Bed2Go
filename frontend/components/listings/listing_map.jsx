@@ -11,7 +11,7 @@ const MAP_ID = '2e84cab39be786ee'
 const mapOptionsByLocation = {
     "San Francisco": {
         center: { lat: 37.7758, lng: -122.435 },
-        zoom: 12,
+        zoom: 11,
         mapId: MAP_ID,
     },
 };
@@ -26,9 +26,22 @@ class ListingMap extends React.Component{
         //can then user bounds.extend(marker.position) after adding markers;
         //map.fitBounds(bounds);
 
-        this.mapOptions = DEFAULT_MAP_OPTIONS;
+        // console.log(props.bounds)
+        // if(!props.bounds || Object.keys(props.bounds).length ===0){
+            this.mapOptions = DEFAULT_MAP_OPTIONS;
+        // }else{
+        //     // console.log("BOUNDS???",props.bounds.lat)
+        //     this.mapOptions = {
+        //         center: { lat: props.bounds.lat, lng: props.bounds.lng },
+        //         zoom: 12,
+        //         // gestureHandling: "none",
+        //         // disableDefaultUI: true,
+        //         mapId: MAP_ID,
+        //     }
+        // }
 
         this.preventUpdateFilter = false;
+        // this.handleMarkerClick = this.handleMarkerClick.bind(this);
     }
 
     componentDidMount() {
@@ -42,7 +55,7 @@ class ListingMap extends React.Component{
         let addRadius = false;
         let addLabel = true;
         // wrap 'map' ref node in a Google Map
-        const { listingId, listings } = this.props
+        const { listingId, listings, bounds } = this.props
 
         if (listings[0] && 
             listings[0].id === listingId
@@ -53,7 +66,7 @@ class ListingMap extends React.Component{
                 this.mapOptions = {
                     center: { lat: lat, lng: lng },
                     zoom: SINGLE_MARKER_ZOOM,
-                    gestureHandling: "none",
+                    // gestureHandling: "none",
                     // disableDefaultUI: true,
                     mapId: MAP_ID,
                 }
@@ -68,6 +81,21 @@ class ListingMap extends React.Component{
                 addRadius = true;
                 addLabel = false;
                 // this.handleMarkerClick = () =>{}
+        }else if(bounds && Object.keys(bounds).length !==0){
+            console.log("BOUNDS???",bounds)
+            this.mapOptions = {
+                center: { 
+                    lat: (bounds.northEast.lat + bounds.southWest.lat)/2, 
+                    lng: (bounds.northEast.lng + bounds.southWest.lng)/2
+                },
+                zoom: 11,
+                // gestureHandling: "none",
+                // disableDefaultUI: true,
+                mapId: MAP_ID,
+            }
+        }else{
+            console.log("NO BOUNDS???")
+            this.mapOptions = DEFAULT_MAP_OPTIONS;
         }
         
         this.mapOptions.streetViewControl = false;
@@ -76,8 +104,10 @@ class ListingMap extends React.Component{
         this.mapOptions.streetViewControl = false;
         this.mapOptions.clickableIcons = false
         this.mapOptions.zoomControlOptions = {position: google.maps.ControlPosition.RIGHT_TOP}
+        // this.handleMarkerClick = () => {}
 
         this.map = new google.maps.Map(this.refs.map, this.mapOptions);
+
         this.setMapListeners();
         this.MarkerManager = new MarkerManager(this.map, icon, addRadius, addLabel, markerClickable, this.handleMarkerClick.bind(this));
         this.MarkerManager.updateMarkers(listings);
@@ -90,22 +120,27 @@ class ListingMap extends React.Component{
     }
 
     setMapListeners = () => {
-        this.map.addListener("idle", (e) => {
-            const { north, south, east, west } = this.map.getBounds().toJSON();
-
-            const bounds = {
-              northEast: { lat: north, lng: east },
-              southWest: { lat: south, lng: west },
-            };
-            // debugger
-            // console.log("idle")
-            // console.log(bounds)
-            if (!this.preventUpdateFilter){
-                this.preventUpdateFilter = true;
-                this.props.updateFilter("bounds", bounds)
-                .then(()=> this.preventUpdateFilter = false);
+        const { listingId, listings } = this.props
+        if (!listings[0] ||
+            listings[0].id !== listingId
+            || listings.length !== 1){
+                this.map.addListener("idle", (e) => {
+                    const { north, south, east, west } = this.map.getBounds().toJSON();
+        
+                    const bounds = {
+                      northEast: { lat: north, lng: east },
+                      southWest: { lat: south, lng: west },
+                    };
+                    // debugger
+                    // console.log("idle")
+                    // console.log(bounds)
+                    if (!this.preventUpdateFilter){
+                        this.preventUpdateFilter = true;
+                        this.props.updateFilter("bounds", bounds)
+                        .then(()=> this.preventUpdateFilter = false);
+                    }
+                });
             }
-        });
 
         this.input = document.getElementById("google-maps-search");
         this.autocomplete = new google.maps.places.Autocomplete(this.input,{types: ['(regions)']})
@@ -132,9 +167,12 @@ class ListingMap extends React.Component{
 
                 //   console.log("autocomplete")
                 //   console.log(bounds)
+                console.log("history", that.props)
 
-                  that.props.updateFilter("bounds", bounds)
-                    // .then(this.that.history.push("/"))
+                that.props.updateFilter("bounds", bounds)
+                .then(that.props.history.push("/"))
+                // .then(that.map.setZoom(11))
+                // .then(that.map.fitBounds(that.place.geometry.viewport))
  
             } else {
                 // that.map.setCenter(place.geometry.location);

@@ -18,7 +18,9 @@ const ReservationIndexItem = (props) => {
 
     // debugger
     return (
-        <div className="reservation-item-container" onClick={() => props.history.push(`/listings/${id}`)}>
+        <div className="reservation-item-container" onClick={() => {
+            props.history.push(`/listings/${id}`)
+        }}>
             <div className="reservation-item-text">
                 <div className="reservation-item-title">
                     <h2>{`${city}`}</h2>

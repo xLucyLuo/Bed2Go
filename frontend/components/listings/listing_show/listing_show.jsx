@@ -9,11 +9,23 @@ import * as miscUtil from './../../../util/misc_util'
 
 class ListingShow extends React.Component {
     componentDidMount() {
-        const { listingId, updateFilter } = this.props;
-        updateFilter("listingId", listingId);
-        // fetchReviews("listingId", listingId)
+        const { listingId, updateFilter, fetchListings } = this.props;
+        // console.log("mount", this.props)
+        // updateFilter("listingId", listingId);
+        fetchListings({"listingId": listingId})
         // debugger
     };
+
+    componentDidUpdate(prevProps){
+        // console.log(prevProps)
+        // console.log(this.props)
+        if (prevProps.location.pathname!== this.props.location.pathname){
+            const { listingId, updateFilter, fetchListings } = this.props;
+            // updateFilter("listingId", listingId);
+            fetchListings({"listingId": listingId})
+            // debugger
+        }
+    }
 
     componentWillUnmount() {
         const { clearFilter } = this.props;
@@ -25,9 +37,11 @@ class ListingShow extends React.Component {
         
         const { listings, listing, listingId, reviews, updateFilter, reservations } = this.props;
 
-        if (!listing || !listings || Object.keys(listings).length !== 1 || Object.keys(listings)[0] !== listingId.toString()) {return null;}
+        if (!listing || listing.id !== listingId || !listing.features) {return null;}
         
         // debugger
+        // console.log(listing)
+        // console.log(this.props)
 
         const { 
             title, 
@@ -129,6 +143,7 @@ class ListingShow extends React.Component {
                             <h2>What this place offers</h2>
                             <ul className="features-list">
                                 {Object.values(features).map((feature, idx) => {
+                                    // console.log(feature)
                                     return(
                                         <li className="features-list-item" key={idx}>{feature.name}</li>
                                     )

@@ -10,6 +10,7 @@ const mapStateToProps = (state, ownProps) => ({
     // maxPrice: ownProps.match.props.maxPrice,
     // minPrice: state.ui.filters.minPrice,
     // maxPrice: state.ui.filters.maxPrice,
+    bounds: state.ui.filters.bounds
 });
 
 const mapDispatchToProps = (dispatch) => ({

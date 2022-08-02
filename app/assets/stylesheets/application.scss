@@ -153,9 +153,9 @@ body {
   font-size: 16px;
   // padding: 0 40px 40px 40px;
 
-  @media screen and (max-width: 700px) {
-    padding: 0 24px 40px 24px;
-  }
+  // @media screen and (max-width: 700px) {
+  //   padding: 0 24px 40px 24px;
+  // }
 }
 
 h1 {
@@ -288,12 +288,19 @@ input, textarea {
   &:hover {
     -webkit-filter: brightness(145%);
     transition-duration: 300ms;
+    font-weight: bold;
+    font-size: 26px;
   }
 }
 
 .social-link-label {
   font-size: 14px;
   padding: 6px;
+  &:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    // font-size: 15px;
+  }
 }
 
 
@@ -666,8 +673,12 @@ input, textarea {
   @include center(column);
   row-gap: 24px;
   max-width: 1120px;
-  padding-top: 24px;
- 
+  // padding-top: 24px;
+  padding: 0 40px 40px 40px;
+
+  @media screen and (max-width: 700px) {
+    padding: 0 24px 40px 24px;
+  }
 }
 
 .listing-show-container {
@@ -1087,7 +1098,22 @@ input, textarea {
   
 }
 
-.review-form-container, .review-form {
+.review-form-container{
+  @include center(column);
+  // padding: 16px;
+  row-gap: 16px;
+  max-width: 700px;
+  text-align: left;
+  border-radius: 12px;
+  // border: 1px solid lightgray;
+  padding: 0 40px 40px 40px;
+
+  @media screen and (max-width: 700px) {
+    padding: 0 24px 40px 24px;
+  }
+}
+
+.review-form {
   @include center(column);
   padding: 16px;
   row-gap: 16px;
@@ -1128,7 +1154,7 @@ input, textarea {
 
 span.star{
   font-size: 26px;
-  margin-left: 12px;
+  margin-right: 12px;
 }
 
 .review-category li {
@@ -1150,6 +1176,7 @@ span.star{
 
 #comment-input {
   height: 150px;
+  margin-left: 0;
 }
 
 .buttons-container {
@@ -1362,8 +1389,13 @@ span.reservation-price-units {
 }
 
 
-.reservation-index {
+.reservation-index-container {
   max-width: 925px;
+  padding: 0 40px 40px 40px;
+
+  @media screen and (max-width: 700px) {
+    padding: 0 24px 40px 24px;
+  }
 }
 .reservation-index-title {
   padding: 36px 0 24px 0;

@@ -14,7 +14,7 @@ class ReservationIndex extends React.Component {
         if (!reservations) {return null;}
 
         return (
-            <div className="reservation-index" >
+            <div className="reservation-index-container" >
                 <h1 className="reservation-index-title">Trips</h1>
                 <h2>Upcoming Reservations</h2>
                 <div  className="reservation-index-items-container">
