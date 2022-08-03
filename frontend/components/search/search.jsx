@@ -1,10 +1,15 @@
 import React from 'react';
+import { updateFilter } from '../../actions/filter_actions';
 import ListingIndex from './../listings/listing_index';
 import ListingMap from './../listings/listing_map';
 
 
 
 class Search extends React.Component{
+    // componentDidMount() {
+    //     this.props.updateFilter("bounds", this.props.bounds)
+    // }
+
     render() {
         const { listings, updateFilter, bounds, openModal } = this.props
         return (

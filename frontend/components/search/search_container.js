@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import Search from './search';
 import { updateFilter } from './../../actions/filter_actions';
+import { fetchListings } from './../../actions/listing_actions';
 import { clearReviews } from './../../actions/review_actions';
-import { openModal } from '../../actions/modal_actions';
+import { openModal } from './../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => ({
     listings: Object.values(state.entities.listings),

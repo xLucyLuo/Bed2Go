@@ -122,26 +122,26 @@ class ListingMap extends React.Component{
 
     setMapListeners = () => {
         const { listingId, listings } = this.props
-        // if (!listings[0] ||
-        //     listings[0].id !== listingId
-        //     || listings.length !== 1){
-        //         this.map.addListener("idle", (e) => {
-        //             const { north, south, east, west } = this.map.getBounds().toJSON();
+        if (!listings[0] ||
+            listings[0].id !== listingId
+            || listings.length !== 1){
+                this.map.addListener("idle", (e) => {
+                    const { north, south, east, west } = this.map.getBounds().toJSON();
         
-        //             const bounds = {
-        //               northEast: { lat: north, lng: east },
-        //               southWest: { lat: south, lng: west },
-        //             };
-        //             // debugger
-        //             // console.log("idle")
-        //             // console.log(bounds)
-        //             if (!this.preventUpdateFilter){
-        //                 this.preventUpdateFilter = true;
-        //                 this.props.updateFilter("bounds", bounds)
-        //                 .then(()=> this.preventUpdateFilter = false);
-        //             }
-        //         });
-        //     }
+                    const bounds = {
+                      northEast: { lat: north, lng: east },
+                      southWest: { lat: south, lng: west },
+                    };
+                    // debugger
+                    // console.log("idle")
+                    // console.log(bounds)
+                    if (!this.preventUpdateFilter){
+                        this.preventUpdateFilter = true;
+                        this.props.updateFilter("bounds", bounds)
+                        .then(()=> this.preventUpdateFilter = false);
+                    }
+                });
+            }
 
         this.input = document.getElementById("google-maps-search");
         this.autocomplete = new google.maps.places.Autocomplete(this.input,{types: ['(regions)']})
