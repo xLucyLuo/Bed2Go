@@ -674,10 +674,10 @@ input, textarea {
   row-gap: 24px;
   max-width: 1120px;
   // padding-top: 24px;
-  padding: 0 40px 40px 40px;
+  padding: 24px 40px 40px 40px;
 
   @media screen and (max-width: 700px) {
-    padding: 0 24px 40px 24px;
+    padding: 24px 24px 40px 24px;
   }
 }
 

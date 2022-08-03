@@ -83,6 +83,7 @@ class ListingMap extends React.Component{
                 // this.handleMarkerClick = () =>{}
         }else if(bounds && Object.keys(bounds).length !==0){
             console.log("BOUNDS???",bounds)
+            // debugger
             this.mapOptions = {
                 center: { 
                     lat: (bounds.northEast.lat + bounds.southWest.lat)/2, 
@@ -121,26 +122,26 @@ class ListingMap extends React.Component{
 
     setMapListeners = () => {
         const { listingId, listings } = this.props
-        if (!listings[0] ||
-            listings[0].id !== listingId
-            || listings.length !== 1){
-                this.map.addListener("idle", (e) => {
-                    const { north, south, east, west } = this.map.getBounds().toJSON();
+        // if (!listings[0] ||
+        //     listings[0].id !== listingId
+        //     || listings.length !== 1){
+        //         this.map.addListener("idle", (e) => {
+        //             const { north, south, east, west } = this.map.getBounds().toJSON();
         
-                    const bounds = {
-                      northEast: { lat: north, lng: east },
-                      southWest: { lat: south, lng: west },
-                    };
-                    // debugger
-                    // console.log("idle")
-                    // console.log(bounds)
-                    if (!this.preventUpdateFilter){
-                        this.preventUpdateFilter = true;
-                        this.props.updateFilter("bounds", bounds)
-                        .then(()=> this.preventUpdateFilter = false);
-                    }
-                });
-            }
+        //             const bounds = {
+        //               northEast: { lat: north, lng: east },
+        //               southWest: { lat: south, lng: west },
+        //             };
+        //             // debugger
+        //             // console.log("idle")
+        //             // console.log(bounds)
+        //             if (!this.preventUpdateFilter){
+        //                 this.preventUpdateFilter = true;
+        //                 this.props.updateFilter("bounds", bounds)
+        //                 .then(()=> this.preventUpdateFilter = false);
+        //             }
+        //         });
+        //     }
 
         this.input = document.getElementById("google-maps-search");
         this.autocomplete = new google.maps.places.Autocomplete(this.input,{types: ['(regions)']})
@@ -150,16 +151,30 @@ class ListingMap extends React.Component{
         this.autocomplete.addListener('place_changed', () => {
             // debugger
             that.place = that.autocomplete.getPlace();
+            // console.log(that.place.geometry.viewport)
+            // console.log(that.place.geometry.viewport.toJSON())
+            // console.log(that.place.geometry.viewport)
+            // console.log(that.place.geometry.viewport)
+            // console.log(that.place.geometry.viewport)
+            // console.log(that.place.geometry.location)
+            // console.log(that.place.geometry.location.lat())
+            // console.log(that.place.geometry.location.lng())
             // debugger
             if (that.place.geometry && that.place.geometry.viewport) {
-                that.map.fitBounds(that.place.geometry.viewport)
+                // that.map.fitBounds(that.place.geometry.viewport)
                 
                 
-                console.log(that.map.getBounds().toJSON())
-                console.log(that.place.geometry)
+                // console.log(that.map.getBounds().toJSON())
+                // console.log(that.place.geometry)
                 
                 
-                const { north, south, east, west } = that.map.getBounds().toJSON();
+                // const { north, south, east, west } = that.map.getBounds().toJSON();
+                // const bounds = {
+                //     northEast: { lat: north, lng: east },
+                //     southWest: { lat: south, lng: west },
+                //   };
+
+                const { north, south, east, west } = that.place.geometry.viewport.toJSON();
                 const bounds = {
                     northEast: { lat: north, lng: east },
                     southWest: { lat: south, lng: west },
