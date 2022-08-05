@@ -11,8 +11,8 @@ class ListingShow extends React.Component {
     componentDidMount() {
         const { listingId, updateFilter, fetchListings } = this.props;
         // console.log("mount", this.props)
-        // updateFilter("listingId", listingId);
-        fetchListings({"listingId": listingId})
+        updateFilter("listingId", listingId);
+        // fetchListings({"listingId": listingId})
         // debugger
     };
 
@@ -21,8 +21,8 @@ class ListingShow extends React.Component {
         // console.log(this.props)
         if (prevProps.location.pathname!== this.props.location.pathname){
             const { listingId, updateFilter, fetchListings } = this.props;
-            // updateFilter("listingId", listingId);
-            fetchListings({"listingId": listingId})
+            updateFilter("listingId", listingId);
+            // fetchListings({"listingId": listingId})
             // debugger
         }
     }

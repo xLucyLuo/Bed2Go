@@ -43,7 +43,7 @@ export const clearReviewErrors = () => ({
 
 
 export const fetchReviews = (filters) => (dispatch) => {
-    debugger
+    // debugger
     return (
         reviewAPIUtil.getReviews(filters)
             .then((payload) => dispatch(receiveReviews(payload.reviews)))

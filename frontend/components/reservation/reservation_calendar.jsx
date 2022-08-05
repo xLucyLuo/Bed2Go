@@ -29,7 +29,7 @@ class ReservationCalendar extends React.Component {
       key: 'selection',
     }
 
-    console.log(this.props.disabledDates)
+    // console.log(this.props.disabledDates)
 
     return (
       // <div className="reservation-calendar-range">

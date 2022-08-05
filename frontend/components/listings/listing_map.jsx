@@ -11,7 +11,7 @@ const MAP_ID = '2e84cab39be786ee'
 const mapOptionsByLocation = {
     "San Francisco": {
         center: { lat: 37.7758, lng: -122.435 },
-        zoom: 11,
+        zoom: 12,
         mapId: MAP_ID,
     },
 };
@@ -22,23 +22,8 @@ class ListingMap extends React.Component{
 
     constructor(props){
         super(props);
-        // this.bounds = new google.maps.LatLngBounds();
-        //can then user bounds.extend(marker.position) after adding markers;
-        //map.fitBounds(bounds);
 
-        // console.log(props.bounds)
-        // if(!props.bounds || Object.keys(props.bounds).length ===0){
-            this.mapOptions = DEFAULT_MAP_OPTIONS;
-        // }else{
-        //     // console.log("BOUNDS???",props.bounds.lat)
-        //     this.mapOptions = {
-        //         center: { lat: props.bounds.lat, lng: props.bounds.lng },
-        //         zoom: 12,
-        //         // gestureHandling: "none",
-        //         // disableDefaultUI: true,
-        //         mapId: MAP_ID,
-        //     }
-        // }
+        this.mapOptions = DEFAULT_MAP_OPTIONS;
 
         this.preventUpdateFilter = false;
         // this.handleMarkerClick = this.handleMarkerClick.bind(this);
@@ -82,7 +67,7 @@ class ListingMap extends React.Component{
                 addLabel = false;
                 // this.handleMarkerClick = () =>{}
         }else if(bounds && Object.keys(bounds).length !==0){
-            console.log("BOUNDS???",bounds)
+            // console.log("BOUNDS???",bounds)
             // debugger
             this.mapOptions = {
                 center: { 
@@ -95,7 +80,7 @@ class ListingMap extends React.Component{
                 mapId: MAP_ID,
             }
         }else{
-            console.log("NO BOUNDS???")
+            // console.log("NO BOUNDS???")
             this.mapOptions = DEFAULT_MAP_OPTIONS;
         }
         
@@ -161,7 +146,8 @@ class ListingMap extends React.Component{
             // console.log(that.place.geometry.location.lng())
             // debugger
             if (that.place.geometry && that.place.geometry.viewport) {
-                // that.map.fitBounds(that.place.geometry.viewport)
+
+                that.map.fitBounds(that.place.geometry.viewport)
                 
                 
                 // console.log(that.map.getBounds().toJSON())
@@ -182,7 +168,7 @@ class ListingMap extends React.Component{
 
                 //   console.log("autocomplete")
                 //   console.log(bounds)
-                console.log("history", that.props)
+                // console.log("history", that.props)
 
                 that.props.updateFilter("bounds", bounds)
                 .then(that.props.history.push("/"))

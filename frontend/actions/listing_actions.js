@@ -27,8 +27,8 @@ export const removeListing = (listing) => ({
 export const fetchListings = (filters) => (dispatch) => (
     listingAPIUtil.getListings(filters)
         .then((payload) => {
-            console.log(payload);
-            console.log(filters);
+            // console.log(payload);
+            // console.log(filters);
             dispatch(receiveListings(payload.listings));
             dispatch(receiveReviews(payload.reviews));
             dispatch(receiveReservations(payload.reservations));
