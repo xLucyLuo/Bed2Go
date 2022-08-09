@@ -20,7 +20,7 @@ class ReservationForm extends React.Component {
 
         if(this.overlappingDates.length > 0){
             document.getElementById('nav-listing-availability').scrollIntoView()
-            alert(`Date(s) unavailable! \n${this.overlappingDates.join("\n")}`)
+            // alert(`Date(s) unavailable! \n${this.overlappingDates.join("\n")}`)
             return
         }
 

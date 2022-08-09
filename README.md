@@ -18,13 +18,15 @@
 - <ins>**React Date Range**</ins> library for displaying available booking dates on calendar
 
 ## Front-end:
+- Javascript
 - React
 - Redux
-- SCSS
 - Node.js
 - jQuery
+- SCSS
 
 ## Back-end:
+- Ruby
 - Ruby on Rails
 - PostgresSQL
 - jBuilder
@@ -32,3 +34,13 @@
 ## Cloud Hosting Services
 - Heroku
 - AWS S3 (Amazon Simple Storage Services)
+
+## Other
+- Webpack
+
+
+# Preview
+
+## Search Listings by Location:
+![](./app/assets/images/location-search-clip.gif)
+
