@@ -47,7 +47,7 @@
 ### Responsive Web Design:
 
 <p float="left">
-  <img src="https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-main.gif" width="30%" />
-  <img src="https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-show.gif" width="30%" /> 
-  <img src="https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-trip.gif" width="30%" />
+  <img src="https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-main.gif" width="30%" height="122px"/>
+  <img src="https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-show.gif" width="30%" height="122px"/> 
+  <img src="https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-trip.gif" width="30%" height="122px"/>
 </p>
