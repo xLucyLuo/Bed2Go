@@ -117,9 +117,6 @@ class ListingMap extends React.Component{
                       northEast: { lat: north, lng: east },
                       southWest: { lat: south, lng: west },
                     };
-                    // debugger
-                    // console.log("idle")
-                    // console.log(bounds)
                     if (!this.preventUpdateFilter){
                         this.preventUpdateFilter = true;
                         this.props.updateFilter("bounds", bounds)
