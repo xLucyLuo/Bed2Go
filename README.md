@@ -51,7 +51,3 @@
   <img src="https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-show.gif" width="30%" /> 
   <img src="https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-trip.gif" width="30%" />
 </p>
-
-<!-- ![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-main.gif)
-![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-show.gif)
-![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-trip.gif) -->
