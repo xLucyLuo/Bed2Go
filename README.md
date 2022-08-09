@@ -66,7 +66,7 @@
 
 ### Code Snippets:
 
-### Rails Controller Index Query
+### Rails Filter Query
 ```ruby
     def index
         bounds = params[:bounds]
@@ -156,7 +156,7 @@ this.map.addListener("idle", (e) => {
 });
 ```
 
-### Reservation Calendar - Unavailable Days Array Helper Method
+### Reservation Calendar Unavailable Days Array Helper Method
 ```javascript
 export const getDaysArray = function(start, end) {
     
