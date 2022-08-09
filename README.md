@@ -42,7 +42,9 @@
 ## Preview
 
 ### Search Listings by Location:
-![](./app/assets/images/location-search-clip.gif)
+![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/location-search-clip.gif)
 
 ### Responsive Web Design:
-![](./app/assets/images/screen-sizing-main.gif)
+![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-main.gif)
+![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-show.gif)
+![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-trip.gif)
