@@ -9,15 +9,15 @@
 + Leave ratings and reviews on listings
 + Compatible with various screne sizes
 
-# Technologies, Libraries, APIs
+## Technologies, Libraries, APIs
 
-## APIs:
+### APIs:
 - <ins>**Google Maps Platform**</ins> Maps and Places API for dynamic maps and location search
 
-## Libraries:
+### Libraries:
 - <ins>**React Date Range**</ins> library for displaying available booking dates on calendar
 
-## Front-end:
+### Front-end:
 - Javascript
 - React
 - Redux
@@ -25,22 +25,22 @@
 - jQuery
 - SCSS
 
-## Back-end:
+### Back-end:
 - Ruby
 - Ruby on Rails
 - PostgresSQL
 - jBuilder
 
-## Cloud Hosting Services
+### Cloud Hosting Services
 - Heroku
 - AWS S3 (Amazon Simple Storage Services)
 
-## Other
+### Other
 - Webpack
 
 
-# Preview
+## Preview
 
-## Search Listings by Location:
+### Search Listings by Location:
 ![](./app/assets/images/location-search-clip.gif)
 
