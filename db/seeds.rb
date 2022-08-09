@@ -219,7 +219,7 @@ l11= Listing.create!(
 # Review 1
 r1 = Review.create!(
     listing_id: l1.id,
-    reviewer_id: lucy.id,
+    reviewer_id: cindy.id,
     cleanliness: 5,
     accuracy: 5,
     communication: 4,
