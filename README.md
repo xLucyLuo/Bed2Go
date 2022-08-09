@@ -44,3 +44,5 @@
 ### Search Listings by Location:
 ![](./app/assets/images/location-search-clip.gif)
 
+### Responsive Web Design:
+![](./app/assets/images/screen-sizing-main.gif)
