@@ -44,6 +44,16 @@
 ### Search Listings by Location:
 ![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/location-search-clip.gif)
 
+### Google Maps:
+![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/google-maps.gif)
+
+### Make Reservations:
+![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/reservation.gif)
+
+### Write Reviews:
+![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/review.gif)
+
+
 ### Responsive Web Design:
 
 <p float="left">
