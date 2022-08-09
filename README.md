@@ -45,6 +45,13 @@
 ![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/location-search-clip.gif)
 
 ### Responsive Web Design:
-![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-main.gif)
+
+<p float="left">
+  <img src="https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-main.gif" width="33%" />
+  <img src="https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-show.gif" width="33%" /> 
+  <img src="https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-trip.gif" width="33%" />
+</p>
+
+<!-- ![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-main.gif)
 ![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-show.gif)
-![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-trip.gif)
+![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-trip.gif) -->
