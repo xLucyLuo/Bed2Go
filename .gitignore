@@ -35,3 +35,6 @@ public/assets/*
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore large files
+app/assets/images/screenshots/original
