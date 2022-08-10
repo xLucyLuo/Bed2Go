@@ -1,11 +1,12 @@
 import React from 'react';
+import Nouislider from "nouislider-react";
 
 class FilterForm extends React.Component {
     constructor(props) {
         super(props);
         this.state= {
-            minPrice: this.props.minPrice ,
-            maxPrice: this.props.maxPrice,
+            minPrice: this.props.minPrice || 0,
+            maxPrice: this.props.maxPrice || 1499,
             numGuests: this.props.numGuests || 1,
             startDate: this.props.startDate || new Date().toLocaleDateString("en-ca"),
             endDate: this.props.endDate || new Date(new Date().getTime() + ((24+9) * 60 * 60 * 1000)).toLocaleDateString("en-ca"),
@@ -39,7 +40,13 @@ class FilterForm extends React.Component {
         this.loading = true;
     }
 
-    update(field) {
+    update(field, data) {
+        if (field === "priceRange") {
+            return (data) => this.setState({
+                minPrice: parseInt(data[0]),
+                maxPrice: parseInt(data[1])
+            });
+        }
         return (e) => this.setState({[field]: e.currentTarget.value});
     };
 
@@ -51,8 +58,6 @@ class FilterForm extends React.Component {
 
     render() {
 
-        
-
         return (
             <div className="filter-form">
                 <header className="filter-form-header">
@@ -60,16 +65,19 @@ class FilterForm extends React.Component {
                     <h2>Filters</h2>
                 </header>
                 <form onSubmit={this.handleSubmit}>
-                    <input id="price-range-slider" type="range" onInput={this.update("maxPrice")} min="0" max="1499" value={this.state.maxPrice} className="slider" />
+                    {/* <input id="" type="range" onInput={this.update("maxPrice")} min="0" max="1499" value={this.state.maxPrice} className="slider" /> */}
+
+                    <Nouislider className="slider" id="price-range-slider" onSet={this.update("priceRange")} range={{ min: 0, max: 1499 }} start={[this.state.minPrice, this.state.maxPrice]}  connect />
+
                     <div className="price-range-inputs">
                         <div className="min-price-section">
                             <label htmlFor="min-price-input">Min Price: </label>
-                            <input type="number" className="price-input" id="min-price-input" onChange={this.update("minPrice")} value={this.state.minPrice}/>
+                            <input type="number" className="price-input" id="min-price-input" onChange={this.update("minPrice")} value={this.state.minPrice} min="0" max="1499"/>
                         </div>
                         <span className="range-to"> &#8212; </span>
                         <div className="max-price-section">
                             <label htmlFor="max-price-input">Max Price: </label>
-                            <input type="number" className="price-input" id="max-price-input" onChange={this.update("maxPrice")} value={this.state.maxPrice}/>
+                            <input type="number" className="price-input" id="max-price-input" onChange={this.update("maxPrice")} value={this.state.maxPrice} min="0" max="1499"/>
                         </div>
                     </div>
                     <footer className="filter-form-footer">

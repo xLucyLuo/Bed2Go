@@ -17,6 +17,8 @@
 @import './base_styling/reset.css';
 @import 'react-date-range/dist/styles.css'; // main style file
 @import 'react-date-range/dist/theme/default.css'; // theme css file
+@import 'nouislider-react/node_modules/nouislider/distribute/nouislider.css';
+
  
   
 $default-linear-gradient:linear-gradient(to right,#E61E4D 0%,#E31C5F 50%,#D70466 100%);
@@ -904,7 +906,14 @@ input, textarea {
 }
 
 #price-range-slider {
-  margin: 5px;
+  // @include center(row);
+  // margin: 5px 24px 36px 0px;
+  margin-bottom: 12px;
+  padding: 24px;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  // width: 80%;
 }
 
 .range-to {
@@ -1758,6 +1767,44 @@ span.date-range-to {
   @media screen and (max-width: 900px) {
         width: 100%;
       }
+}
+
+.noUi-horizontal {
+  height: 5px;
+}
+.noUi-connects {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 5px;
+}
+
+.noUi-connect {
+  background: $default-lighter-color;
+  height: 5px;
+  width: 100%;
+}
+
+.noUi-handle {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  top: -8px !important;
+  &::before {
+    left: 7px;
+    top: -1px;
+    height: 20px;
+  }
+  &::after {
+    left: 10px;
+    top: -1px;
+    height: 20px;
+  }
+}
+
+.noUi-origin {
+  height: 10%;
+  width: calc(10% + 1px);
 }
 
 

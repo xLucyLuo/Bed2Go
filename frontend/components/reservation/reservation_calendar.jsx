@@ -4,7 +4,7 @@ import { Calendar, DateRangePicker } from 'react-date-range';
 
 class ReservationCalendar extends React.Component {
   handleSelect(ranges){
-    console.log(ranges.toLocaleDateString('en-ca'));
+    // console.log(ranges.toLocaleDateString('en-ca'));
     // {
     //   selection: {
     //     startDate: [native Date Object],
