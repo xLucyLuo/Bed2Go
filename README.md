@@ -44,6 +44,9 @@
 ### Search Listings by Location:
 ![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/location-search-clip.gif)
 
+### Filter by Price:
+![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/filter.gif)
+
 ### Google Maps:
 ![](https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/google-maps.gif)
 

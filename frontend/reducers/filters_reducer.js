@@ -3,7 +3,7 @@ import { RECEIVE_FILTER, CLEAR_FILTER } from './../actions/filter_actions';
 const defaultFilters = Object.freeze({
     bounds: {},
     minPrice: 0,
-    maxPrice: 1499,
+    maxPrice: 499,
   });
 
 const filtersReducer = (state = defaultFilters, action) => {
