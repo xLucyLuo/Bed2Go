@@ -5,12 +5,23 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+  <meta property="og:title" content="Mybnb" />
+    <meta property='og:image' content="<%= image_url("mybnb-screenshot.png")%>"/>
+    <meta property="og:description"
+      content="Mybnb is a full-stack, single-page application clone of Airbnb that uses React and Redux on the front-end and Ruby on Rails, PostgresSQL and AWS S3 on the back-end. This project leverages Google Maps APIs, AWS image hosting and responsive web design to provide a seamless UX / UI."
+    />
+    <meta property="og:url"
+      content="https://mybnb-lucyluo.herokuapp.com/#/"
+    />
+
+
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
     <script type = "text/javascript">   
       window.logoURL = "<%= image_url('logo.png')%>"; 
       window.markerURL = "<%= image_url('marker.png')%>"; 
+      window.homeMarkerURL = "<%= image_url('home-marker.webp')%>";
       window.homeMarkerURL = "<%= image_url('home-marker.webp')%>";
       window.homeRadiusMarkerURL = "<%= image_url('home-radius-marker.png')%>"; 
       window.gmAPIKey = "<%= Rails.application.credentials.google[:api_key]%>";
