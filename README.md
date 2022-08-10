@@ -62,9 +62,7 @@
   <img src="https://github.com/xLucyLuo/Mybnb/blob/main/app/assets/images/screenshots/screen-sizing-trip.gif" width="30%" height="122px"/>
 </p>
 
-## Application Preview
-
-### Code Snippets:
+## Code Snippets:
 
 ### Rails Filter Query
 ```ruby
