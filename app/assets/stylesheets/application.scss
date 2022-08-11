@@ -295,6 +295,7 @@ input, textarea {
     transition-duration: 300ms;
     font-weight: bold;
     font-size: 26px;
+    color: $default-pink
   }
 }
 
@@ -304,6 +305,7 @@ input, textarea {
   &:hover {
     text-decoration: underline;
     font-weight: bold;
+    color: $default-pink
     // font-size: 15px;
   }
 }
