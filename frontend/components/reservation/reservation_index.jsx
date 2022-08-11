@@ -6,6 +6,7 @@ class ReservationIndex extends React.Component {
     componentDidMount() {
         const { fetchReservations, currentUserId } = this.props;
         fetchReservations({userId: currentUserId});
+        window.scrollTo(0, 0)
     }
 
     render() {

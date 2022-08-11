@@ -14,6 +14,7 @@ class ListingShow extends React.Component {
         updateFilter("listingId", listingId);
         // fetchListings({"listingId": listingId})
         // debugger
+        window.scrollTo(0, 0)
     };
 
     componentDidUpdate(prevProps){
@@ -22,6 +23,7 @@ class ListingShow extends React.Component {
         if (prevProps.location.pathname!== this.props.location.pathname){
             const { listingId, updateFilter, fetchListings } = this.props;
             updateFilter("listingId", listingId);
+            window.scrollTo(0, 0)
             // fetchListings({"listingId": listingId})
             // debugger
         }
