@@ -65,11 +65,14 @@ function App (props) {
             <i className="fab fa-angellist"></i>
             <p className="social-link-label"> AngelList</p>
           </a>
+          <a className="social-link" href="https://xlucyluo.github.io/Portfolio/" target="_blank">
+            <i className="fas fa-folder-open"></i>
+            <p className="social-link-label"> Portfolio</p>
+          </a>
           <a className="social-link" href="mailto:lucyluo08@gmail.com" target="_blank">
             <i className="fas fa-envelope"></i>
             <p className="social-link-label"> Email</p>
           </a>
-
         </div>
     </footer>
   </div>
