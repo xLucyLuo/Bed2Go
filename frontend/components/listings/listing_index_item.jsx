@@ -17,7 +17,7 @@ const ListingIndexItem = (props) => {
                 <div className="listing-index-item-reviews">
                     <span> &#9733; </span> 
                     <span> {averageRating || 'New'} </span> 
-                    <span> {`(${numReviews || 0})`} </span>
+                    <span> {numReviews ? `(${numReviews})` : ""} </span>
                 </div>
             </div>
             <li className="desc-summary">{title}</li>
