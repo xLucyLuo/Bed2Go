@@ -1411,10 +1411,24 @@ span.reservation-price-units {
     padding: 0 24px 40px 24px;
   }
 }
-.reservation-index-title {
-  padding: 36px 0 24px 0;
+.reservation-index-upcoming, .reservation-index-previous {
+  padding-top: 36px;
+  padding-bottom: 12px;
 }
 
+.reservation-index-title {
+  padding: 36px 0 0 0;
+}
+
+.start-searching-button {
+  @include button($default-linear-gradient, white);
+  font-size: 18px;
+  width: auto;
+  padding: 12px 24px 12px 24px;
+  align-self: flex-start;
+  margin-top: 24px;
+  text-decoration: none;
+}
 .reservation-index-items-container {
   @include center(column);
   row-gap: 24px;
@@ -1447,6 +1461,16 @@ span.reservation-price-units {
     -webkit-filter: brightness(105%);
     transition-duration: 300ms;
 
+  }
+}
+
+.no-upcoming-reservations {
+  border: lightgray solid 1px;
+  box-shadow:  none;
+  &:hover{
+    cursor:auto;
+    box-shadow: none;
+    -webkit-filter: brightness(100%);
   }
 }
 
@@ -1537,9 +1561,14 @@ span.date-range-to {
   @media screen and (max-width: 700px) {
     // width: 700px;
     width: 100%;
-    // min-height:100%;
+    min-height:100%;
     position: absolute;
     top: -100%;
+  }
+  @media screen and (max-width: 500px) {
+    position: relative;
+    top: 0%;
+    height: 100%;
   }
 }
 
