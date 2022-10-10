@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { fetchReservations } from '../../actions/reservation_actions';
 import ReservationIndexItem from './reservation_index_item';
+import ReservationIndexItemSmall from './reservation_index_item_small';
 
 class ReservationIndex extends React.Component {
     componentDidMount() {
@@ -32,7 +33,7 @@ class ReservationIndex extends React.Component {
                         <div className="reservation-item-container no-upcoming-reservations">
                             <div className="reservation-item-text">
                                 <h3>No trips booked...yet!</h3> 
-                                <p className="reservation-item-subtext">Time to dust off your bags and start planning your next adventure</p>
+                                <p className="reservation-item-subtext text-gray">Time to dust off your bags and start planning your next adventure</p>
                                 <button className="start-searching-button" 
                                     onClick={() => this.props.history.push("/")}>
                                     Start searching
@@ -53,8 +54,8 @@ class ReservationIndex extends React.Component {
 
                 <div className="reservation-index-previous">
                     <h2 className="reservation-subheading">Where you've been</h2>
-                    <div  className="reservation-index-items-container">
-                        {previousReservations.map((reservation) => <ReservationIndexItem key={reservation.id} reservation={reservation} listing={listings[reservation.listingId]}/>)}
+                    <div  className="reservation-index-items-container-small">
+                        {previousReservations.map((reservation) => <ReservationIndexItemSmall key={reservation.id} reservation={reservation} listing={listings[reservation.listingId]}/>)}
                     </div>
                 </div>
             </div>

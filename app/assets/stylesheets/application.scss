@@ -108,6 +108,13 @@ $default-pink-bright: #FF385C;
   color: $default-lighter-color !important;
 }
 
+.text-small {
+  font-size: 14px;
+}
+
+.text-gray {
+  color: gray;
+}
 
 
 #map-container {
@@ -1436,6 +1443,18 @@ span.reservation-price-units {
   flex-flow: column-reverse;
 }
 
+.reservation-index-items-container-small {
+  @include center(row);
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  column-gap: 14px;
+  // flex-flow: column-reverse;
+  @media screen and (max-width: 925px) {
+    justify-content: space-between;
+    padding-right: 24px;
+  }
+}
+
 .reservation-item-container {
   max-width:925px;
   @include center(row);
@@ -1464,6 +1483,15 @@ span.reservation-price-units {
   }
 }
 
+.reservation-item-container-small {
+  width: 270px;
+  @include center(row);
+  overflow: hidden;
+  row-gap: 12px;
+  height: 100px;
+  cursor: pointer;
+}
+
 .no-upcoming-reservations {
   border: lightgray solid 1px;
   box-shadow:  none;
@@ -1477,6 +1505,15 @@ span.reservation-price-units {
 .reservation-item-text {
   @include center(column);
   padding: 24px;
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    height: 50%
+  }
+}
+
+.reservation-item-text-small {
+  @include center(column);
+  padding-left: 12px;
   @media screen and (max-width: 700px) {
     width: 100%;
     height: 50%
@@ -1556,6 +1593,17 @@ span.date-range-to {
   }
 }
 
+.reservation-item-image-container-small {
+  min-width: 72px;
+  max-width: 72px;
+  height: 72px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+}
+
 .reservations-tile-image {
   @include cover();
   @media screen and (max-width: 700px) {
@@ -1570,6 +1618,14 @@ span.date-range-to {
     top: 0%;
     height: 100%;
   }
+}
+
+.reservations-tile-image-small {
+  width: 150%;
+  height: 150%;
+  @include cover();
+  position: absolute;
+  top: -40%;
 }
 
 .reservation-calendar-range {
