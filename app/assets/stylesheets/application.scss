@@ -1447,11 +1447,11 @@ span.reservation-price-units {
   @include center(row);
   flex-wrap: wrap;
   justify-content: flex-start;
-  column-gap: 14px;
+  // column-gap: 14px;
+  justify-content: space-between;
   // flex-flow: column-reverse;
   @media screen and (max-width: 925px) {
-    justify-content: space-between;
-    padding-right: 24px;
+    justify-content: flex-start;
   }
 }
 
@@ -1490,6 +1490,10 @@ span.reservation-price-units {
   row-gap: 12px;
   height: 100px;
   cursor: pointer;
+
+  @media screen and (max-width: 925px) {
+    margin-right: 15%;
+  }
 }
 
 .no-upcoming-reservations {
